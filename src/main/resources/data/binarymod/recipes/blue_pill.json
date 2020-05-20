@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#D#"
+  ],
+  "key": {
+    "#": {
+      "item": "binarymod:byte"
+    },
+    "D": {
+      "item": "minecraft:blue_dye"
+    }
+  },
+  "result": {
+    "item": "binarymod:blue_pill"
+  }
+}

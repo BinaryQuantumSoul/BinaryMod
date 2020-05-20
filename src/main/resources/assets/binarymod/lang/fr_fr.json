@@ -1,0 +1,55 @@
+{
+  "block.binarymod.binary_ore" : "Minérai Binaire",
+  "block.binarymod.binary_block" : "Bloc Éteint",
+  "block.binarymod.on_binary_block" : "Bloc Allumé",
+  "block.binarymod.wire_block" : "Cables",
+  "block.binarymod.code_block" : "Code",
+  "block.binarymod.void_block" : "Bloc Vide",
+  "block.binarymod.firewall_block" : "Pare-feu",
+
+  "block.binarymod.hex_red" : "Hexadec Rouge",
+  "block.binarymod.hex_green" : "Hexadec Vert",
+  "block.binarymod.hex_blue" : "Hexadec Bleu",
+  "block.binarymod.hex_cyan" : "Hexadec Cyan",
+  "block.binarymod.hex_magenta" : "Hexadec Magenta",
+  "block.binarymod.hex_yellow" : "Hexadec Jaune",
+  "block.binarymod.hex_orange" : "Hexadec Orange",
+
+  "block.binarymod.bug_block" : "Bug",
+  "block.binarymod.virus_block" : "Virus",
+  "block.binarymod.virus_bug_block" : "Bug Infecté",
+  "block.binarymod.virus_dead_block" : "Virus Mort",
+
+  "item.binarymod.red_pill" : "Pilule Rouge",
+  "item.binarymod.blue_pill" : "Pilule Bleue",
+  "item.binarymod.bit" : "Bit",
+  "item.binarymod.byte" : "Octet",
+  "item.binarymod.code" : "Code",
+  "item.binarymod.void" : "Vide",
+  "item.binarymod.firebrick" : "Brique de Feu",
+
+  "item.binarymod.file_corrupt": "Fichier Corrompu",
+  "item.binarymod.file_safe": "Fichier",
+  "item.binarymod.file_infect": "Fichier Infecté",
+
+  "item.binarymod.antivirus_tool" : "Antivirus",
+
+  "itemGroup.binarymod.tab" : "Binary Dimension",
+
+  "tooltip.binarymod.pill_red0" : "Choisis la pilule rouge",
+  "tooltip.binarymod.pill_red1" : "tu restes au pays des merveilles",
+  "tooltip.binarymod.pill_red2" : "et on descend avec le lapin blanc",
+  "tooltip.binarymod.pill_red3" : "au fond du gouffre",
+  "tooltip.binarymod.pill_blue0" : "Choisis la pilule bleue",
+  "tooltip.binarymod.pill_blue1" : "et tout s'arrête,",
+  "tooltip.binarymod.pill_blue2" : "après tu pourra faire de beaux rêves",
+  "tooltip.binarymod.pill_blue3" : "et penser ce que tu veux",
+
+  "entity.binarymod.one": "Un",
+  "entity.binarymod.zero": "Zéro",
+  "entity.binarymod.bug": "Bug",
+  "entity.binarymod.virus" : "Virus",
+  "entity.binarymod.void_soul" : "Âme Vide",
+
+  "nameTag.binarymod.white_rabbit" : "Le Lapin Blanc"
+}

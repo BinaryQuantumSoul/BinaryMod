@@ -1,0 +1,55 @@
+{
+  "block.binarymod.binary_ore" : "Duuma erco",
+  "block.binarymod.binary_block" : "Malŝalta Bloko",
+  "block.binarymod.on_binary_block" : "Ŝalta Bloko ",
+  "block.binarymod.wire_block" : "Kabloj",
+  "block.binarymod.code_block" : "Kodo",
+  "block.binarymod.void_block" : "Malplenbloko",
+  "block.binarymod.firewall_block" : "Fajroŝirmilo",
+
+  "block.binarymod.hex_red" : "Ruĝa Dekseso",
+  "block.binarymod.hex_green" : "Verda Dekseso",
+  "block.binarymod.hex_blue" : "Blua Dekseso",
+  "block.binarymod.hex_cyan" : "Cejana Dekseso",
+  "block.binarymod.hex_magenta" : "Maĝenta Dekseso",
+  "block.binarymod.hex_yellow" : "Flava Dekseso",
+  "block.binarymod.hex_orange" : "Oranĝa Dekseso",
+
+  "block.binarymod.bug_block" : "Cimo",
+  "block.binarymod.virus_block" : "Viruso",
+  "block.binarymod.virus_bug_block" : "Malsana Cimo",
+  "block.binarymod.virus_dead_block" : "Malviva Viruso",
+
+  "item.binarymod.red_pill" : "Ruĝa Pilolo",
+  "item.binarymod.blue_pill" : "Blua Pilolo",
+  "item.binarymod.bit" : "Bito",
+  "item.binarymod.byte" : "Bitoko",
+  "item.binarymod.code" : "Kodo",
+  "item.binarymod.void" : "Malpleno",
+  "item.binarymod.firebrick" : "Fajrobriko",
+
+  "item.binarymod.file_corrupt" : "Korupta Dosiero",
+  "item.binarymod.file_safe" : "Dosiero",
+  "item.binarymod.file_infect" : "Malsana Dosiero",
+
+  "item.binarymod.antivirus_tool" : "Kontraŭ-virus",
+
+  "itemGroup.binarymod.tab" : "Binary Dimension",
+
+  "tooltip.binarymod.pill_red0" : "Prenu la ruĝan pilolon",
+  "tooltip.binarymod.pill_red1" : "kaj vi restas en mirlando",
+  "tooltip.binarymod.pill_red2" : "kaj mi montras al vi",
+  "tooltip.binarymod.pill_red3" : "kiom profunda la truo de la kuniklo estas",
+  "tooltip.binarymod.pill_blue0" : "Prenu la bluan pilolon",
+  "tooltip.binarymod.pill_blue1" : "kaj la rakonto finas,",
+  "tooltip.binarymod.pill_blue2" : "vi vekiĝas en la via lito kaj vi kredas",
+  "tooltip.binarymod.pill_blue3" : "kion vi volas kredi",
+
+  "entity.binarymod.one": "Un",
+  "entity.binarymod.zero": "Du",
+  "entity.binarymod.bug": "Cimo",
+  "entity.binarymod.virus" : "Viruso",
+  "entity.binarymod.void_soul" : "Malplena Animo",
+
+  "nameTag.binarymod.white_rabbit" : "La Blanka Kuniklo"
+}

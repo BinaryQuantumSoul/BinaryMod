@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "binarymod:block/hex/hex_orange"
+  }
+}

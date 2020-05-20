@@ -1,0 +1,55 @@
+{
+  "block.binarymod.binary_ore" : "Binary Ore",
+  "block.binarymod.binary_block" : "Off Block",
+  "block.binarymod.on_binary_block" : "On Block",
+  "block.binarymod.wire_block" : "Wires",
+  "block.binarymod.code_block" : "Code",
+  "block.binarymod.void_block" : "Void",
+  "block.binarymod.firewall_block" : "Firewall",
+
+  "block.binarymod.hex_red" : "Red Hex",
+  "block.binarymod.hex_green" : "Green Hex",
+  "block.binarymod.hex_blue" : "Blue Hex",
+  "block.binarymod.hex_cyan" : "Cyan Hex",
+  "block.binarymod.hex_magenta" : "Magenta Hex",
+  "block.binarymod.hex_yellow" : "Yellow Hex",
+  "block.binarymod.hex_orange" : "Orange Hex",
+
+  "block.binarymod.bug_block" : "Bug",
+  "block.binarymod.virus_block" : "Virus",
+  "block.binarymod.virus_bug_block" : "Infected Bug",
+  "block.binarymod.virus_dead_block" : "Dead Virus",
+
+  "item.binarymod.red_pill" : "Red Pill",
+  "item.binarymod.blue_pill" : "Blue Pill",
+  "item.binarymod.bit" : "Bit",
+  "item.binarymod.byte" : "Byte",
+  "item.binarymod.code" : "Code",
+  "item.binarymod.void" : "Void",
+  "item.binarymod.firebrick" : "Firebrick",
+
+  "item.binarymod.file_corrupt" : "Corrupted File",
+  "item.binarymod.file_safe" : "File",
+  "item.binarymod.file_infect" : "Infected File",
+
+  "item.binarymod.antivirus_tool" : "Antivirus",
+
+  "itemGroup.binarymod.tab" : "Binary Dimension",
+
+  "tooltip.binarymod.pill_red0" : "You take the red pill",
+  "tooltip.binarymod.pill_red1" : "and you stay in Wonderland",
+  "tooltip.binarymod.pill_red2" : "and I show you",
+  "tooltip.binarymod.pill_red3" : "how deep the rabbit-hole goes",
+  "tooltip.binarymod.pill_blue0" : "You take the blue pill",
+  "tooltip.binarymod.pill_blue1" : "and the story ends,",
+  "tooltip.binarymod.pill_blue2" : "you wake in your bed and you believe",
+  "tooltip.binarymod.pill_blue3" : "whatever you want to believe",
+
+  "entity.binarymod.one" : "One",
+  "entity.binarymod.zero" : "Zero",
+  "entity.binarymod.bug" : "Bug",
+  "entity.binarymod.virus" : "Virus",
+  "entity.binarymod.void_soul" : "Void Soul",
+
+  "nameTag.binarymod.white_rabbit" : "The White Rabbit"
+}

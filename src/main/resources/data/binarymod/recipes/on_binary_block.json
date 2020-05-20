@@ -1,0 +1,9 @@
+{
+  "type" : "minecraft:crafting_shapeless",
+  "ingredients" : [{
+    "item" : "binarymod:binary_block"
+  }],
+  "result" : {
+    "item" : "binarymod:on_binary_block"
+  }
+}

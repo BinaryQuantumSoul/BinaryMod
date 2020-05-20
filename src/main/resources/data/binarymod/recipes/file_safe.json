@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "binarymod:file_corrupt"
+    },
+    {
+      "item": "binarymod:file_infect"
+    }
+  ],
+  "result": {
+    "item": "binarymod:file_safe",
+    "count": 1
+  }
+}

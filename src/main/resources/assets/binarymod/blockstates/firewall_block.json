@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "used=false": {
+      "model": "binarymod:block/firewall_block"
+    },
+    "used=true": {
+      "model": "binarymod:block/firewall_block_used"
+    }
+  }
+}

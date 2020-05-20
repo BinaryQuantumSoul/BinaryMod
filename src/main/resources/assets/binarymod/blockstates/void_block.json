@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "binarymod:block/void_block"
+    }
+  }
+}

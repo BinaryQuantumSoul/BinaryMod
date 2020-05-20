@@ -1,0 +1,28 @@
+package com.quantumsoul.binarymod.world.biomes;
+
+import com.quantumsoul.binarymod.init.BlockInit;
+import com.quantumsoul.binarymod.init.EntityInit;
+import com.quantumsoul.binarymod.world.biomes.feature.BinDimBiomeFeatures;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntityType;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
+
+public class WireBiome extends Biome
+{
+    public WireBiome()
+    {
+        super(new Builder().surfaceBuilder(new BinarySurfaceBuilder(SurfaceBuilderConfig::deserialize), new SurfaceBuilderConfig(BlockInit.BINARY_BLOCK.get().getDefaultState(), BlockInit.BINARY_BLOCK.get().getDefaultState(), null))
+                .precipitation(Biome.RainType.NONE)
+                .category(Category.NONE)
+                .depth(0.1F)
+                .downfall(0F)
+                .scale(0.02F)
+                .temperature(1.5F)
+                .waterColor(0x00FF00).waterFogColor(0x00FF00)
+                .parent(null));
+
+        BinDimBiomeFeatures.addOres(this);
+        BinDimBiomeFeatures.addManyWires(this);
+    }
+}

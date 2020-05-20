@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y":  { "model": "binarymod:block/wire_block" },
+    "axis=z":   { "model": "binarymod:block/wire_block", "x": 90 },
+    "axis=x":   { "model": "binarymod:block/wire_block", "x": 90, "y": 90 }
+  }
+}
