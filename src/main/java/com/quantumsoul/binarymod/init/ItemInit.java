@@ -3,6 +3,7 @@ package com.quantumsoul.binarymod.init;
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.item.CorruptItem;
 import com.quantumsoul.binarymod.item.PillItem;
+import com.quantumsoul.binarymod.item.DebugItem;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
@@ -36,4 +37,5 @@ public class ItemInit
     public static final RegistryObject<Item> FILE_INFECT = ITEMS.register("file_infect", () -> new Item(BASE));
 
     public static final RegistryObject<Item> ANTIVIRUS_TOOL = ITEMS.register("antivirus_tool", () -> new AxeItem(ItemTier.DIAMOND, 5F, -3F, special()));
+    public static final RegistryObject<Item> DEBUG_TOOL = ITEMS.register("debug_tool", () -> new DebugItem(BASE));
 }

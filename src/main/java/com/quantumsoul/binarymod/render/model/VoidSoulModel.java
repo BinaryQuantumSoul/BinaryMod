@@ -1,4 +1,4 @@
-package com.quantumsoul.binarymod.render;
+package com.quantumsoul.binarymod.render.model;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
@@ -20,7 +20,7 @@ public class VoidSoulModel extends EntityModel<VoidSoulEntity>
 
         bone = new ModelRenderer(this, 0, 0);
         bone.setRotationPoint(0.0F, 4.0F, 0.0F);
-        bone.addBox(-4.0F, 0.0F, -4.0F, 8.0F, 8.0F, 8.0F, 0.0F, false);
+        bone.addBox(-4.0F, 0, -4.0F, 8.0F, 8.0F, 8.0F, 0.0F, false);
     }
 
     @Override
@@ -30,6 +30,8 @@ public class VoidSoulModel extends EntityModel<VoidSoulEntity>
     @Override
     public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha)
     {
+        matrixStack.translate(0.0D, 0.75F, 0.0D);
+
         bone.render(matrixStack, buffer, packedLight, packedOverlay);
     }
 }

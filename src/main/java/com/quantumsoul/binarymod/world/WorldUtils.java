@@ -18,6 +18,7 @@ import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
+import java.util.function.Supplier;
 
 public class WorldUtils
 {
@@ -127,7 +128,7 @@ public class WorldUtils
         return getGroundLevelFrom(worldIn, x, z, 0, false);
     }
 
-    //SPAWNING
+    //MOBS
     public static boolean canBinDimAnimalSpawn(EntityType<? extends MobEntity> entity, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random)
     {
         Block block = worldIn.getBlockState(pos.down()).getBlock();
@@ -138,6 +139,11 @@ public class WorldUtils
     {
         Block block = worldIn.getBlockState(pos.down()).getBlock();
         return worldIn.getDifficulty() != Difficulty.PEACEFUL && (reason == SpawnReason.SPAWNER || isBinDimBlock(block));
+    }
+
+    public static boolean onBinDimLivingFall(IWorld worldIn, BlockPos pos, Supplier<Boolean> def)
+    {
+        return worldIn.getBlockState(pos.down()) == BlockInit.ON_BINARY_BLOCK.get().getDefaultState() ? def.get() : false;
     }
 
     //BLOCK CHECKING

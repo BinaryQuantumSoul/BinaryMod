@@ -1,4 +1,4 @@
-package com.quantumsoul.binarymod.render;
+package com.quantumsoul.binarymod.render.model;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.matrix.MatrixStack;

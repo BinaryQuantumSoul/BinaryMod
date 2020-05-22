@@ -17,6 +17,8 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import static com.quantumsoul.binarymod.world.WorldUtils.onBinDimLivingFall;
+
 public class OneZeroEntity extends AnimalEntity
 {
     private static final Ingredient BREED = Ingredient.fromItems(ItemInit.BIT.get());
@@ -41,7 +43,7 @@ public class OneZeroEntity extends AnimalEntity
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
         this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 6.0F));
-        this.goalSelector.addGoal(7, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
     }
 
     @Override
@@ -73,7 +75,13 @@ public class OneZeroEntity extends AnimalEntity
         return false;
     }
 
-    //=================================================== SOUND =================================================== todo
+    @Override
+    public boolean onLivingFall(float distance, float damageMultiplier)
+    {
+        return onBinDimLivingFall(world, this.getPosition(), () -> super.onLivingFall(distance, damageMultiplier));
+    }
+
+    //=================================================== SOUND ===================================================
     @Override
     protected SoundEvent getAmbientSound()
     {

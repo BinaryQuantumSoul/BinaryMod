@@ -50,6 +50,7 @@
   "entity.binarymod.bug": "Bug",
   "entity.binarymod.virus" : "Virus",
   "entity.binarymod.void_soul" : "Âme Vide",
+  "entity.binarymod.worm" : "Ver",
 
   "nameTag.binarymod.white_rabbit" : "Le Lapin Blanc"
 }

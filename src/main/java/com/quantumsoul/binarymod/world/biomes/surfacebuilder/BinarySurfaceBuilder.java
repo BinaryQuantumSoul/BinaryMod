@@ -1,4 +1,4 @@
-package com.quantumsoul.binarymod.world.biomes;
+package com.quantumsoul.binarymod.world.biomes.surfacebuilder;
 
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;

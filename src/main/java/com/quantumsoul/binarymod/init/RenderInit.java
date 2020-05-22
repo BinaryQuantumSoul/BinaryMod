@@ -14,5 +14,6 @@ public class RenderInit
         RenderingRegistry.registerEntityRenderingHandler(EntityInit.VIRUS.get(), VirusRenderer::new);
 
         RenderingRegistry.registerEntityRenderingHandler(EntityInit.VOID_SOUL.get(), VoidSoulRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityInit.WORM.get(), WormRenderer::new);
     }
 }

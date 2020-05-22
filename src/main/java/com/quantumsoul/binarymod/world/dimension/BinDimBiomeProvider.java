@@ -2,7 +2,6 @@ package com.quantumsoul.binarymod.world.dimension;
 
 import com.google.common.collect.ImmutableSet;
 import com.quantumsoul.binarymod.init.BiomeInit;
-import com.quantumsoul.binarymod.Utils;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -75,13 +74,13 @@ public class BinDimBiomeProvider extends BiomeProvider
         {
             int rand = context.random(8);
             if (rand <= 3)
-                return ((ForgeRegistry) ForgeRegistries.BIOMES).getID(Utils.nthElement(biomes, 0).getRegistryName());
+                return ((ForgeRegistry) ForgeRegistries.BIOMES).getID(BiomeInit.BINARY_BIOME.getId());
             else if (rand <= 5)
-                return ((ForgeRegistry) ForgeRegistries.BIOMES).getID(Utils.nthElement(biomes, 1).getRegistryName());
+                return ((ForgeRegistry) ForgeRegistries.BIOMES).getID(BiomeInit.HEX_BIOME.getId());
             else if (rand <= 6)
-                return ((ForgeRegistry) ForgeRegistries.BIOMES).getID(Utils.nthElement(biomes, 2).getRegistryName());
+                return ((ForgeRegistry) ForgeRegistries.BIOMES).getID(BiomeInit.VOID_BIOME.getId());
             else
-                return ((ForgeRegistry) ForgeRegistries.BIOMES).getID(Utils.nthElement(biomes, 3).getRegistryName());
+                return ((ForgeRegistry) ForgeRegistries.BIOMES).getID(BiomeInit.WIRE_BIOME.getId());
         }
     }
 

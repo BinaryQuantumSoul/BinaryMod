@@ -2,6 +2,7 @@ package com.quantumsoul.binarymod.entity;
 
 import com.quantumsoul.binarymod.init.BlockInit;
 import com.quantumsoul.binarymod.init.EntityInit;
+import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
@@ -9,17 +10,23 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.World;
 
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Optional;
+
+import static com.quantumsoul.binarymod.world.WorldUtils.onBinDimLivingFall;
 
 public class BugEntity extends MonsterEntity
 {
-    public static final BlockState defaultMimic = BlockInit.BUG_BLOCK.get().getDefaultState();
-    public BlockState mimic;
+    private static final BlockState defaultMimic = BlockInit.BUG_BLOCK.get().getDefaultState();
+    private static final DataParameter<Optional<BlockState>> MIMIC = EntityDataManager.createKey(BugEntity.class, DataSerializers.OPTIONAL_BLOCK_STATE);
 
     public BugEntity(World worldIn)
     {
@@ -28,7 +35,6 @@ public class BugEntity extends MonsterEntity
     public BugEntity(EntityType<? extends MonsterEntity> type, World worldIn)
     {
         super(type, worldIn);
-        mimic = defaultMimic;
     }
 
     //=================================================== AI ===================================================
@@ -36,8 +42,8 @@ public class BugEntity extends MonsterEntity
     protected void registerGoals()
     {
         this.goalSelector.addGoal(0, new SwimGoal(this));
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 2D, true));
-        this.goalSelector.addGoal(2, new GroupGoal(this, 1D));
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1D, true));
+        this.goalSelector.addGoal(2, new GroupGoal(this, 0.8D));
         this.goalSelector.addGoal(3, new HideGoal(this));
 
         this.targetSelector.addGoal(0, new HurtByTargetGoal(this, PlayerEntity.class));
@@ -53,8 +59,35 @@ public class BugEntity extends MonsterEntity
         this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4D);
     }
 
-    //=================================================== SOUND =================================================== todo
+    @Override
+    public boolean onLivingFall(float distance, float damageMultiplier)
+    {
+        return onBinDimLivingFall(world, this.getPosition(), () -> super.onLivingFall(distance, damageMultiplier));
+    }
 
+    //=================================================== DATA ===================================================
+
+    @Override
+    protected void registerData()
+    {
+        super.registerData();
+        this.getDataManager().register(MIMIC, Optional.of(defaultMimic));
+    }
+
+    public void setMimic(BlockState state)
+    {
+        if(state.isSolid() && state.getRenderType() != BlockRenderType.INVISIBLE)
+            this.getDataManager().set(MIMIC, Optional.of(state));
+        else
+            this.getDataManager().set(MIMIC, Optional.of(defaultMimic));
+    }
+
+    public BlockState getMimic()
+    {
+        return this.getDataManager().get(MIMIC).orElse(defaultMimic);
+    }
+
+    //=================================================== SOUND ===================================================
 
     //=================================================== GOALS ===================================================
     protected class GroupGoal extends Goal
@@ -163,11 +196,11 @@ public class BugEntity extends MonsterEntity
         {
             if (entity.getPosX() % 1 != 0.0D || entity.getPosY() % 1 != 0.0D || entity.getPosZ() % 1 != 0.0D || entity.rotationYaw != 0.0F || entity.rotationPitch != 0F || entity.rotationYawHead != 0.0F)
             {
+                //todo fix
                 entity.moveToBlockPosAndAngles(entity.getPosition(), 0.0F, 0.0F);
                 entity.setRotationYawHead(0.0F);
-                BlockPos pos = entity.getPosition().down();
-                BlockState state = entity.world.getBlockState(pos);
-                entity.mimic = state.isSolid() && state.getShape(entity.world, pos) == VoxelShapes.fullCube() ? state : defaultMimic;
+                BlockState state = entity.world.getBlockState(entity.getPosition().down());
+                entity.setMimic(state);
             }
         }
     }

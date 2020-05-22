@@ -20,4 +20,5 @@ public class EntityInit
     public static RegistryObject<EntityType<VirusEntity>> VIRUS = ENTITIES.register("virus", () -> EntityType.Builder.<VirusEntity>create(VirusEntity::new, EntityClassification.MONSTER).size(3F, 3F).build(BinaryMod.MOD_ID + "virus"));
 
     public static RegistryObject<EntityType<VoidSoulEntity>> VOID_SOUL = ENTITIES.register("void_soul", () -> EntityType.Builder.<VoidSoulEntity>create(VoidSoulEntity::new, EntityClassification.MONSTER).size(0.5F, 0.5F).build(BinaryMod.MOD_ID + "void_soul"));
+    public static RegistryObject<EntityType<WormEntity>> WORM = ENTITIES.register("worm", () -> EntityType.Builder.<WormEntity>create(WormEntity::new, EntityClassification.MONSTER).size(1F, 0.125F).build(BinaryMod.MOD_ID + "worm"));
 }

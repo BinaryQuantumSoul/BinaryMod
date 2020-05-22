@@ -50,6 +50,7 @@
   "entity.binarymod.bug" : "Bug",
   "entity.binarymod.virus" : "Virus",
   "entity.binarymod.void_soul" : "Void Soul",
+  "entity.binarymod.worm" : "Worm",
 
   "nameTag.binarymod.white_rabbit" : "The White Rabbit"
 }

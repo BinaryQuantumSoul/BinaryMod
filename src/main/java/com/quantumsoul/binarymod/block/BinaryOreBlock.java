@@ -23,10 +23,10 @@ public class BinaryOreBlock extends Block
 
         if (worldIn.getRandom().nextInt(10) == 0)
         {
-            RabbitEntity rabbit = new RabbitEntity(EntityType.RABBIT, worldIn.getWorld());
+            RabbitEntity rabbit = EntityType.RABBIT.create(worldIn.getWorld());
             rabbit.setRabbitType(1);
             rabbit.setCustomName(new TranslationTextComponent("nameTag.binarymod.white_rabbit"));
-            rabbit.setPosition(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+            rabbit.setPosition(pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D);
             worldIn.addEntity(rabbit);
         }
     }

@@ -2,6 +2,7 @@ package com.quantumsoul.binarymod.render;
 
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.entity.OneEntity;
+import com.quantumsoul.binarymod.render.model.OneModel;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;

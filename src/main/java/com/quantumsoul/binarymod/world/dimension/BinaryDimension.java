@@ -41,6 +41,7 @@ public class BinaryDimension extends Dimension
     @Override
     public boolean canRespawnHere()
     {
+        //todo decide
         return true;
     }
 

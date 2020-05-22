@@ -6,6 +6,8 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.SlimeEntity;
 import net.minecraft.world.World;
 
+import static com.quantumsoul.binarymod.world.WorldUtils.onBinDimLivingFall;
+
 public class VirusEntity extends SlimeEntity
 {
     public VirusEntity(World worldIn)
@@ -26,6 +28,12 @@ public class VirusEntity extends SlimeEntity
     }
 
     @Override
+    public boolean onLivingFall(float distance, float damageMultiplier)
+    {
+        return onBinDimLivingFall(world, this.getPosition(), () -> super.onLivingFall(distance, damageMultiplier));
+    }
+
+    @Override
     protected void setSlimeSize(int size, boolean resetHealth)
     {
         super.setSlimeSize(size, resetHealth);
@@ -36,7 +44,7 @@ public class VirusEntity extends SlimeEntity
     @Override
     protected float func_225512_er_() //damages
     {
-        return super.func_225512_er_() + 3.0F;
+        return super.func_225512_er_() + 2.0F;
     }
 
     @Override
@@ -57,5 +65,5 @@ public class VirusEntity extends SlimeEntity
         return true;
     }
 
-    //=================================================== SOUND =================================================== todo
+    //=================================================== SOUND ===================================================
 }

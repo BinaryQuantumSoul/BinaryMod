@@ -1,7 +1,9 @@
 package com.quantumsoul.binarymod.render;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.entity.VoidSoulEntity;
+import com.quantumsoul.binarymod.render.model.VoidSoulModel;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
@@ -15,7 +17,7 @@ public class VoidSoulRenderer extends MobRenderer<VoidSoulEntity, VoidSoulModel>
 
     public VoidSoulRenderer(EntityRendererManager renderManagerIn)
     {
-        super(renderManagerIn, new VoidSoulModel(), 0.6F);
+        super(renderManagerIn, new VoidSoulModel(), 0.4F);
     }
 
     @Override

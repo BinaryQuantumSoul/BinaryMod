@@ -46,10 +46,11 @@
   "tooltip.binarymod.pill_blue3" : "kion vi volas kredi",
 
   "entity.binarymod.one": "Un",
-  "entity.binarymod.zero": "Du",
+  "entity.binarymod.zero": "Nul",
   "entity.binarymod.bug": "Cimo",
   "entity.binarymod.virus" : "Viruso",
   "entity.binarymod.void_soul" : "Malplena Animo",
+  "entity.binarymod.worm" : "Vermo",
 
   "nameTag.binarymod.white_rabbit" : "La Blanka Kuniklo"
 }

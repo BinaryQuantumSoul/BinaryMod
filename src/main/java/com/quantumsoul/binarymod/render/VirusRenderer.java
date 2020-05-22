@@ -3,6 +3,7 @@ package com.quantumsoul.binarymod.render;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.entity.VirusEntity;
+import com.quantumsoul.binarymod.render.model.VirusModel;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -17,13 +18,13 @@ public class VirusRenderer extends MobRenderer<VirusEntity, VirusModel>
 
     public VirusRenderer(EntityRendererManager renderManagerIn)
     {
-        super(renderManagerIn, new VirusModel(), 0.25F);
+        super(renderManagerIn, new VirusModel(), 0.5F);
     }
 
     @Override
     public void render(VirusEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn)
     {
-        this.shadowSize = 0.25F * (float) entityIn.getSlimeSize();
+        this.shadowSize = 0.5F * (float) entityIn.getSlimeSize();
         super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
     }
 

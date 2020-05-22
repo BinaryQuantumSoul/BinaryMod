@@ -1,28 +1,25 @@
 package com.quantumsoul.binarymod.render;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.entity.BugEntity;
-import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.BushBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.renderer.entity.LivingRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.model.data.EmptyModelData;
+
+import static com.quantumsoul.binarymod.render.RenderUtils.applyRotations;
 
 @OnlyIn(Dist.CLIENT)
 public class BugRenderer extends EntityRenderer<BugEntity>
 {
-    public static final ResourceLocation BUG_TEXTURE = new ResourceLocation(BinaryMod.MOD_ID, "textures/entity/bug.png");
-
-    public BugRenderer(EntityRendererManager renderManagerIn)
+   public BugRenderer(EntityRendererManager renderManagerIn)
     {
         super(renderManagerIn);
     }
@@ -31,22 +28,22 @@ public class BugRenderer extends EntityRenderer<BugEntity>
     public void render(BugEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn)
     {
         super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
-        matrixStackIn.translate(-0.8D, 0.0D, -0.8D);
-        matrixStackIn.rotate(Vector3f.YP.rotationDegrees(180F - entityYaw));
- //       renderBlockState(entityIn.mimic, matrixStackIn, bufferIn, packedLightIn);
+
+        matrixStackIn.push();
+        applyRotations(entityIn, matrixStackIn, MathHelper.interpolateAngle(partialTicks, entityIn.prevRenderYawOffset, entityIn.renderYawOffset), partialTicks);
+        matrixStackIn.translate(-0.5D, 0.0D, -0.5D);
+        renderBlockState(entityIn.getMimic(), matrixStackIn, bufferIn, packedLightIn, LivingRenderer.getPackedOverlay(entityIn, 0.0F));
+        matrixStackIn.pop();
     }
 
-    private void renderBlockState(BlockState stateIn, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn)
+    private void renderBlockState(BlockState stateIn, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, int packedOverlayIn)
     {
-        if (stateIn.getRenderType() != BlockRenderType.INVISIBLE)
-            Minecraft.getInstance().getBlockRendererDispatcher().renderBlock(stateIn, matrixStackIn, bufferIn, packedLightIn, OverlayTexture.NO_OVERLAY);
-        else
-            Minecraft.getInstance().getBlockRendererDispatcher().renderBlock(BugEntity.defaultMimic, matrixStackIn, bufferIn, packedLightIn, OverlayTexture.NO_OVERLAY);
+        Minecraft.getInstance().getBlockRendererDispatcher().renderBlock(stateIn, matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, EmptyModelData.INSTANCE);
     }
 
     @Override
     public ResourceLocation getEntityTexture(BugEntity entity)
     {
-        return BUG_TEXTURE;
+        return null;
     }
 }

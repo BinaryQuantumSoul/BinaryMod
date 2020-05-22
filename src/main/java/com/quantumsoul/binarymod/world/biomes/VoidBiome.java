@@ -1,6 +1,7 @@
 package com.quantumsoul.binarymod.world.biomes;
 
 import com.quantumsoul.binarymod.init.BlockInit;
+import com.quantumsoul.binarymod.world.biomes.surfacebuilder.VoidSurfaceBuilder;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
