@@ -1,0 +1,10 @@
+{
+  "type" : "minecraft:crafting_shapeless",
+  "ingredients" : [{
+    "item" : "binarymod:btc_t"
+  }],
+  "result" : {
+    "item" : "binarymod:btc_g",
+    "count" : 8
+  }
+}

@@ -18,7 +18,7 @@ public class CorruptItem extends Item
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn)
     {
         ItemStack stack = playerIn.getHeldItem(handIn);
-        if(!playerIn.abilities.isCreativeMode)
+        if (!playerIn.abilities.isCreativeMode)
             stack.shrink(1);
 
         return ActionResult.resultConsume(stack);

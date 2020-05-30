@@ -42,12 +42,12 @@ public class GenerationInit
         BiomeInit.BIOMES.getEntries().stream().map(RegistryObject::get).filter(biome -> biome != BiomeInit.VOID_BIOME.get()).forEach(b ->
         {
             List<Biome.SpawnListEntry> creatures = b.getSpawns(EntityClassification.CREATURE);
-            creatures.add(new Biome.SpawnListEntry(EntityInit.ONE.get(), 50, 1, 3));
-            creatures.add(new Biome.SpawnListEntry(EntityInit.ZERO.get(), 50, 1, 3));
+            creatures.add(new Biome.SpawnListEntry(EntityInit.ONE.get(), 5, 1, 3));
+            creatures.add(new Biome.SpawnListEntry(EntityInit.ZERO.get(), 5, 1, 3));
 
             List<Biome.SpawnListEntry> monsters = b.getSpawns(EntityClassification.MONSTER);
             monsters.add(new Biome.SpawnListEntry(EntityInit.BUG.get(), 15, 3, 4));
-            monsters.add(new Biome.SpawnListEntry(EntityInit.VIRUS.get(), 15, 1, 2));
+            monsters.add(new Biome.SpawnListEntry(EntityInit.VIRUS.get(), 90, 1, 2));
         });
 
         BiomeInit.VOID_BIOME.get().getSpawns(EntityClassification.MONSTER).add(new Biome.SpawnListEntry(EntityInit.VOID_SOUL.get(), 10, 1, 1));

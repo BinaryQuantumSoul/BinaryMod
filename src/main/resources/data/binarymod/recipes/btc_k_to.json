@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "binarymod:bitcoin"
+    }
+  },
+  "result": {
+    "item": "binarymod:btc_k"
+  }
+}

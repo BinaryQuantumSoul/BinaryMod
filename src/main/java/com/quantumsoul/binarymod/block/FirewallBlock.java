@@ -17,6 +17,7 @@ import net.minecraft.world.World;
 public class FirewallBlock extends Block
 {
     public static final BooleanProperty USED = BooleanProperty.create("used");
+
     public FirewallBlock(Properties properties)
     {
         super(properties);

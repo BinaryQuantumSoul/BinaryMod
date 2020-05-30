@@ -20,6 +20,13 @@
   "block.binarymod.virus_bug_block" : "Malsana Cimo",
   "block.binarymod.virus_dead_block" : "Malviva Viruso",
 
+  "block.binarymod.computer": "Komputilo",
+  "block.binarymod.feeder": "Nutrilo",
+  "block.binarymod.healer": "Kuracilo",
+  "block.binarymod.repairer": "Riparilo",
+  "block.binarymod.bitcoin_miner": "Minilo de Bitmono",
+
+
   "item.binarymod.red_pill" : "Ruĝa Pilolo",
   "item.binarymod.blue_pill" : "Blua Pilolo",
   "item.binarymod.bit" : "Bito",
@@ -34,6 +41,22 @@
 
   "item.binarymod.antivirus_tool" : "Kontraŭ-virus",
 
+  "item.binarymod.sd_card_small": "Standard SD",
+  "item.binarymod.sd_card_medium": "High SD",
+  "item.binarymod.sd_card_big": "Extreme SD",
+  "item.binarymod.battery" : "Pilaro",
+
+  "item.binarymod.upgrade" : "Plibonigo",
+
+  "item.binarymod.onion" : "Cepo",
+  "item.binarymod.bitcoin": "Bitmono",
+  "item.binarymod.btc_k": "kBitmono",
+  "item.binarymod.btc_m": "MBitmono",
+  "item.binarymod.btc_g": "GBitmono",
+  "item.binarymod.btc_t": "TBitmono",
+  "item.binarymod.btc_p": "PBitmono",
+
+
   "itemGroup.binarymod.tab" : "Binary Dimension",
 
   "tooltip.binarymod.pill_red0" : "Prenu la ruĝan pilolon",
@@ -45,6 +68,10 @@
   "tooltip.binarymod.pill_blue2" : "vi vekiĝas en la via lito kaj vi kredas",
   "tooltip.binarymod.pill_blue3" : "kion vi volas kredi",
 
+  "tooltip.binarymod.level": "Nivelo: %d/%d",
+  "tooltip.binarymod.sd": "Stokado Uzado: %d%%",
+
+
   "entity.binarymod.one": "Un",
   "entity.binarymod.zero": "Nul",
   "entity.binarymod.bug": "Cimo",
@@ -52,5 +79,13 @@
   "entity.binarymod.void_soul" : "Malplena Animo",
   "entity.binarymod.worm" : "Vermo",
 
-  "nameTag.binarymod.white_rabbit" : "La Blanka Kuniklo"
+  "nameTag.binarymod.white_rabbit" : "La Blanka Kuniklo",
+
+
+  "gui.binarymod.computer_base": "Komputilo",
+  "gui.binarymod.computer_sd": "SD Kardo",
+  "gui.binarymod.computer_battery": "Pilaro",
+  "gui.binarymod.computer_dark_net": "Nigra Teksaĵo",
+  "gui.binarymod.computer_unload": "Malŝarĝi",
+  "gui.binarymod.computer_load": "Ŝarĝi"
 }

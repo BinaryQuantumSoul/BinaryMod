@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "facing=north,done=false": { "model": "binarymod:block/working" },
+    "facing=south,done=false": { "model": "binarymod:block/working", "y": 180 },
+    "facing=west,done=false":  { "model": "binarymod:block/working", "y": 270 },
+    "facing=east,done=false":  { "model": "binarymod:block/working", "y": 90 },
+    "facing=north,done=true,level=0": { "model": "binarymod:block/healer_0" },
+    "facing=south,done=true,level=0": { "model": "binarymod:block/healer_0", "y": 180 },
+    "facing=west,done=true,level=0":  { "model": "binarymod:block/healer_0", "y": 270 },
+    "facing=east,done=true,level=0":  { "model": "binarymod:block/healer_0", "y": 90 },
+    "facing=north,done=true,level=1": { "model": "binarymod:block/healer_1" },
+    "facing=south,done=true,level=1": { "model": "binarymod:block/healer_1", "y": 180 },
+    "facing=west,done=true,level=1":  { "model": "binarymod:block/healer_1", "y": 270 },
+    "facing=east,done=true,level=1":  { "model": "binarymod:block/healer_1", "y": 90 },
+    "facing=north,done=true,level=2": { "model": "binarymod:block/healer_2" },
+    "facing=south,done=true,level=2": { "model": "binarymod:block/healer_2", "y": 180 },
+    "facing=west,done=true,level=2":  { "model": "binarymod:block/healer_2", "y": 270 },
+    "facing=east,done=true,level=2":  { "model": "binarymod:block/healer_2", "y": 90 },
+    "facing=north,done=true,level=3": { "model": "binarymod:block/healer_3" },
+    "facing=south,done=true,level=3": { "model": "binarymod:block/healer_3", "y": 180 },
+    "facing=west,done=true,level=3":  { "model": "binarymod:block/healer_3", "y": 270 },
+    "facing=east,done=true,level=3":  { "model": "binarymod:block/healer_3", "y": 90 }
+  }
+}

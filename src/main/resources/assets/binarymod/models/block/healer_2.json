@@ -1,0 +1,6 @@
+{
+  "parent": "binarymod:block/machine",
+  "textures": {
+    "front": "binarymod:block/healer_2"
+  }
+}

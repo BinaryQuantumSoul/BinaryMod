@@ -20,6 +20,13 @@
   "block.binarymod.virus_bug_block" : "Bug Infecté",
   "block.binarymod.virus_dead_block" : "Virus Mort",
 
+  "block.binarymod.computer": "Ordinateur",
+  "block.binarymod.feeder": "Nourisseur",
+  "block.binarymod.healer": "Soigneur",
+  "block.binarymod.repairer": "Réparateur",
+  "block.binarymod.bitcoin_miner": "Mineur de Bitcoin",
+
+
   "item.binarymod.red_pill" : "Pilule Rouge",
   "item.binarymod.blue_pill" : "Pilule Bleue",
   "item.binarymod.bit" : "Bit",
@@ -34,6 +41,21 @@
 
   "item.binarymod.antivirus_tool" : "Antivirus",
 
+  "item.binarymod.sd_card_small": "SD Standard",
+  "item.binarymod.sd_card_medium": "SD High",
+  "item.binarymod.sd_card_big": "SD Extreme",
+  "item.binarymod.battery" : "Pile",
+
+  "item.binarymod.upgrade" : "Amélioration",
+
+  "item.binarymod.onion" : "Oignon",
+  "item.binarymod.bitcoin": "Bitcoin",
+  "item.binarymod.btc_k": "kBitcoin",
+  "item.binarymod.btc_m": "MBitcoin",
+  "item.binarymod.btc_g": "GBitcoin",
+  "item.binarymod.btc_t": "TBitcoin",
+  "item.binarymod.btc_p": "PBitcoin",
+
   "itemGroup.binarymod.tab" : "Binary Dimension",
 
   "tooltip.binarymod.pill_red0" : "Choisis la pilule rouge",
@@ -45,6 +67,10 @@
   "tooltip.binarymod.pill_blue2" : "après tu pourra faire de beaux rêves",
   "tooltip.binarymod.pill_blue3" : "et penser ce que tu veux",
 
+  "tooltip.binarymod.level": "Niveau: %d/%d",
+  "tooltip.binarymod.sd": "Stockage: %d%%",
+
+
   "entity.binarymod.one": "Un",
   "entity.binarymod.zero": "Zéro",
   "entity.binarymod.bug": "Bug",
@@ -52,5 +78,13 @@
   "entity.binarymod.void_soul" : "Âme Vide",
   "entity.binarymod.worm" : "Ver",
 
-  "nameTag.binarymod.white_rabbit" : "Le Lapin Blanc"
+  "nameTag.binarymod.white_rabbit" : "Le Lapin Blanc",
+
+
+  "gui.binarymod.computer_base": "Ordinateur",
+  "gui.binarymod.computer_sd": "Carte SD",
+  "gui.binarymod.computer_battery": "Pile",
+  "gui.binarymod.computer_dark_net": "Web Obscure",
+  "gui.binarymod.computer_unload": "Fermer",
+  "gui.binarymod.computer_load": "Charger"
 }

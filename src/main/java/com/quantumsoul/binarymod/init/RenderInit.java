@@ -1,6 +1,8 @@
 package com.quantumsoul.binarymod.init;
 
-import com.quantumsoul.binarymod.render.*;
+import com.quantumsoul.binarymod.render.entity.*;
+import com.quantumsoul.binarymod.render.tileentity.BitcoinTileRenderer;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class RenderInit
@@ -15,5 +17,10 @@ public class RenderInit
 
         RenderingRegistry.registerEntityRenderingHandler(EntityInit.VOID_SOUL.get(), VoidSoulRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityInit.WORM.get(), WormRenderer::new);
+    }
+
+    public static void initTileEntityRenders()
+    {
+        ClientRegistry.bindTileEntityRenderer(TileEntityInit.BITCOIN_MINER.get(), BitcoinTileRenderer::new);
     }
 }

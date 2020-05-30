@@ -9,14 +9,23 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.items.IItemHandler;
+import org.apache.logging.log4j.LogManager;
 
+import java.util.List;
 import java.util.Random;
 import java.util.function.Supplier;
 
@@ -25,8 +34,8 @@ public class WorldUtils
     //TELEPORTING
     public static BlockPos teleportPlayer(ServerPlayerEntity player, DimensionType destinationType, BlockPos destinationPos)
     {
-        if(destinationType == null)
-            BinaryMod.LOGGER.error(destinationType.toString());
+        if (destinationType == null)
+            throw new NullPointerException("Destination dimension type is null !");
 
         //LOAD WORLD
         ServerWorld nextWorld = player.getServer().getWorld(destinationType);
@@ -37,16 +46,16 @@ public class WorldUtils
 
         //FIND SPAWN
         BlockPos.Mutable pos = new BlockPos.Mutable();
-        for(int y = maxHeight; y >= 0; y--)
+        for (int y = maxHeight; y >= 0; y--)
         {
-            pos.setPos(x, y-1, z);
+            pos.setPos(x, y - 1, z);
             BlockState state = chunk.getBlockState(pos);
-            if(state != Blocks.AIR.getDefaultState() && state.getBlockHardness(nextWorld, pos) != -1F)
+            if (state != Blocks.AIR.getDefaultState() && state.getBlockHardness(nextWorld, pos) != -1F)
             {
                 pos.setPos(x, y, z);
                 if (chunk.getBlockState(pos) == Blocks.AIR.getDefaultState())
                 {
-                    pos.setPos(x, y+1, z);
+                    pos.setPos(x, y + 1, z);
                     if (chunk.getBlockState(pos) == Blocks.AIR.getDefaultState())
                     {
                         player.teleport(nextWorld, x, y, z, player.rotationYaw, player.rotationPitch);
@@ -60,13 +69,13 @@ public class WorldUtils
         int y = maxHeight / 2;
         pos.setPos(x, y, z);
         BlockState biomeTopBlock = nextWorld.getBiome(pos).getSurfaceBuilderConfig().getTop();
-        for(int i = x - 1; i <= x + 1; i++)
+        for (int i = x - 1; i <= x + 1; i++)
         {
-            for(int j = z - 1; j <= z + 1; j++)
+            for (int j = z - 1; j <= z + 1; j++)
             {
-                pos.setPos(i, y-1, j);
+                pos.setPos(i, y - 1, j);
                 nextWorld.setBlockState(pos, biomeTopBlock);
-                for(int y1 = y; y1 <= y + 2; y1++)
+                for (int y1 = y; y1 <= y + 2; y1++)
                 {
                     pos.setPos(i, y1, j);
                     nextWorld.setBlockState(pos, Blocks.AIR.getDefaultState());
@@ -91,12 +100,11 @@ public class WorldUtils
                 {
                     pos.setPos(x, y, z);
                     level = y;
-                    if(y == yStop)
+                    if (y == yStop)
                         return yStart - 1;
                 }
             }
-        }
-        else
+        } else
             return worldIn.getSeaLevel() + 1;
 
         return level - 1;
@@ -110,13 +118,13 @@ public class WorldUtils
         for (int i = 0; i <= n; i++)
         {
             old = level;
-            level = getGroundLevelFrom(worldIn, x, z, level+1, true);
-            if(level == old && level != 0)
+            level = getGroundLevelFrom(worldIn, x, z, level + 1, true);
+            if (level == old && level != 0)
                 return level;
 
             old = level;
-            level = getGroundLevelFrom(worldIn, x, z, level+1, false);
-            if(level == old)
+            level = getGroundLevelFrom(worldIn, x, z, level + 1, false);
+            if (level == old)
                 return base;
             base = level;
         }
@@ -150,5 +158,48 @@ public class WorldUtils
     public static boolean isBinDimBlock(Block block)
     {
         return block == BlockInit.BINARY_BLOCK.get().getBlock() || block instanceof HexBlock;
+    }
+
+    //LOOT
+    public static void dropInventoryItems(World worldIn, BlockPos pos, IItemHandler items)
+    {
+        dropInventoryItems(worldIn, pos.getX(), pos.getY(), pos.getZ(), items);
+    }
+
+    public static void dropInventoryItems(World worldIn, double x, double y, double z, IItemHandler items)
+    {
+        for (int i = 0; i < items.getSlots(); ++i)
+            spawnItemStack(worldIn, x, y, z, items.getStackInSlot(i));
+    }
+
+    public static void dropStacks(World worldIn, BlockPos pos, List<ItemStack> stacks)
+    {
+        dropStacks(worldIn, pos.getX(), pos.getY(), pos.getZ(), stacks);
+    }
+
+    public static void dropStacks(World worldIn, double x, double y, double z, List<ItemStack> stacks)
+    {
+        for(ItemStack stack : stacks)
+            spawnItemStack(worldIn, x, y, z, stack);
+    }
+
+    private static void spawnItemStack(World worldIn, double x, double y, double z, ItemStack stack)
+    {
+        Random rand = worldIn.rand;
+
+        double d0 = EntityType.ITEM.getWidth();
+        double d1 = 1.0D - d0;
+        double d2 = d0 / 2.0D;
+        double d3 = Math.floor(x) + rand.nextDouble() * d1 + d2;
+        double d4 = Math.floor(y) + rand.nextDouble() * d1;
+        double d5 = Math.floor(z) + rand.nextDouble() * d1 + d2;
+
+        while (!stack.isEmpty())
+        {
+            ItemEntity itementity = new ItemEntity(worldIn, d3, d4, d5, stack.split(rand.nextInt(21) + 10));
+            float f = 0.05F;
+            itementity.setMotion(rand.nextGaussian() * (double) 0.05F, rand.nextGaussian() * (double) 0.05F + (double) 0.2F, rand.nextGaussian() * (double) 0.05F);
+            worldIn.addEntity(itementity);
+        }
     }
 }

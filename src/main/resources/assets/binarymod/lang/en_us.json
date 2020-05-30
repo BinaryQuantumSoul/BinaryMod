@@ -20,6 +20,13 @@
   "block.binarymod.virus_bug_block" : "Infected Bug",
   "block.binarymod.virus_dead_block" : "Dead Virus",
 
+  "block.binarymod.computer": "Computer",
+  "block.binarymod.feeder": "Feeder",
+  "block.binarymod.healer": "Healer",
+  "block.binarymod.repairer": "Repairer",
+  "block.binarymod.bitcoin_miner": "Bitcoin Miner",
+
+
   "item.binarymod.red_pill" : "Red Pill",
   "item.binarymod.blue_pill" : "Blue Pill",
   "item.binarymod.bit" : "Bit",
@@ -34,6 +41,21 @@
 
   "item.binarymod.antivirus_tool" : "Antivirus",
 
+  "item.binarymod.sd_card_small": "Standard SD",
+  "item.binarymod.sd_card_medium": "High SD",
+  "item.binarymod.sd_card_big": "Extreme SD",
+  "item.binarymod.battery" : "Battery",
+
+  "item.binarymod.upgrade" : "Upgrade",
+
+  "item.binarymod.onion" : "Onion",
+  "item.binarymod.bitcoin": "Bitcoin",
+  "item.binarymod.btc_k": "kBitcoin",
+  "item.binarymod.btc_m": "MBitcoin",
+  "item.binarymod.btc_g": "GBitcoin",
+  "item.binarymod.btc_t": "TBitcoin",
+  "item.binarymod.btc_p": "PBitcoin",
+
   "itemGroup.binarymod.tab" : "Binary Dimension",
 
   "tooltip.binarymod.pill_red0" : "You take the red pill",
@@ -45,6 +67,10 @@
   "tooltip.binarymod.pill_blue2" : "you wake in your bed and you believe",
   "tooltip.binarymod.pill_blue3" : "whatever you want to believe",
 
+  "tooltip.binarymod.level": "Level: %d/%d",
+  "tooltip.binarymod.sd": "Storage: %d%%",
+
+
   "entity.binarymod.one" : "One",
   "entity.binarymod.zero" : "Zero",
   "entity.binarymod.bug" : "Bug",
@@ -52,5 +78,12 @@
   "entity.binarymod.void_soul" : "Void Soul",
   "entity.binarymod.worm" : "Worm",
 
-  "nameTag.binarymod.white_rabbit" : "The White Rabbit"
+  "nameTag.binarymod.white_rabbit" : "The White Rabbit",
+
+  "gui.binarymod.computer_base": "Computer",
+  "gui.binarymod.computer_sd": "SD Card",
+  "gui.binarymod.computer_battery": "Battery",
+  "gui.binarymod.computer_dark_net": "Dark Web",
+  "gui.binarymod.computer_unload": "Unload",
+  "gui.binarymod.computer_load": "Load"
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "binarymod:block/machine",
+  "textures": {
+    "front": "binarymod:block/bitcoin_miner_item"
+  }
+}

@@ -15,13 +15,7 @@ import static com.quantumsoul.binarymod.world.WorldUtils.isBinDimBlock;
 
 public class BinDimBiomeFeatures
 {
-    private static final OreFeatureConfig.FillerBlockType FILLER_BINARY = OreFeatureConfig.FillerBlockType.create("BINARY_DIM", "binary_dim", (state) ->
-    {
-        if (state == null)
-            return false;
-
-        return isBinDimBlock(state.getBlock());
-    });
+    private static final OreFeatureConfig.FillerBlockType FILLER_BINARY = OreFeatureConfig.FillerBlockType.create("BINARY_DIM", "binary_dim", (state) -> state != null && isBinDimBlock(state.getBlock()));
     private static final Placement<FrequencyConfig> LESS_THAN_ONE_PLACEMENT = new LessThanOnePlacement(FrequencyConfig::deserialize);
     private static final Placement<FrequencyConfig> MULTI_LEVEL_PLACEMENT = new MultiLevelPlacement(FrequencyConfig::deserialize);
     private static final Feature<BugVirusConfig> BUG_VIRUS_FEATURE = new BugVirusFeature(BugVirusConfig::deserialize);
