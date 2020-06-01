@@ -45,6 +45,7 @@
   "item.binarymod.sd_card_medium": "High SD",
   "item.binarymod.sd_card_big": "Extreme SD",
   "item.binarymod.battery" : "Pilaro",
+  "item.binarymod.dark_net": "Nigra Teksaĵo Ilo",
 
   "item.binarymod.upgrade" : "Plibonigo",
 
@@ -55,7 +56,6 @@
   "item.binarymod.btc_g": "GBitmono",
   "item.binarymod.btc_t": "TBitmono",
   "item.binarymod.btc_p": "PBitmono",
-
 
   "itemGroup.binarymod.tab" : "Binary Dimension",
 
@@ -70,6 +70,7 @@
 
   "tooltip.binarymod.level": "Nivelo: %d/%d",
   "tooltip.binarymod.sd": "Stokado Uzado: %d%%",
+  "tooltip.binarymod.bitcoin": "%dB",
 
 
   "entity.binarymod.one": "Un",
@@ -87,5 +88,6 @@
   "gui.binarymod.computer_battery": "Pilaro",
   "gui.binarymod.computer_dark_net": "Nigra Teksaĵo",
   "gui.binarymod.computer_unload": "Malŝarĝi",
-  "gui.binarymod.computer_load": "Ŝarĝi"
+  "gui.binarymod.computer_load": "Ŝarĝi",
+  "gui.binarymod.scrollbar": "Rulumskalo"
 }

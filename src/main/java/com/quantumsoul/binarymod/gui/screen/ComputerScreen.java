@@ -2,14 +2,15 @@ package com.quantumsoul.binarymod.gui.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.quantumsoul.binarymod.BinaryMod;
+import com.quantumsoul.binarymod.gui.screen.widgets.ScrollBar;
+import com.quantumsoul.binarymod.gui.screen.widgets.TextButton;
+import com.quantumsoul.binarymod.gui.screen.widgets.UnloadButton;
 import com.quantumsoul.binarymod.init.NetworkInit;
 import com.quantumsoul.binarymod.network.ComputerPacket;
+import com.quantumsoul.binarymod.tileentity.ComputerTileEntity;
 import com.quantumsoul.binarymod.tileentity.container.ComputerContainer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.gui.widget.Widget;
-import net.minecraft.client.gui.widget.button.AbstractButton;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
@@ -43,7 +44,8 @@ public class ComputerScreen extends ContainerScreen<ComputerContainer>
                 break;
 
             case DARK_NET:
-
+                this.xSize = 176;
+                this.ySize = 129;
                 break;
 
             default:
@@ -59,16 +61,30 @@ public class ComputerScreen extends ContainerScreen<ComputerContainer>
         super.init();
         switch (container.getState())
         {
+            case DARK_NET:
+                addButton(new ScrollBar(guiLeft + 146, guiTop + 54, 57, 10, i -> drawCenteredString(font, i.toString(), width, 58, 0xFF0000)));
             case SD:
-                addButton(new UnloadButton(guiLeft + 68, guiTop + 17));
+                addButton(new UnloadButton(guiLeft + 68, guiTop + 17, this::renderTooltip, p ->
+                {
+                    container.load(false);
+                    NetworkInit.CHANNEL.sendToServer(new ComputerPacket(container.getPos(), false));
+                }));
                 break;
 
             case BATTERY:
-                addButton(new UnloadButton(guiLeft + 45, guiTop + 17));
+                addButton(new UnloadButton(guiLeft + 45, guiTop + 17, this::renderTooltip, p ->
+                {
+                    container.load(false);
+                    NetworkInit.CHANNEL.sendToServer(new ComputerPacket(container.getPos(), false));
+                }));
                 break;
 
             default:
-                addButton(new LoadButton(guiLeft + 120, guiTop + 39, 36));
+                addButton(new TextButton(guiLeft + 120, guiTop + 39, 36, I18n.format("gui.binarymod.computer_load"), p ->
+                {
+                    container.load(true);
+                    NetworkInit.CHANNEL.sendToServer(new ComputerPacket(container.getPos(), true));
+                }));
                 break;
         }
     }
@@ -88,101 +104,38 @@ public class ComputerScreen extends ContainerScreen<ComputerContainer>
     }
 
     @Override
-    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
-    {
-        font.drawString(newTitle, (xSize - font.getStringWidth(newTitle)) / 2.0F, 5, 0x164C00);
-
-        for(Widget b: buttons)
-            if(b.isHovered())
-                b.renderToolTip(47, 20);
-    }
-
-    @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
     {
         RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.minecraft.getTextureManager().bindTexture(texture);
 
-        switch(this.container.getState())
+        if (this.container.getState() == ComputerTileEntity.ComputerState.SD)
         {
-            case SD:
-                this.blit(guiLeft, guiTop, 0, 0, this.xSize, 58);
-                int k = 17 * container.getSDOrder();
-                this.blit(guiLeft, guiTop + 58, 0, 109 - k, this.xSize, 94 + k);
-                break;
-
-            default:
-                this.blit(guiLeft, guiTop, 0, 0, this.xSize, this.ySize);
-        }
+            this.blit(guiLeft, guiTop, 0, 0, this.xSize, 58);
+            int k = 17 * container.getSDOrder();
+            this.blit(guiLeft, guiTop + 58, 0, 109 - k, this.xSize, 94 + k);
+        } else
+            this.blit(guiLeft, guiTop, 0, 0, this.xSize, this.ySize);
     }
 
-    @OnlyIn(Dist.CLIENT)
-    private class LoadButton extends AbstractButton
+    @Override
+    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
     {
-        public LoadButton(int xIn, int yIn, int widthIn)
-        {
-            super(xIn, yIn, widthIn, 20, I18n.format("gui.binarymod.computer_load"));
-        }
+        font.drawString(newTitle, (xSize - font.getStringWidth(newTitle)) / 2.0F, 5, 0x164C00);
+        if (this.container.getState() != ComputerTileEntity.ComputerState.DARK_NET)
+            font.drawString(playerInventory.getName().getFormattedText(), 45, ySize - 90, 0xFCC900);
 
-        @Override
-        public void renderButton(int p1, int p2, float p3)
-        {
-            Minecraft minecraft = Minecraft.getInstance();
-
-            FontRenderer fontrenderer = minecraft.fontRenderer;
-            String s = getMessage();
-            int strSize = fontrenderer.getStringWidth(s);
-            this.width = Math.max(strSize + 5, this.width);
-
-            minecraft.getTextureManager().bindTexture(buttonTexture);
-            RenderSystem.color4f(1.0F, 1.0F, 1.0F, this.alpha);
-
-            int i = this.getYImage(this.isHovered());
-            this.blit(this.x, this.y, 0, 44 + i * 20, this.width / 2, this.height);
-            this.blit(this.x + this.width / 2, this.y, 200 - this.width / 2, 44 + i * 20, this.width / 2, this.height);
-            this.renderBg(minecraft, p1, p2);
-
-            int color = isHovered() ? 0x000000 : 0x00FF00;
-            fontrenderer.drawString(s, this.x + (this.width - strSize) / 2.0F, this.y + (this.height - 8) / 2.0F, color);
-        }
-
-        @Override
-        public void onPress()
-        {
-            container.load(true);
-            NetworkInit.CHANNEL.sendToServer(new ComputerPacket(container.getPos(), true));
-        }
+        for (Widget b : buttons)
+            if (b.isHovered())
+                b.renderToolTip(47, 20);
     }
 
-    @OnlyIn(Dist.CLIENT)
-    private class UnloadButton extends AbstractButton
+    @Override
+    public boolean mouseDragged(double mouseX, double mouseY, int id, double newMouseX, double newMouseY)
     {
-        public UnloadButton(int xIn, int yIn)
-        {
-            super(xIn, yIn, 18, 18, "");
-        }
-
-        @Override
-        public void render(int xMouse, int yMouse, float p3)
-        {
-            isHovered = x <= xMouse && xMouse < x + width && y <= yMouse && yMouse < y + height;
-
-            Minecraft.getInstance().getTextureManager().bindTexture(buttonTexture);
-            RenderSystem.color4f(1.0F, 1.0F, 1.0F, this.alpha);
-            this.blit(this.x, this.y, isHovered() ? this.width : 0, 0, this.width, this.height);
-        }
-
-        @Override
-        public void renderToolTip(int x, int y)
-        {
-            ComputerScreen.this.renderTooltip(I18n.format("gui.binarymod.computer_unload"), x, y);
-        }
-
-        @Override
-        public void onPress()
-        {
-            container.load(false);
-            NetworkInit.CHANNEL.sendToServer(new ComputerPacket(container.getPos(), false));
-        }
+        if (this.container.getState() != ComputerTileEntity.ComputerState.DARK_NET)
+            return super.mouseDragged(mouseX, mouseY, id, newMouseX, newMouseY);
+        else
+            return (this.getFocused() != null && this.isDragging() && id == 0) && this.getFocused().mouseDragged(mouseX, mouseY, id, newMouseX, newMouseY);
     }
 }

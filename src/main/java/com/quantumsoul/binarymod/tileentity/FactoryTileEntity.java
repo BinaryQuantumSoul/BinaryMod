@@ -17,7 +17,7 @@ import static com.quantumsoul.binarymod.world.WorldUtils.dropStacks;
 
 public abstract class FactoryTileEntity extends AbstractMachineTileEntity implements ITickableTileEntity, IUpgradableMachine
 {
-    private static final int DOING_TIME = 200; //todo 1200D
+    private static final int DOING_TIME = 1200;
 
     private final int maxLevel;
     private int level = 0;

@@ -45,6 +45,7 @@
   "item.binarymod.sd_card_medium": "High SD",
   "item.binarymod.sd_card_big": "Extreme SD",
   "item.binarymod.battery" : "Battery",
+  "item.binarymod.dark_net": "Dark Net",
 
   "item.binarymod.upgrade" : "Upgrade",
 
@@ -69,6 +70,7 @@
 
   "tooltip.binarymod.level": "Level: %d/%d",
   "tooltip.binarymod.sd": "Storage: %d%%",
+  "tooltip.binarymod.bitcoin": "%dB",
 
 
   "entity.binarymod.one" : "One",
@@ -80,10 +82,12 @@
 
   "nameTag.binarymod.white_rabbit" : "The White Rabbit",
 
+
   "gui.binarymod.computer_base": "Computer",
   "gui.binarymod.computer_sd": "SD Card",
   "gui.binarymod.computer_battery": "Battery",
   "gui.binarymod.computer_dark_net": "Dark Web",
   "gui.binarymod.computer_unload": "Unload",
-  "gui.binarymod.computer_load": "Load"
+  "gui.binarymod.computer_load": "Load",
+  "gui.binarymod.scrollbar": "Scroll Bar"
 }

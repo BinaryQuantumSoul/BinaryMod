@@ -40,6 +40,7 @@ public class ItemInit
     public static final RegistryObject<Item> SD_CARD_MEDIUM = ITEMS.register("sd_card_medium", () -> new SDCardItem(MACHINE, SDCardItem.SDSize.MEDIUM));
     public static final RegistryObject<Item> SD_CARD_BIG = ITEMS.register("sd_card_big", () -> new SDCardItem(MACHINE, SDCardItem.SDSize.BIG));
     //public static final RegistryObject<Item> BATTERY = ITEMS.register("battery", () -> new BatteryItem(MACHINE));
+    public static final RegistryObject<Item> DARK_NET = ITEMS.register("dark_net", () -> new Item(MACHINE));
 
     public static final RegistryObject<Item> UPGRADE = ITEMS.register("upgrade", () -> new BatteryItem(BASE));
 

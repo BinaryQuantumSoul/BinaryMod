@@ -1,5 +1,6 @@
 package com.quantumsoul.binarymod.tileentity.container.slot;
 
+import com.quantumsoul.binarymod.init.ItemInit;
 import com.quantumsoul.binarymod.item.SDCardItem;
 import com.quantumsoul.binarymod.tileentity.container.ComputerContainer;
 import net.minecraft.item.Item;
@@ -27,8 +28,8 @@ public class ComputerSlot extends SlotItemHandler
     public boolean isItemValid(ItemStack stack)
     {
         Item item = stack.getItem();
-        return super.isItemValid(stack) && (item instanceof SDCardItem);
+        return super.isItemValid(stack) && (item instanceof SDCardItem || item == ItemInit.DARK_NET.get());
 
-        //todo dark net and battery
+        //todo add battery
     }
 }

@@ -45,17 +45,17 @@ public class ComputerContainer extends ProgrammerContainer
         switch(state)
         {
             case SD:
-                addSlot(new FrozenComputerSlot(contents, 0, 92, 19, this));
+                addSlot(new FrozenComputerSlot(contents, 0, 92, 18, this));
                 bindSDInventory();
                 bindPlayerInventory(playerInventory, 8, 70 + 17 * getSDOrder());
                 break;
 
             case BATTERY:
-                addSlot(new FrozenComputerSlot(contents, 0, 70, 19, this));
+                addSlot(new FrozenComputerSlot(contents, 0, 70, 18, this));
                 break;
 
             case DARK_NET:
-                addSlot(new FrozenComputerSlot(contents, 0, 92, 19, this));//todo
+                addSlot(new FrozenComputerSlot(contents, 0, 92, 18, this));//todo
                 break;
 
             default:
@@ -98,7 +98,7 @@ public class ComputerContainer extends ProgrammerContainer
             ItemStack slotStack = slot.getStack();
             itemstack = slotStack.copy();
 
-            int sd = size + getSDSize()  - 1;
+            int sd = size + getSDSize();
             if (index >= sd)
             {
                 if (!this.mergeItemStack(slotStack, size, sd, false))
@@ -106,7 +106,7 @@ public class ComputerContainer extends ProgrammerContainer
             }
             else if (index >= size)
             {
-                if (!this.mergeItemStack(slotStack, sd + 1, this.inventorySlots.size(), false))
+                if (!this.mergeItemStack(slotStack, sd, this.inventorySlots.size(), false))
                     return ItemStack.EMPTY;
             }
 

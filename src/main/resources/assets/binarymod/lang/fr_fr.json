@@ -45,6 +45,7 @@
   "item.binarymod.sd_card_medium": "SD High",
   "item.binarymod.sd_card_big": "SD Extreme",
   "item.binarymod.battery" : "Pile",
+  "item.binarymod.dark_net": "Dark Net",
 
   "item.binarymod.upgrade" : "Amélioration",
 
@@ -69,6 +70,7 @@
 
   "tooltip.binarymod.level": "Niveau: %d/%d",
   "tooltip.binarymod.sd": "Stockage: %d%%",
+  "tooltip.binarymod.bitcoin": "%dB",
 
 
   "entity.binarymod.one": "Un",
@@ -84,7 +86,8 @@
   "gui.binarymod.computer_base": "Ordinateur",
   "gui.binarymod.computer_sd": "Carte SD",
   "gui.binarymod.computer_battery": "Pile",
-  "gui.binarymod.computer_dark_net": "Web Obscure",
+  "gui.binarymod.computer_dark_net": "Web Obscur",
   "gui.binarymod.computer_unload": "Fermer",
-  "gui.binarymod.computer_load": "Charger"
+  "gui.binarymod.computer_load": "Charger",
+  "gui.binarymod.scrollbar": "Barre de Défilement"
 }

@@ -1,5 +1,6 @@
 package com.quantumsoul.binarymod.tileentity;
 
+import com.quantumsoul.binarymod.init.ItemInit;
 import com.quantumsoul.binarymod.init.TileEntityInit;
 import com.quantumsoul.binarymod.item.SDCardItem;
 import com.quantumsoul.binarymod.tileentity.container.ComputerContainer;
@@ -59,12 +60,14 @@ public class ComputerTileEntity extends ProgrammerTileEntity
     {
         if(stack.isEmpty())
             return ComputerState.BASE;
-        else if(stack.getItem() instanceof SDCardItem)
+        else if (stack.getItem() instanceof SDCardItem)
             return ComputerState.SD;
+//        else if (stack.getItem() == ItemInit.BATTERY.get()) todo
+//            return ComputerState.BATTERY;
+        else if (stack.getItem() == ItemInit.DARK_NET.get())
+            return ComputerState.DARK_NET;
         else
             return ComputerState.BASE;
-
-        //todo add battery and dark net
     }
 
     public void load()

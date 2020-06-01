@@ -66,7 +66,7 @@ public class BitcoinTileRenderer extends TileEntityRenderer<BitcoinTileEntity>
         matrixStackIn.pop();
     }
 
-    public String getBitcoinString(double value)
+    public static String getBitcoinString(double value)
     {
         for (int i = prefixes.length - 1; i >= 0; i--)
         {
@@ -78,7 +78,7 @@ public class BitcoinTileRenderer extends TileEntityRenderer<BitcoinTileEntity>
         return String.format("%.2f  B", value);
     }
 
-    public ItemStack getBitcoinStack(double value)
+    public static ItemStack getBitcoinStack(double value)
     {
         for (int i = btc_items.length - 1; i >= 0; i--)
         {
