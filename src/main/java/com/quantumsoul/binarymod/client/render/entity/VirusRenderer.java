@@ -1,9 +1,9 @@
-package com.quantumsoul.binarymod.render.entity;
+package com.quantumsoul.binarymod.client.render.entity;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.entity.VirusEntity;
-import com.quantumsoul.binarymod.render.entity.model.VirusModel;
+import com.quantumsoul.binarymod.client.render.entity.model.VirusModel;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;

@@ -1,4 +1,4 @@
-package com.quantumsoul.binarymod.render.entity;
+package com.quantumsoul.binarymod.client.render.entity;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.quantumsoul.binarymod.entity.BugEntity;
@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.model.data.EmptyModelData;
 
-import static com.quantumsoul.binarymod.render.entity.RenderUtils.applyRotations;
+import static com.quantumsoul.binarymod.client.render.entity.RenderUtils.applyRotations;
 
 @OnlyIn(Dist.CLIENT)
 public class BugRenderer extends EntityRenderer<BugEntity>

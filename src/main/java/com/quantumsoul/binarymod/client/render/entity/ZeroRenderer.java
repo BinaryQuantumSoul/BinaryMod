@@ -1,8 +1,8 @@
-package com.quantumsoul.binarymod.render.entity;
+package com.quantumsoul.binarymod.client.render.entity;
 
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.entity.ZeroEntity;
-import com.quantumsoul.binarymod.render.entity.model.ZeroModel;
+import com.quantumsoul.binarymod.client.render.entity.model.ZeroModel;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;

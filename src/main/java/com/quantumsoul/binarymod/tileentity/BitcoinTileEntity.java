@@ -4,7 +4,7 @@ import com.quantumsoul.binarymod.block.UpgradableBlock;
 import com.quantumsoul.binarymod.init.ItemInit;
 import com.quantumsoul.binarymod.init.NetworkInit;
 import com.quantumsoul.binarymod.init.TileEntityInit;
-import com.quantumsoul.binarymod.network.BtcResetValuePacket;
+import com.quantumsoul.binarymod.network.packet.BtcResetValuePacket;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
@@ -14,10 +14,7 @@ import net.minecraft.state.IntegerProperty;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.PacketDistributor;
-import org.apache.logging.log4j.LogManager;
 
 import java.util.List;
 

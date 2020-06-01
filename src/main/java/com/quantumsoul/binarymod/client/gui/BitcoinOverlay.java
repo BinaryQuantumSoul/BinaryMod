@@ -2,7 +2,7 @@ package com.quantumsoul.binarymod.gui;
 
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.item.BitcoinItem;
-import com.quantumsoul.binarymod.render.tileentity.BitcoinTileRenderer;
+import com.quantumsoul.binarymod.client.render.tileentity.BitcoinTileRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Item;

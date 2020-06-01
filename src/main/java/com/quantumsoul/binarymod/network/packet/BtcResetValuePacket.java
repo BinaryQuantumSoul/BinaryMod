@@ -1,4 +1,4 @@
-package com.quantumsoul.binarymod.network;
+package com.quantumsoul.binarymod.network.packet;
 
 import com.quantumsoul.binarymod.tileentity.BitcoinTileEntity;
 import net.minecraft.client.network.play.ClientPlayNetHandler;

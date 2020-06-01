@@ -1,4 +1,4 @@
-package com.quantumsoul.binarymod.event;
+package com.quantumsoul.binarymod.network.event;
 
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.init.DimensionInit;

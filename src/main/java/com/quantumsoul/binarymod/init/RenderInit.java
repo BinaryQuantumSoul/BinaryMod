@@ -1,7 +1,7 @@
 package com.quantumsoul.binarymod.init;
 
-import com.quantumsoul.binarymod.render.entity.*;
-import com.quantumsoul.binarymod.render.tileentity.BitcoinTileRenderer;
+import com.quantumsoul.binarymod.client.render.entity.*;
+import com.quantumsoul.binarymod.client.render.tileentity.BitcoinTileRenderer;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 

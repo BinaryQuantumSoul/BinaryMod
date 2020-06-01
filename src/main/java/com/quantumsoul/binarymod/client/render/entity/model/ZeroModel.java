@@ -1,4 +1,4 @@
-package com.quantumsoul.binarymod.render.entity.model;
+package com.quantumsoul.binarymod.client.render.entity.model;
 
 import com.google.common.collect.ImmutableList;
 import com.quantumsoul.binarymod.entity.ZeroEntity;

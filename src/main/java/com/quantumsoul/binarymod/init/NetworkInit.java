@@ -1,8 +1,8 @@
 package com.quantumsoul.binarymod.init;
 
 import com.quantumsoul.binarymod.BinaryMod;
-import com.quantumsoul.binarymod.network.BtcResetValuePacket;
-import com.quantumsoul.binarymod.network.ComputerPacket;
+import com.quantumsoul.binarymod.network.packet.BtcResetValuePacket;
+import com.quantumsoul.binarymod.network.packet.ComputerPacket;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
