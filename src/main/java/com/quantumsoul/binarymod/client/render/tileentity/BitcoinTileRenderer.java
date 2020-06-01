@@ -1,7 +1,7 @@
 package com.quantumsoul.binarymod.client.render.tileentity;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import com.quantumsoul.binarymod.block.AbstractMachineBlock;
+import com.quantumsoul.binarymod.block.MachineBlock;
 import com.quantumsoul.binarymod.init.ItemInit;
 import com.quantumsoul.binarymod.tileentity.BitcoinTileEntity;
 import net.minecraft.client.Minecraft;
@@ -31,7 +31,7 @@ public class BitcoinTileRenderer extends TileEntityRenderer<BitcoinTileEntity>
     public void render(BitcoinTileEntity tileEntityIn, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn)
     {
         double value = tileEntityIn.getValue();
-        float rotation = -tileEntityIn.getBlockState().get(AbstractMachineBlock.DIRECTION).getHorizontalAngle();
+        float rotation = -tileEntityIn.getBlockState().get(MachineBlock.DIRECTION).getHorizontalAngle();
 
         //TEXT
         matrixStackIn.push();

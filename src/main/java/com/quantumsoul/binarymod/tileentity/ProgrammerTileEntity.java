@@ -15,7 +15,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import static com.quantumsoul.binarymod.world.WorldUtils.dropInventoryItems;
 
-public abstract class ProgrammerTileEntity extends AbstractMachineTileEntity implements IProgrammerMachine
+public abstract class ProgrammerTileEntity extends MachineTileEntity implements IProgrammerMachine
 {
     private final int numberOfSlots;
 

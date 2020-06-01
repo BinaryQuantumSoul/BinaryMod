@@ -1,10 +1,10 @@
-package com.quantumsoul.binarymod.gui.screen;
+package com.quantumsoul.binarymod.client.gui.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.quantumsoul.binarymod.BinaryMod;
-import com.quantumsoul.binarymod.gui.screen.widgets.ScrollBar;
-import com.quantumsoul.binarymod.gui.screen.widgets.TextButton;
-import com.quantumsoul.binarymod.gui.screen.widgets.UnloadButton;
+import com.quantumsoul.binarymod.client.gui.screen.widgets.ScrollBar;
+import com.quantumsoul.binarymod.client.gui.screen.widgets.TextButton;
+import com.quantumsoul.binarymod.client.gui.screen.widgets.UnloadButton;
 import com.quantumsoul.binarymod.init.NetworkInit;
 import com.quantumsoul.binarymod.network.packet.ComputerPacket;
 import com.quantumsoul.binarymod.tileentity.ComputerTileEntity;

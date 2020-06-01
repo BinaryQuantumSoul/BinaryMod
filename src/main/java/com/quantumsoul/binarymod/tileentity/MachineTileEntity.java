@@ -10,10 +10,10 @@ import net.minecraftforge.registries.ForgeRegistry;
 
 import javax.annotation.Nullable;
 
-public class AbstractMachineTileEntity extends TileEntity
+public class MachineTileEntity extends TileEntity
 {
     //todo handle energy
-    public AbstractMachineTileEntity(TileEntityType<?> tileEntityTypeIn)
+    public MachineTileEntity(TileEntityType<?> tileEntityTypeIn)
     {
         super(tileEntityTypeIn);
     }

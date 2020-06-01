@@ -23,13 +23,13 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
 
-public class AbstractMachineBlock extends Block
+public class MachineBlock extends Block
 {
     public static final DirectionProperty DIRECTION = HorizontalBlock.HORIZONTAL_FACING;
 
     private final Supplier<TileEntity> tile;
 
-    public AbstractMachineBlock(Properties builder, Supplier<TileEntity> tile)
+    public MachineBlock(Properties builder, Supplier<TileEntity> tile)
     {
         super(builder);
         this.tile = tile;

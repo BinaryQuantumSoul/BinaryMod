@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class UpgradableBlock extends AbstractMachineBlock
+public class UpgradableBlock extends MachineBlock
 {
     public static int CONSTLEVELS; //used in fillStateContainer() which is in super()
 

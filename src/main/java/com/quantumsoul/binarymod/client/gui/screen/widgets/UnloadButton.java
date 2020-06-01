@@ -1,8 +1,7 @@
-package com.quantumsoul.binarymod.gui.screen.widgets;
+package com.quantumsoul.binarymod.client.gui.screen.widgets;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.quantumsoul.binarymod.BinaryMod;
-import com.quantumsoul.binarymod.gui.screen.ComputerScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.client.resources.I18n;
@@ -12,7 +11,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import org.apache.logging.log4j.util.TriConsumer;
 
 import javax.annotation.Nullable;
-import java.util.function.BiConsumer;
 
 @OnlyIn(Dist.CLIENT)
 public class UnloadButton extends Button

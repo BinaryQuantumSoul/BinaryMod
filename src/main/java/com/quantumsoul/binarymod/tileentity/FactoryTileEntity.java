@@ -15,7 +15,7 @@ import java.util.List;
 
 import static com.quantumsoul.binarymod.world.WorldUtils.dropStacks;
 
-public abstract class FactoryTileEntity extends AbstractMachineTileEntity implements ITickableTileEntity, IUpgradableMachine
+public abstract class FactoryTileEntity extends MachineTileEntity implements IUpgradableMachine
 {
     private static final int DOING_TIME = 1200;
 

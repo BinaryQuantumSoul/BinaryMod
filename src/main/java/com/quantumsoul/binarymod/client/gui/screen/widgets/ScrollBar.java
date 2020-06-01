@@ -1,4 +1,4 @@
-package com.quantumsoul.binarymod.gui.screen.widgets;
+package com.quantumsoul.binarymod.client.gui.screen.widgets;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.quantumsoul.binarymod.BinaryMod;
@@ -9,7 +9,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.logging.log4j.LogManager;
 
 import java.util.function.Consumer;
 

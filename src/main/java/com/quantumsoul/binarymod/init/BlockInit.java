@@ -51,7 +51,7 @@ public class BlockInit
     public static final RegistryObject<Block> VIRUS_BUG_BLOCK = BLOCKS.register("virus_bug_block", () -> new VirusBugBlock(ALIVE));
     public static final RegistryObject<Block> VIRUS_DEAD_BLOCK = BLOCKS.register("virus_dead_block", () -> new Block(DEAD));
 
-    public static final RegistryObject<Block> COMPUTER = MACHINES.register("computer", () -> new AbstractMachineBlock(MACHINE, ComputerTileEntity::new));
+    public static final RegistryObject<Block> COMPUTER = MACHINES.register("computer", () -> new MachineBlock(MACHINE, ComputerTileEntity::new));
     public static final RegistryObject<Block> FEEDER = MACHINES.register("feeder", () -> FactoryBlock.create(MACHINE, FeederTileEntity::new, 2));
     public static final RegistryObject<Block> HEALER = MACHINES.register("healer", () -> FactoryBlock.create(MACHINE, HealerTileEntity::new, 4));
     public static final RegistryObject<Block> REPAIRER = MACHINES.register("repairer", () -> FactoryBlock.create(MACHINE, RepairerTileEntity::new, 4));

@@ -1,6 +1,6 @@
 package com.quantumsoul.binarymod.init;
 
-import com.quantumsoul.binarymod.gui.screen.ComputerScreen;
+import com.quantumsoul.binarymod.client.gui.screen.ComputerScreen;
 import net.minecraft.client.gui.ScreenManager;
 
 public class ScreenInit

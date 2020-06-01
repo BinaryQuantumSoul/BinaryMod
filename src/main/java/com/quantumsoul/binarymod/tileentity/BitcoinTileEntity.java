@@ -20,7 +20,7 @@ import java.util.List;
 
 import static com.quantumsoul.binarymod.world.WorldUtils.dropStacks;
 
-public class BitcoinTileEntity extends AbstractMachineTileEntity implements ITickableTileEntity, IUpgradableMachine
+public class BitcoinTileEntity extends MachineTileEntity implements IUpgradableMachine
 {
     private static final double MINUTE = 1200D;
 
