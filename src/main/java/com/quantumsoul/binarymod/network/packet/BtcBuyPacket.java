@@ -47,7 +47,8 @@ public class BtcBuyPacket
             if(opt.isPresent() && opt.get() instanceof DarkWebRecipe)
             {
                 DarkWebRecipe recipe = (DarkWebRecipe) opt.get();
-                buyRecipe(recipe, inv);
+                PlayerEvents.darkWebRecipes.add(recipe);
+                PlayerEvents.playerInventories.add(inv);
             }
         });
 
