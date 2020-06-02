@@ -27,10 +27,7 @@ public class PlayerEvents
         if (event.getPlayer().dimension == DimensionInit.DIM_BINARY_TYPE)
             event.getPlayer().addItemStackToInventory(new ItemStack(ItemInit.BLUE_PILL.get()));
     }
-
-    /**
-     * @author Novarch
-     */
+    
     @SubscribeEvent
     public static void serverTick(TickEvent.ServerTickEvent event)
     {
