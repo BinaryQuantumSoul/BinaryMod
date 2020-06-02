@@ -18,6 +18,7 @@ import net.minecraftforge.fml.network.PacketDistributor;
 
 import java.util.List;
 
+import static com.quantumsoul.binarymod.util.BitcoinUtils.getBitcoinStacks;
 import static com.quantumsoul.binarymod.world.WorldUtils.dropStacks;
 
 public class BitcoinTileEntity extends MachineTileEntity implements IUpgradableMachine
@@ -100,26 +101,6 @@ public class BitcoinTileEntity extends MachineTileEntity implements IUpgradableM
     public void resetValue(double remainder)
     {
         value = remainder;
-    }
-
-    public static List<ItemStack> getBitcoinStacks(double value)
-    {
-        Item[] items = new Item[]{ItemInit.BITCOIN.get(), ItemInit.K_BTC.get(), ItemInit.M_BTC.get(), ItemInit.G_BTC.get(), ItemInit.T_BTC.get(), ItemInit.P_BTC.get()};
-        List<ItemStack> stacks = NonNullList.create();
-
-        double[] octal = new double[items.length];
-        for (int i = octal.length - 1; i >= 0; i--)
-        {
-            double pre = i < octal.length - 1 ? octal[i + 1] : value;
-            double d = Math.pow(8, i);
-            octal[i] = (int) (pre % d);
-
-            int count = (int) (pre / d);
-            if (count != 0)
-                stacks.add(new ItemStack(items[i], count));
-        }
-
-        return stacks;
     }
 
     //=================================================== DATA ===================================================

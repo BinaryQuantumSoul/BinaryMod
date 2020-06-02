@@ -2,7 +2,10 @@ package com.quantumsoul.binarymod.init;
 
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.item.*;
-import net.minecraft.item.*;
+import net.minecraft.item.AxeItem;
+import net.minecraft.item.Food;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemTier;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -14,7 +17,7 @@ public class ItemInit
     public static final Item.Properties BASE = new Item.Properties().group(ItemGroupInit.instance);
     public static final Item.Properties MACHINE = new Item.Properties().group(ItemGroupInit.instance).maxStackSize(1);
     private static final Item.Properties FAKE_FOOD = new Item.Properties().food(new Food.Builder().setAlwaysEdible().hunger(0).saturation(0F).build()).maxStackSize(1).group(ItemGroupInit.instance);
-    private static final Item.Properties ONION_FOOD = new Item.Properties().group(ItemGroupInit.instance).food(new Food.Builder().hunger(4).saturation(0.2F).build());
+    private static final Item.Properties ONION_FOOD = new Item.Properties().group(ItemGroupInit.instance).food(new Food.Builder().hunger(6).saturation(0.4F).build());
     private static Item.Properties special()
     {
         return new Item.Properties().group(ItemGroupInit.instance);
@@ -43,6 +46,7 @@ public class ItemInit
     public static final RegistryObject<Item> DARK_NET = ITEMS.register("dark_net", () -> new Item(MACHINE));
 
     public static final RegistryObject<Item> UPGRADE = ITEMS.register("upgrade", () -> new BatteryItem(BASE));
+    public static final RegistryObject<Item> SOURCE = ITEMS.register("source", () -> new SourceItem(BASE));
 
     public static final RegistryObject<Item> ONION = ITEMS.register("onion", () -> new Item(ONION_FOOD));
     public static final RegistryObject<Item> BITCOIN = ITEMS.register("bitcoin", () -> new BitcoinItem(BASE, BitcoinItem.Bitcoin.UNIT));

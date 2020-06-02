@@ -28,6 +28,7 @@ public class GenerationInit
 
     public static void initSpawns()
     {
+        //todo fix
         //SPAWN PLACEMENT
         EntitySpawnPlacementRegistry.register(EntityInit.ONE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WorldUtils::canBinDimAnimalSpawn);
         EntitySpawnPlacementRegistry.register(EntityInit.ZERO.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WorldUtils::canBinDimAnimalSpawn);

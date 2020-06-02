@@ -10,12 +10,9 @@ import net.minecraftforge.items.SlotItemHandler;
 
 public class ComputerSlot extends SlotItemHandler
 {
-    private final ComputerContainer container;
-
-    public ComputerSlot(IItemHandler itemHandler, int index, int xPosition, int yPosition, ComputerContainer computerContainer)
+    public ComputerSlot(IItemHandler itemHandler, int index, int xPosition, int yPosition)
     {
         super(itemHandler, index, xPosition, yPosition);
-        this.container = computerContainer;
     }
 
     @Override

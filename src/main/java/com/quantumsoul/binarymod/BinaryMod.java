@@ -27,10 +27,10 @@ public class BinaryMod
         BlockInit.BLOCKS.register(eventBus);
         BlockInit.MACHINES.register(eventBus);
         ItemInit.ITEMS.register(eventBus);
+        RecipeInit.RECIPES.register(eventBus);
         ContainerInit.CONTAINERS.register(eventBus);
         TileEntityInit.TILE_ENTITIES.register(eventBus);
         EntityInit.ENTITIES.register(eventBus);
-
         BiomeInit.BIOMES.register(eventBus);
         DimensionInit.MOD_DIMENSIONS.register(eventBus);
     }
@@ -48,6 +48,7 @@ public class BinaryMod
         RenderInit.initTileEntityRenders();
         ScreenInit.initScreens();
     }
+}
 
 //        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
 //        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
@@ -77,4 +78,3 @@ public class BinaryMod
         // do something when the server starts
         LOGGER.info("HELLO from server starting");
     }*/
-}

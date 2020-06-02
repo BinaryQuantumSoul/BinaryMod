@@ -10,8 +10,8 @@ import java.util.function.Supplier;
 
 public class ComputerPacket
 {
-    private BlockPos pos;
-    private boolean load;
+    private final BlockPos pos;
+    private final boolean load;
 
     public ComputerPacket(BlockPos pos, boolean load)
     {

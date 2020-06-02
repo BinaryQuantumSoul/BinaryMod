@@ -41,7 +41,6 @@ public class BinaryDimension extends Dimension
     @Override
     public boolean canRespawnHere()
     {
-        //todo give blue pill when dying
         return true;
     }
 
@@ -61,14 +60,12 @@ public class BinaryDimension extends Dimension
 
     public static void teleport(ServerPlayerEntity player)
     {
-        // todo? write pos, dimension and spawn point
         BlockPos spawnPos = WorldUtils.teleportPlayer(player, DimensionInit.DIM_BINARY_TYPE, player.getPosition());
         player.setSpawnPoint(spawnPos, true, false, DimensionInit.DIM_BINARY_TYPE);
     }
 
     public static void teleportBack(ServerPlayerEntity player)
     {
-        // todo? read pos, dimension and spawn point
         WorldUtils.teleportPlayer(player, DimensionType.OVERWORLD, player.getPosition());
     }
 

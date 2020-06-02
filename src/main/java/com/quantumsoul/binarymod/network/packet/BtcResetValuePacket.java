@@ -11,8 +11,8 @@ import java.util.function.Supplier;
 
 public class BtcResetValuePacket
 {
-    private BlockPos pos;
-    private float rem;
+    private final BlockPos pos;
+    private final float rem;
 
     public BtcResetValuePacket(BlockPos position, float remainder)
     {

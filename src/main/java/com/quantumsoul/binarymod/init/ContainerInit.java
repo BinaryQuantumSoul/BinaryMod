@@ -10,7 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ContainerInit
 {
-    public static DeferredRegister<ContainerType<?>> CONTAINERS = new DeferredRegister<>(ForgeRegistries.CONTAINERS, BinaryMod.MOD_ID);
+    public static final DeferredRegister<ContainerType<?>> CONTAINERS = new DeferredRegister<>(ForgeRegistries.CONTAINERS, BinaryMod.MOD_ID);
 
-    public static RegistryObject<ContainerType<ComputerContainer>> COMPUTER = CONTAINERS.register("computer", () -> IForgeContainerType.create(ComputerContainer::new));
+    public static final RegistryObject<ContainerType<ComputerContainer>> COMPUTER = CONTAINERS.register("computer", () -> IForgeContainerType.create(ComputerContainer::new));
 }

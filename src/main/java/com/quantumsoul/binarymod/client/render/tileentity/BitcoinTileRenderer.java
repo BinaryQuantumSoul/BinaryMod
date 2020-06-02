@@ -2,7 +2,6 @@ package com.quantumsoul.binarymod.client.render.tileentity;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.quantumsoul.binarymod.block.MachineBlock;
-import com.quantumsoul.binarymod.init.ItemInit;
 import com.quantumsoul.binarymod.tileentity.BitcoinTileEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -11,17 +10,15 @@ import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+
+import static com.quantumsoul.binarymod.util.BitcoinUtils.getBitcoinStack;
+import static com.quantumsoul.binarymod.util.BitcoinUtils.getBitcoinString;
 
 @OnlyIn(Dist.CLIENT)
 public class BitcoinTileRenderer extends TileEntityRenderer<BitcoinTileEntity>
 {
-    private static final Item[] btc_items = {ItemInit.BITCOIN.get(), ItemInit.K_BTC.get(), ItemInit.M_BTC.get(), ItemInit.G_BTC.get(), ItemInit.T_BTC.get(), ItemInit.P_BTC.get()};
-    private static final char[] prefixes = new char[]{' ', 'k', 'M', 'G', 'T', 'P'};
-
     public BitcoinTileRenderer(TileEntityRendererDispatcher rendererDispatcherIn)
     {
         super(rendererDispatcherIn);
@@ -61,29 +58,5 @@ public class BitcoinTileRenderer extends TileEntityRenderer<BitcoinTileEntity>
 
         Minecraft.getInstance().getItemRenderer().renderItem(getBitcoinStack(value), ItemCameraTransforms.TransformType.GUI, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn);
         matrixStackIn.pop();
-    }
-
-    public static String getBitcoinString(double value)
-    {
-        for (int i = prefixes.length - 1; i >= 0; i--)
-        {
-            double remainder = value / Math.pow(8, i);
-            if ((int) remainder > 0)
-                return String.format("%.2f %cB", remainder, prefixes[i]);
-        }
-
-        return String.format("%.2f  B", value);
-    }
-
-    public static ItemStack getBitcoinStack(double value)
-    {
-        for (int i = btc_items.length - 1; i >= 0; i--)
-        {
-            double remainder = value / Math.pow(8, i);
-            if ((int) remainder > 0)
-                return new ItemStack(btc_items[i]);
-        }
-
-        return new ItemStack(ItemInit.BITCOIN.get());
     }
 }

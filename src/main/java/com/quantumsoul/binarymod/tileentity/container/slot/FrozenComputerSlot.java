@@ -6,9 +6,9 @@ import net.minecraftforge.items.IItemHandler;
 
 public class FrozenComputerSlot extends ComputerSlot
 {
-    public FrozenComputerSlot(IItemHandler itemHandler, int index, int xPosition, int yPosition, ComputerContainer computerContainer)
+    public FrozenComputerSlot(IItemHandler itemHandler, int index, int xPosition, int yPosition)
     {
-        super(itemHandler, index, xPosition, yPosition, computerContainer);
+        super(itemHandler, index, xPosition, yPosition);
     }
 
     @Override

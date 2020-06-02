@@ -9,6 +9,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.function.Consumer;
 
@@ -29,7 +30,7 @@ public class ScrollBar extends Widget
         this.maxValue = maxValue;
         this.apply = apply;
 
-        pos = yIn + width / 2.0D;
+        changePosition(yIn + width / 2.0D);
     }
 
     @Override
@@ -59,7 +60,7 @@ public class ScrollBar extends Widget
         double newPos = MathHelper.clamp(mouseY, y + lim, y + height - lim);
 
         if(newPos != pos)
-            apply.accept((int) (maxValue * (pos + lim - y) / (height - width)));
+            apply.accept((int) (maxValue * (newPos + lim - y) / (height - width)));
 
         pos = newPos;
     }
@@ -78,9 +79,17 @@ public class ScrollBar extends Widget
         {
             float f = flag ? -1.0F : 1.0F;
             changePosition(pos + f / maxValue * (height - width));
+            return true;
         }
 
         return false;
+    }
+
+    @Override
+    public boolean mouseScrolled(double d0, double d1, double sign)
+    {
+        changePosition(pos - sign / maxValue * (height - width));
+        return true;
     }
 
     @Override

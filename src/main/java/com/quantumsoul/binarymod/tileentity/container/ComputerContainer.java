@@ -27,8 +27,8 @@ import static com.quantumsoul.binarymod.tileentity.ComputerTileEntity.ComputerSt
 public class ComputerContainer extends ProgrammerContainer
 {
     private final ComputerTileEntity tileEntity;
+    public final PlayerInventory playerInv;
 
-    @OnlyIn(Dist.CLIENT)
     public ComputerContainer(int id, PlayerInventory playerInventory, PacketBuffer extraData)
     {
         this(id, playerInventory, (ComputerTileEntity) Minecraft.getInstance().world.getTileEntity(extraData.readBlockPos()));
@@ -38,6 +38,7 @@ public class ComputerContainer extends ProgrammerContainer
     {
         super(ContainerInit.COMPUTER.get(), id, ComputerTileEntity.SLOT_NUMBER);
 
+        this.playerInv = playerInventory;
         this.tileEntity = tileEntity;
         ComputerTileEntity.ComputerState state = tileEntity.getState();
         IItemHandler contents = tileEntity.getContents();
@@ -45,21 +46,24 @@ public class ComputerContainer extends ProgrammerContainer
         switch(state)
         {
             case SD:
-                addSlot(new FrozenComputerSlot(contents, 0, 92, 18, this));
+                addSlot(new FrozenComputerSlot(contents, 0, 92, 18));
                 bindSDInventory();
                 bindPlayerInventory(playerInventory, 8, 70 + 17 * getSDOrder());
                 break;
 
             case BATTERY:
-                addSlot(new FrozenComputerSlot(contents, 0, 70, 18, this));
+                addSlot(new FrozenComputerSlot(contents, 0, 70, 18));
                 break;
 
             case DARK_NET:
-                addSlot(new FrozenComputerSlot(contents, 0, 92, 18, this));//todo
+                addSlot(new FrozenComputerSlot(contents, 0, 92, 18));
+                IItemHandler handler = new ItemStackHandler(3);
+                for(int i = 0; i < 3; i++)
+                    addSlot(new FrozenComputerSlot(handler, i, 30, 53 + 22 * i));
                 break;
 
             default:
-                addSlot(new ComputerSlot(contents, 0, 62, 41, this));
+                addSlot(new ComputerSlot(contents, 0, 62, 41));
                 bindPlayerInventory(playerInventory, 8, 95);
                 break;
         }
