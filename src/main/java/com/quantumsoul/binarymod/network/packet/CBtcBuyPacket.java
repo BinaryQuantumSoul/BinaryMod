@@ -1,9 +1,8 @@
 package com.quantumsoul.binarymod.network.packet;
 
-import com.quantumsoul.binarymod.item.BitcoinItem;
+import com.quantumsoul.binarymod.network.event.PlayerEvents;
 import com.quantumsoul.binarymod.recipe.DarkWebRecipe;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkEvent;
@@ -12,33 +11,31 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-import static com.quantumsoul.binarymod.util.BitcoinUtils.*;
-
-public class BtcBuyPacket
+public class CBtcBuyPacket
 {
     private final ResourceLocation id;
 
-    public BtcBuyPacket(DarkWebRecipe recipe)
+    public CBtcBuyPacket(DarkWebRecipe recipe)
     {
         this(recipe.getId());
     }
 
-    public BtcBuyPacket(ResourceLocation recipeId)
+    public CBtcBuyPacket(ResourceLocation recipeId)
     {
         id = recipeId;
     }
 
-    public static void serialize(BtcBuyPacket packet, PacketBuffer buf)
+    public static void serialize(CBtcBuyPacket packet, PacketBuffer buf)
     {
         buf.writeResourceLocation(packet.id);
     }
 
-    public static BtcBuyPacket deserialize(PacketBuffer buf)
+    public static CBtcBuyPacket deserialize(PacketBuffer buf)
     {
-        return new BtcBuyPacket(buf.readResourceLocation());
+        return new CBtcBuyPacket(buf.readResourceLocation());
     }
 
-    public static void handle(BtcBuyPacket packet, Supplier<NetworkEvent.Context> context)
+    public static void handle(CBtcBuyPacket packet, Supplier<NetworkEvent.Context> context)
     {
         context.get().enqueueWork(() ->
         {

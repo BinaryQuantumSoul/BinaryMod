@@ -34,7 +34,8 @@ public class PlayerEvents
         List<DarkWebRecipe> darkWebRecipesIterated = new ArrayList<>();
         List<PlayerInventory> playerInventoriesIterated = new ArrayList<>();
 
-        darkWebRecipes.forEach(darkWebRecipe -> {
+        darkWebRecipes.forEach(darkWebRecipe ->
+        {
             PlayerInventory inventory = playerInventories.get(darkWebRecipes.indexOf(darkWebRecipe));
             BitcoinUtils.buyRecipe(darkWebRecipe, inventory);
             darkWebRecipesIterated.add(darkWebRecipe);

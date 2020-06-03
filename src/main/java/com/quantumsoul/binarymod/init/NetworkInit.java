@@ -1,9 +1,9 @@
 package com.quantumsoul.binarymod.init;
 
 import com.quantumsoul.binarymod.BinaryMod;
-import com.quantumsoul.binarymod.network.packet.BtcBuyPacket;
-import com.quantumsoul.binarymod.network.packet.BtcResetValuePacket;
-import com.quantumsoul.binarymod.network.packet.ComputerPacket;
+import com.quantumsoul.binarymod.network.packet.CBtcBuyPacket;
+import com.quantumsoul.binarymod.network.packet.SBtcResetValuePacket;
+import com.quantumsoul.binarymod.network.packet.CComputerPacket;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
@@ -21,8 +21,8 @@ public class NetworkInit
 
     public static void initPackets()
     {
-        CHANNEL.messageBuilder(ComputerPacket.class, 0).encoder(ComputerPacket::serialize).decoder(ComputerPacket::deserialize).consumer(ComputerPacket::handle).add();
-        CHANNEL.messageBuilder(BtcResetValuePacket.class, 1).encoder(BtcResetValuePacket::serialize).decoder(BtcResetValuePacket::deserialize).consumer(BtcResetValuePacket::handle).add();
-        CHANNEL.messageBuilder(BtcBuyPacket.class, 2).encoder(BtcBuyPacket::serialize).decoder(BtcBuyPacket::deserialize).consumer(BtcBuyPacket::handle).add();
+        CHANNEL.messageBuilder(CComputerPacket.class, 0).encoder(CComputerPacket::serialize).decoder(CComputerPacket::deserialize).consumer(CComputerPacket::handle).add();
+        CHANNEL.messageBuilder(SBtcResetValuePacket.class, 1).encoder(SBtcResetValuePacket::serialize).decoder(SBtcResetValuePacket::deserialize).consumer(SBtcResetValuePacket::handle).add();
+        CHANNEL.messageBuilder(CBtcBuyPacket.class, 2).encoder(CBtcBuyPacket::serialize).decoder(CBtcBuyPacket::deserialize).consumer(CBtcBuyPacket::handle).add();
     }
 }

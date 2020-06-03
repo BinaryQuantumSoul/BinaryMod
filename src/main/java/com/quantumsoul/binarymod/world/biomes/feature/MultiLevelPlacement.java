@@ -14,7 +14,7 @@ import java.util.function.Function;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static com.quantumsoul.binarymod.world.WorldUtils.getNthGroundLevel;
+import static com.quantumsoul.binarymod.util.WorldUtils.getNthGroundLevel;
 
 public class MultiLevelPlacement extends Placement<FrequencyConfig>
 {

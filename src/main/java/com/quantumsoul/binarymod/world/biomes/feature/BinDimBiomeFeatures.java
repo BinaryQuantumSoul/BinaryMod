@@ -11,7 +11,7 @@ import net.minecraft.world.gen.placement.CountRangeConfig;
 import net.minecraft.world.gen.placement.FrequencyConfig;
 import net.minecraft.world.gen.placement.Placement;
 
-import static com.quantumsoul.binarymod.world.WorldUtils.isBinDimBlock;
+import static com.quantumsoul.binarymod.util.WorldUtils.isBinDimBlock;
 
 public class BinDimBiomeFeatures
 {

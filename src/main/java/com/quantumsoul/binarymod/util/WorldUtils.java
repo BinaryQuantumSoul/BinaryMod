@@ -1,6 +1,5 @@
-package com.quantumsoul.binarymod.world;
+package com.quantumsoul.binarymod.util;
 
-import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.block.HexBlock;
 import com.quantumsoul.binarymod.init.BlockInit;
 import net.minecraft.block.Block;
@@ -10,11 +9,8 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.IWorld;
@@ -23,7 +19,6 @@ import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.items.IItemHandler;
-import org.apache.logging.log4j.LogManager;
 
 import java.util.List;
 import java.util.Random;
@@ -113,7 +108,7 @@ public class WorldUtils
     public static int getNthGroundLevel(IWorld worldIn, int x, int z, int n)
     {
         int base = 0;
-        int old = 0;
+        int old;
         int level = 0;
         for (int i = 0; i <= n; i++)
         {
@@ -197,8 +192,8 @@ public class WorldUtils
         while (!stack.isEmpty())
         {
             ItemEntity itementity = new ItemEntity(worldIn, d3, d4, d5, stack.split(rand.nextInt(21) + 10));
-            float f = 0.05F;
-            itementity.setMotion(rand.nextGaussian() * (double) 0.05F, rand.nextGaussian() * (double) 0.05F + (double) 0.2F, rand.nextGaussian() * (double) 0.05F);
+            double d = 0.05F;
+            itementity.setMotion(rand.nextGaussian() * d, rand.nextGaussian() * d + 0.2F, rand.nextGaussian() * d);
             worldIn.addEntity(itementity);
         }
     }

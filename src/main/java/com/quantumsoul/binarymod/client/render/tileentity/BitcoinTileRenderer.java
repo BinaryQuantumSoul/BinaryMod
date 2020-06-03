@@ -44,7 +44,7 @@ public class BitcoinTileRenderer extends TileEntityRenderer<BitcoinTileEntity>
         String s = getBitcoinString(value);
         float x = (float) (-fontrenderer.getStringWidth(s) / 2);
 
-        fontrenderer.renderString(s, x, 0.0F, 0x00FF00, false, matrixStackIn.getLast().getMatrix(), bufferIn, false, 0, combinedLightIn);
+        fontrenderer.renderString(s, x, 0.0F, 0x4CFF00, false, matrixStackIn.getLast().getMatrix(), bufferIn, false, 0, combinedLightIn);
         matrixStackIn.pop();
 
         //IMAGE

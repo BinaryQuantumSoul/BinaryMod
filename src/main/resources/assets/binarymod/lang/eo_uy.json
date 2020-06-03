@@ -71,6 +71,7 @@
 
   "tooltip.binarymod.level": "Nivelo: %d/%d",
   "tooltip.binarymod.sd": "Stokado Uzado: %d%%",
+  "tooltip.binarymod.sd_empty": "Malplena",
   "tooltip.binarymod.bitcoin": "%dB",
 
 

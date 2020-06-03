@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.model.data.EmptyModelData;
 
-import static com.quantumsoul.binarymod.client.render.entity.RenderUtils.applyRotations;
+import static com.quantumsoul.binarymod.util.RenderUtils.applyRotations;
 
 @OnlyIn(Dist.CLIENT)
 public class BugRenderer extends EntityRenderer<BugEntity>

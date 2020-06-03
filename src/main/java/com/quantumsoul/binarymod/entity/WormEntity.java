@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTables;
 import org.apache.logging.log4j.LogManager;
 
-import static com.quantumsoul.binarymod.world.WorldUtils.onBinDimLivingFall;
+import static com.quantumsoul.binarymod.util.WorldUtils.onBinDimLivingFall;
 
 public class WormEntity extends MonsterEntity
 {

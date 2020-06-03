@@ -6,14 +6,13 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.IntegerProperty;
-import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static com.quantumsoul.binarymod.world.WorldUtils.dropStacks;
+import static com.quantumsoul.binarymod.util.WorldUtils.dropStacks;
 
 public abstract class FactoryTileEntity extends MachineTileEntity implements IUpgradableMachine
 {

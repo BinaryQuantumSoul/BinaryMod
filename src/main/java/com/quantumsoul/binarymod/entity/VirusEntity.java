@@ -6,7 +6,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.SlimeEntity;
 import net.minecraft.world.World;
 
-import static com.quantumsoul.binarymod.world.WorldUtils.onBinDimLivingFall;
+import static com.quantumsoul.binarymod.util.WorldUtils.onBinDimLivingFall;
 
 public class VirusEntity extends SlimeEntity
 {

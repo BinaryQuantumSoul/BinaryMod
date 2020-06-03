@@ -1,6 +1,5 @@
 package com.quantumsoul.binarymod.init;
 
-import com.electronwill.nightconfig.core.ConfigSpec;
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.entity.*;
 import net.minecraft.entity.EntityClassification;

@@ -25,7 +25,6 @@ import java.util.function.Supplier;
 
 public class MachineBlock extends Block
 {
-    //todo fix model
     public static final DirectionProperty DIRECTION = HorizontalBlock.HORIZONTAL_FACING;
 
     private final Supplier<TileEntity> tile;

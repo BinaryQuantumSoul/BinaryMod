@@ -14,7 +14,7 @@ import java.util.function.Function;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static com.quantumsoul.binarymod.world.WorldUtils.getGroundLevel;
+import static com.quantumsoul.binarymod.util.WorldUtils.getGroundLevel;
 
 public class LessThanOnePlacement extends Placement<FrequencyConfig>
 {

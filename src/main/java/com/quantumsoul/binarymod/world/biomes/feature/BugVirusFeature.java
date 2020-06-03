@@ -11,8 +11,8 @@ import net.minecraft.world.gen.feature.Feature;
 import java.util.Random;
 import java.util.function.Function;
 
-import static com.quantumsoul.binarymod.world.WorldUtils.getGroundLevel;
-import static com.quantumsoul.binarymod.world.WorldUtils.isBinDimBlock;
+import static com.quantumsoul.binarymod.util.WorldUtils.getGroundLevel;
+import static com.quantumsoul.binarymod.util.WorldUtils.isBinDimBlock;
 
 public class BugVirusFeature extends Feature<BugVirusConfig>
 {

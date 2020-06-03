@@ -13,15 +13,13 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.World;
 
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
 
-import static com.quantumsoul.binarymod.world.WorldUtils.onBinDimLivingFall;
+import static com.quantumsoul.binarymod.util.WorldUtils.onBinDimLivingFall;
 
 public class BugEntity extends MonsterEntity
 {
@@ -194,14 +192,12 @@ public class BugEntity extends MonsterEntity
         @Override
         public void tick()
         {
-            if (entity.getPosX() % 1 != 0.0D || entity.getPosY() % 1 != 0.0D || entity.getPosZ() % 1 != 0.0D || entity.rotationYaw != 0.0F || entity.rotationPitch != 0F || entity.rotationYawHead != 0.0F)
+            if (Math.abs(entity.getPosX() % 1) != 0.5D || entity.getPosY() % 1 != 0.0D || Math.abs(entity.getPosZ() % 1) != 0.5D || entity.rotationYaw != 0.0F || entity.rotationPitch != 0F)
             {
-                //todo fix
                 entity.moveToBlockPosAndAngles(entity.getPosition(), 0.0F, 0.0F);
-                entity.setRotationYawHead(0.0F);
-                BlockState state = entity.world.getBlockState(entity.getPosition().down());
-                entity.setMimic(state);
+                entity.setMimic(entity.world.getBlockState(entity.getPosition().down()));
             }
+            entity.setRenderYawOffset(0.0F);
         }
     }
 }

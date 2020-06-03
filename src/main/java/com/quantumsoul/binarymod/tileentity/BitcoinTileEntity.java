@@ -1,25 +1,19 @@
 package com.quantumsoul.binarymod.tileentity;
 
 import com.quantumsoul.binarymod.block.UpgradableBlock;
-import com.quantumsoul.binarymod.init.ItemInit;
 import com.quantumsoul.binarymod.init.NetworkInit;
 import com.quantumsoul.binarymod.init.TileEntityInit;
-import com.quantumsoul.binarymod.network.packet.BtcResetValuePacket;
+import com.quantumsoul.binarymod.network.packet.SBtcResetValuePacket;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.IntegerProperty;
-import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.network.PacketDistributor;
 
-import java.util.List;
-
 import static com.quantumsoul.binarymod.util.BitcoinUtils.getBitcoinStacks;
-import static com.quantumsoul.binarymod.world.WorldUtils.dropStacks;
+import static com.quantumsoul.binarymod.util.WorldUtils.dropStacks;
 
 public class BitcoinTileEntity extends MachineTileEntity implements IUpgradableMachine
 {
@@ -78,7 +72,7 @@ public class BitcoinTileEntity extends MachineTileEntity implements IUpgradableM
                 player.addItemStackToInventory(stack);
 
             value = value % 1.0D;
-            NetworkInit.CHANNEL.send(PacketDistributor.PLAYER.with(() -> (ServerPlayerEntity) player), new BtcResetValuePacket(pos, (float)value));
+            NetworkInit.CHANNEL.send(PacketDistributor.PLAYER.with(() -> (ServerPlayerEntity) player), new SBtcResetValuePacket(pos, (float)value));
 
             return true;
         }

@@ -71,6 +71,7 @@
 
   "tooltip.binarymod.level": "Level: %d/%d",
   "tooltip.binarymod.sd": "Storage: %d%%",
+  "tooltip.binarymod.sd_empty": "Empty",
   "tooltip.binarymod.bitcoin": "%dB",
 
 

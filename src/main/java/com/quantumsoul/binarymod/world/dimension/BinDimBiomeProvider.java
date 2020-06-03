@@ -92,21 +92,21 @@ public class BinDimBiomeProvider extends BiomeProvider
 
     //NETHER-LIKE GENERATION
     @Override
-    public float func_222365_c(int p_222365_1_, int p_222365_2_)
+    public float func_222365_c(int a, int b)
     {
-        int i = p_222365_1_ / 2;
-        int j = p_222365_2_ / 2;
-        int k = p_222365_1_ % 2;
-        int l = p_222365_2_ % 2;
-        float f = 100.0F - MathHelper.sqrt((float) (p_222365_1_ * p_222365_1_ + p_222365_2_ * p_222365_2_)) * 8.0F;
+        int i = a / 2;
+        int j = b / 2;
+        int k = a % 2;
+        int l = b % 2;
+        float f = 100.0F - MathHelper.sqrt((float) (a * a + b * b)) * 8.0F;
         f = MathHelper.clamp(f, -100.0F, 80.0F);
 
         for (int i1 = -12; i1 <= 12; ++i1)
         {
             for (int j1 = -12; j1 <= 12; ++j1)
             {
-                long k1 = (long) (i + i1);
-                long l1 = (long) (j + j1);
+                long k1 = i + i1;
+                long l1 = j + j1;
                 if (k1 * k1 + l1 * l1 > 4096L && this.generator.getValue((double) k1, (double) l1) < (double) -0.9F)
                 {
                     float f1 = (MathHelper.abs((float) k1) * 3439.0F + MathHelper.abs((float) l1) * 147.0F) % 13.0F + 9.0F;

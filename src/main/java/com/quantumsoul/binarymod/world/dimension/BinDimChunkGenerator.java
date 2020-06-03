@@ -22,16 +22,15 @@ import java.util.Random;
 //I DON'T UNDERSTAND ANYTHING ABOUT GENERATION
 public class BinDimChunkGenerator extends NoiseChunkGenerator<BinDimGenSettings>
 {
-    private final double[] field_222573_h = Util.make(new double[this.noiseSizeY()], (adouble) ->
+    private final double[] worldNoise = Util.make(new double[this.noiseSizeY()], (adouble) ->
     {
         for (int i = 0; i < this.noiseSizeY(); ++i)
         {
             adouble[i] = Math.cos((double) i * Math.PI * 6.0D / (double) this.noiseSizeY()) * 2.0D;
-            double d0 = (double) i;
+            double d0 = i;
             if (i > this.noiseSizeY() / 2)
-            {
-                d0 = (double) (this.noiseSizeY() - 1 - i);
-            }
+                d0 = this.noiseSizeY() - 1 - i;
+
 
             if (d0 < 4.0D)
             {
@@ -40,7 +39,7 @@ public class BinDimChunkGenerator extends NoiseChunkGenerator<BinDimGenSettings>
             }
         }
     });
-    private static final float[] field_222576_h = Util.make(new float[25], (afloat) ->
+    private static final float[] biomeNoise = Util.make(new float[25], (afloat) ->
     {
         for (int i = -2; i <= 2; ++i)
         {
@@ -76,12 +75,6 @@ public class BinDimChunkGenerator extends NoiseChunkGenerator<BinDimGenSettings>
     }
 
     @Override
-    public List<Biome.SpawnListEntry> getPossibleCreatures(EntityClassification creatureType, BlockPos pos)
-    {
-        return super.getPossibleCreatures(creatureType, pos);
-    }
-
-    @Override
     public void spawnMobs(WorldGenRegion region)
     {
         int i = region.getMainChunkX();
@@ -108,7 +101,7 @@ public class BinDimChunkGenerator extends NoiseChunkGenerator<BinDimGenSettings>
     @Override
     protected double func_222545_a(double p1, double p2, int p3)
     {
-        return this.field_222573_h[p3];
+        return this.worldNoise[p3];
     }
 
     @Override
@@ -130,11 +123,9 @@ public class BinDimChunkGenerator extends NoiseChunkGenerator<BinDimGenSettings>
                 float f4 = biome.getDepth();
                 float f5 = biome.getScale();
 
-                float f6 = field_222576_h[k + 2 + (l + 2) * 5] / (f4 + 2.0F);
+                float f6 = biomeNoise[k + 2 + (l + 2) * 5] / (f4 + 2.0F);
                 if (biome.getDepth() > f3)
-                {
                     f6 /= 2.0F;
-                }
 
                 f += f5 * f6;
                 f1 += f4 * f6;
@@ -147,28 +138,25 @@ public class BinDimChunkGenerator extends NoiseChunkGenerator<BinDimGenSettings>
         f = f * 0.9F + 0.1F;
         f1 = (f1 * 4.0F - 1.0F) / 8.0F;
         adouble[0] = (double) f1 + this.getNoiseDepthAt(noiseX, noiseZ);
-        adouble[1] = (double) f;
+        adouble[1] = f;
         return adouble;
     }
 
     private double getNoiseDepthAt(int noiseX, int noiseZ)
     {
-        double d0 = this.depthNoise.getValue((double) (noiseX * 200), 10.0D, (double) (noiseZ * 200), 1.0D, 0.0D, true) * 65535.0D / 8000.0D;
+        double d0 = this.depthNoise.getValue(noiseX * 200, 10.0D, noiseZ * 200, 1.0D, 0.0D, true) * 65535.0D / 8000.0D;
         if (d0 < 0.0D)
-        {
             d0 = -d0 * 0.3D;
-        }
 
         d0 = d0 * 3.0D - 2.0D;
         if (d0 < 0.0D)
         {
             d0 = d0 / 28.0D;
-        } else
+        }
+        else
         {
             if (d0 > 1.0D)
-            {
                 d0 = 1.0D;
-            }
 
             d0 = d0 / 40.0D;
         }
@@ -179,7 +167,7 @@ public class BinDimChunkGenerator extends NoiseChunkGenerator<BinDimGenSettings>
     @Override
     protected void makeBedrock(IChunk chunkIn, Random rand)
     {
-        BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
+        BlockPos.Mutable pos = new BlockPos.Mutable();
         int i = chunkIn.getPos().getXStart();
         int j = chunkIn.getPos().getZStart();
         BinDimGenSettings t = this.getSettings();
@@ -189,20 +177,12 @@ public class BinDimChunkGenerator extends NoiseChunkGenerator<BinDimGenSettings>
         for (BlockPos blockpos : BlockPos.getAllInBoxMutable(i, 0, j, i + 15, 0, j + 15))
         {
             for (int i1 = l; i1 >= l - 4; --i1)
-            {
                 if (i1 >= l - rand.nextInt(5))
-                {
-                    chunkIn.setBlockState(blockpos$mutable.setPos(blockpos.getX(), i1, blockpos.getZ()), BlockInit.FIREWALL_BLOCK.get().getDefaultState(), false);
-                }
-            }
+                    chunkIn.setBlockState(pos.setPos(blockpos.getX(), i1, blockpos.getZ()), BlockInit.FIREWALL_BLOCK.get().getDefaultState(), false);
 
             for (int j1 = k + 4; j1 >= k; --j1)
-            {
                 if (j1 <= k + rand.nextInt(5))
-                {
-                    chunkIn.setBlockState(blockpos$mutable.setPos(blockpos.getX(), j1, blockpos.getZ()), BlockInit.FIREWALL_BLOCK.get().getDefaultState(), false);
-                }
-            }
+                    chunkIn.setBlockState(pos.setPos(blockpos.getX(), j1, blockpos.getZ()), BlockInit.FIREWALL_BLOCK.get().getDefaultState(), false);
         }
     }
 }

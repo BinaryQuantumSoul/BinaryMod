@@ -8,32 +8,32 @@ import net.minecraftforge.fml.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public class ComputerPacket
+public class CComputerPacket
 {
     private final BlockPos pos;
     private final boolean load;
 
-    public ComputerPacket(BlockPos pos, boolean load)
+    public CComputerPacket(BlockPos pos, boolean load)
     {
         this.pos = pos;
         this.load = load;
     }
 
-    public static void serialize(ComputerPacket packet, PacketBuffer buf)
+    public static void serialize(CComputerPacket packet, PacketBuffer buf)
     {
         buf.writeBlockPos(packet.pos);
         buf.writeBoolean(packet.load);
     }
 
-    public static ComputerPacket deserialize(PacketBuffer buf)
+    public static CComputerPacket deserialize(PacketBuffer buf)
     {
         BlockPos pos = buf.readBlockPos();
         boolean load = buf.readBoolean();
 
-        return new ComputerPacket(pos, load);
+        return new CComputerPacket(pos, load);
     }
 
-    public static void handle(ComputerPacket packet, Supplier<NetworkEvent.Context> context)
+    public static void handle(CComputerPacket packet, Supplier<NetworkEvent.Context> context)
     {
         context.get().enqueueWork(() ->
         {

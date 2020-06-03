@@ -9,32 +9,32 @@ import net.minecraftforge.fml.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public class BtcResetValuePacket
+public class SBtcResetValuePacket
 {
     private final BlockPos pos;
     private final float rem;
 
-    public BtcResetValuePacket(BlockPos position, float remainder)
+    public SBtcResetValuePacket(BlockPos position, float remainder)
     {
         pos = position;
         rem = remainder;
     }
 
-    public static void serialize(BtcResetValuePacket packet, PacketBuffer buf)
+    public static void serialize(SBtcResetValuePacket packet, PacketBuffer buf)
     {
         buf.writeBlockPos(packet.pos);
         buf.writeFloat(packet.rem);
     }
 
-    public static BtcResetValuePacket deserialize(PacketBuffer buf)
+    public static SBtcResetValuePacket deserialize(PacketBuffer buf)
     {
         BlockPos pos = buf.readBlockPos();
         float rem = buf.readFloat();
 
-        return new BtcResetValuePacket(pos, rem);
+        return new SBtcResetValuePacket(pos, rem);
     }
 
-    public static void handle(BtcResetValuePacket packet, Supplier<NetworkEvent.Context> context)
+    public static void handle(SBtcResetValuePacket packet, Supplier<NetworkEvent.Context> context)
     {
         context.get().enqueueWork(() ->
         {

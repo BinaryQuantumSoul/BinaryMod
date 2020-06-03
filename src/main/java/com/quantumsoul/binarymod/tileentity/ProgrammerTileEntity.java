@@ -13,7 +13,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-import static com.quantumsoul.binarymod.world.WorldUtils.dropInventoryItems;
+import static com.quantumsoul.binarymod.util.WorldUtils.dropInventoryItems;
 
 public abstract class ProgrammerTileEntity extends MachineTileEntity implements IProgrammerMachine
 {

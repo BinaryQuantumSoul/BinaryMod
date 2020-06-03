@@ -8,8 +8,8 @@ import com.quantumsoul.binarymod.client.gui.screen.widgets.UnloadButton;
 import com.quantumsoul.binarymod.init.NetworkInit;
 import com.quantumsoul.binarymod.init.RecipeInit;
 import com.quantumsoul.binarymod.item.SDCardItem;
-import com.quantumsoul.binarymod.network.packet.BtcBuyPacket;
-import com.quantumsoul.binarymod.network.packet.ComputerPacket;
+import com.quantumsoul.binarymod.network.packet.CBtcBuyPacket;
+import com.quantumsoul.binarymod.network.packet.CComputerPacket;
 import com.quantumsoul.binarymod.recipe.DarkWebRecipe;
 import com.quantumsoul.binarymod.tileentity.ComputerTileEntity;
 import com.quantumsoul.binarymod.tileentity.container.ComputerContainer;
@@ -84,7 +84,7 @@ public class ComputerScreen extends ContainerScreen<ComputerContainer>
                 addButton(new UnloadButton(guiLeft + 68, guiTop + 17, this::renderTooltip, p ->
                 {
                     container.load(false);
-                    NetworkInit.CHANNEL.sendToServer(new ComputerPacket(container.getPos(), false));
+                    NetworkInit.CHANNEL.sendToServer(new CComputerPacket(container.getPos(), false));
                 }));
                 break;
 
@@ -92,7 +92,7 @@ public class ComputerScreen extends ContainerScreen<ComputerContainer>
                 addButton(new UnloadButton(guiLeft + 45, guiTop + 17, this::renderTooltip, p ->
                 {
                     container.load(false);
-                    NetworkInit.CHANNEL.sendToServer(new ComputerPacket(container.getPos(), false));
+                    NetworkInit.CHANNEL.sendToServer(new CComputerPacket(container.getPos(), false));
                 }));
                 break;
 
@@ -100,7 +100,7 @@ public class ComputerScreen extends ContainerScreen<ComputerContainer>
                 addButton(new TextButton(guiLeft + 120, guiTop + 39, 36, I18n.format("gui.binarymod.computer_load"), p ->
                 {
                     container.load(true);
-                    NetworkInit.CHANNEL.sendToServer(new ComputerPacket(container.getPos(), true));
+                    NetworkInit.CHANNEL.sendToServer(new CComputerPacket(container.getPos(), true));
                 }));
                 break;
         }
@@ -146,12 +146,7 @@ public class ComputerScreen extends ContainerScreen<ComputerContainer>
 
         for (Widget b : buttons)
             if (b.isHovered())
-                b.renderToolTip(47, 20); //todo 47 20
-
-/*        if(getState() == ComputerTileEntity.ComputerState.DARK_NET)
-            for (int i = 0; i < 3; i++)
-                if (isHovering(guiLeft + 30, guiTop + 53 + 22 * i, 16, 16, mouseX, mouseY))
-                    renderTooltip(currents[i].getRecipeOutput(), mouseX - 150, mouseY - 40);*/
+                b.renderToolTip(47, 20);
     }
 
     private void drawRecipes(int index)
@@ -165,8 +160,6 @@ public class ComputerScreen extends ContainerScreen<ComputerContainer>
             currents[i] = recipe;
 
             container.putStackInSlot(i + 1, recipe.getRecipeOutput());
-            /*ItemStack result = recipe.getRecipeOutput();
-            itemRenderer.renderItemAndEffectIntoGUI(result, 30, y);*/
 
             double price = recipe.getPrice();
             font.drawString(getBitcoinString(price), 75, y + 5, money >= price ? 0x4CFF00 : 0xFCC900);
@@ -196,7 +189,7 @@ public class ComputerScreen extends ContainerScreen<ComputerContainer>
                 if (isHovering(guiLeft + 30, guiTop + 53 + 22 * i, 16, 16, (int) mouseX, (int) mouseY) && money >= currents[i].getPrice())
                     if (buyRecipe(currents[i], container.playerInv))
                     {
-                        NetworkInit.CHANNEL.sendToServer(new BtcBuyPacket(currents[i]));
+                        NetworkInit.CHANNEL.sendToServer(new CBtcBuyPacket(currents[i]));
                         getMinecraft().displayGuiScreen(null);
                         return true;
                     }

@@ -1,4 +1,4 @@
-package com.quantumsoul.binarymod.client.render.entity;
+package com.quantumsoul.binarymod.util; //todo
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.renderer.Vector3f;
@@ -20,7 +20,8 @@ public class RenderUtils
                 f = 1.0F;
 
             matrixStackIn.rotate(Vector3f.ZP.rotationDegrees(f * 90.0F));
-        } else if (entityLiving.hasCustomName())
+        }
+        else if (entityLiving.hasCustomName())
         {
             String s = TextFormatting.getTextWithoutFormattingCodes(entityLiving.getName().getString());
             if ("Dinnerbone".equals(s) || "Grumm".equals(s))

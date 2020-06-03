@@ -71,6 +71,7 @@
 
   "tooltip.binarymod.level": "Niveau: %d/%d",
   "tooltip.binarymod.sd": "Stockage: %d%%",
+  "tooltip.binarymod.sd_empty": "Vide",
   "tooltip.binarymod.bitcoin": "%dB",
 
 
