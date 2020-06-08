@@ -93,7 +93,7 @@ public class MachineBlock extends Block
             {
                 final TileEntity tileEntity = world.getTileEntity(pos);
                 if(tileEntity instanceof IUpgradableMachine)
-                    ((IUpgradableMachine) tileEntity).drop(pos);
+                    ((IUpgradableMachine) tileEntity).drop(world, pos);
                 else if (tileEntity instanceof IProgrammerMachine)
                     ((IProgrammerMachine) tileEntity).dropAllContents(world, pos);
             }

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OFO",
+    "FCF",
+    "OFO"
+  ],
+  "key": {
+    "F": {
+      "item": "binarymod:firebrick"
+    },
+    "O": {
+      "item": "binarymod:onion"
+    },
+    "C": {
+      "item": "binarymod:code"
+    }
+  },
+  "result": {
+    "item": "binarymod:dark_net",
+    "count": 1
+  }
+}

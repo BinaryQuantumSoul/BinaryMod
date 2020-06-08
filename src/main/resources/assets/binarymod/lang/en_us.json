@@ -25,6 +25,7 @@
   "block.binarymod.healer": "Healer",
   "block.binarymod.repairer": "Repairer",
   "block.binarymod.bitcoin_miner": "Bitcoin Miner",
+  "block.binarymod.block_programmer": "Block Programmer",
 
 
   "item.binarymod.red_pill" : "Red Pill",
@@ -47,7 +48,14 @@
   "item.binarymod.battery" : "Battery",
   "item.binarymod.dark_net": "Dark Net",
 
+  "item.binarymod.food": "Food",
+  "item.binarymod.life": "Life",
+  "item.binarymod.resistance": "Resistance",
+  "item.binarymod.repair": "Repairs",
+  "item.binarymod.fly": "Fly",
+
   "item.binarymod.upgrade" : "Upgrade",
+  "item.binarymod.plugin": "Plugin",
   "item.binarymod.source" : "Source Code",
 
   "item.binarymod.onion" : "Onion",
@@ -91,5 +99,10 @@
   "gui.binarymod.computer_dark_net": "Dark Web",
   "gui.binarymod.computer_unload": "Unload",
   "gui.binarymod.computer_load": "Load",
-  "gui.binarymod.scrollbar": "Scroll Bar"
+  "gui.binarymod.scrollbar": "Scroll Bar",
+  "gui.binarymod.blockprog_program": "Program",
+  "gui.binarymod.block_programmer": "Block Programmer",
+
+  "machine.binarymod.block_programmer_0": "No process",
+  "machine.binarymod.block_programmer_1": "Programming.."
 }

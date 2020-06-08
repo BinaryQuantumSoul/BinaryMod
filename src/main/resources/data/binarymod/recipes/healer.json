@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "binarymod:computer"
+    },
+    {
+      "item": "binarymod:life"
+    }
+  ],
+  "result": {
+    "item": "binarymod:healer",
+    "count": 1
+  }
+}

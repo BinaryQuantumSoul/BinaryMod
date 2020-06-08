@@ -97,6 +97,21 @@ public class OneZeroEntity extends AnimalEntity
         return WorldUtils.canBinDimAnimalSpawn(null, (IWorld) worldIn, null, pos, null) ? 10.0F : worldIn.getBrightness(pos) - 0.5F;
     }
 
+    @Override
+    public ILivingEntityData onInitialSpawn(IWorld world, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag)
+    {
+        if(!randomized && !isChild())
+        {
+            OneZeroEntity entity = rand.nextBoolean() ? EntityInit.ONE.get().create(world.getWorld()) : EntityInit.ZERO.get().create(world.getWorld());
+            entity.setPositionAndRotation(getPosX() + rand.nextDouble() * 1.75D - 0.875D, getPosY(), getPosZ() + rand.nextDouble() * 1.75D - 0.875D, rotationYaw, rotationPitch);
+            entity.randomized = true;
+
+            world.addEntity(entity);
+        }
+
+        return super.onInitialSpawn(world, difficultyIn, reason, spawnDataIn, dataTag);
+    }
+
     //=================================================== SOUND ===================================================
     @Override
     protected SoundEvent getAmbientSound()

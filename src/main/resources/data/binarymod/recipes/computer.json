@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BFB",
+    "FCF",
+    "BFB"
+  ],
+  "key": {
+    "B": {
+      "item": "binarymod:byte"
+    },
+    "F": {
+      "item": "binarymod:file_safe"
+    },
+    "C": {
+      "item": "minecraft:crafting_table"
+    }
+  },
+  "result": {
+    "item": "binarymod:computer",
+    "count": 1
+  }
+}

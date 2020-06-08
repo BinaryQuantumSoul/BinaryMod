@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.network.PacketDistributor;
 
 import static com.quantumsoul.binarymod.util.BitcoinUtils.getBitcoinStacks;
@@ -81,10 +82,10 @@ public class BitcoinTileEntity extends MachineTileEntity implements IUpgradableM
     }
 
     @Override
-    public void drop(BlockPos pos)
+    public void drop(World worldIn, BlockPos pos)
     {
         if (value >= 1.0D)
-            dropStacks(world, pos, getBitcoinStacks(value));
+            dropStacks(worldIn, pos, getBitcoinStacks(value));
     }
 
     public double getValue()

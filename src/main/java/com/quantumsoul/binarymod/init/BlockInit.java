@@ -56,6 +56,7 @@ public class BlockInit
     public static final RegistryObject<Block> HEALER = MACHINES.register("healer", () -> FactoryBlock.create(MACHINE, HealerTileEntity::new, 4));
     public static final RegistryObject<Block> REPAIRER = MACHINES.register("repairer", () -> FactoryBlock.create(MACHINE, RepairerTileEntity::new, 4));
     public static final RegistryObject<Block> BITCOIN_MINER = MACHINES.register("bitcoin_miner", () -> UpgradableBlock.create(MACHINE, BitcoinTileEntity::new, 4));
+    public static final RegistryObject<Block> BLOCK_PROGRAMMER = MACHINES.register("block_programmer", () -> new HalfMachineBlock(MACHINE, BlockProgTileEntity::new));
 
     @SubscribeEvent
     public static void registerItems(final RegistryEvent.Register<Item> event)

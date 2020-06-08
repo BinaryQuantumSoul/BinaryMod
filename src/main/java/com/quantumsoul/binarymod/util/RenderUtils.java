@@ -1,4 +1,4 @@
-package com.quantumsoul.binarymod.util; //todo
+package com.quantumsoul.binarymod.util;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.renderer.Vector3f;

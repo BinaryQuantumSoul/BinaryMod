@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#B#",
+    "###"
+  ],
+  "key": {
+    "B": {
+      "item": "binarymod:byte"
+    },
+    "#": {
+      "item": "minecraft:cooked_beef"
+    }
+  },
+  "result": {
+    "item": "binarymod:food",
+    "count": 1
+  }
+}

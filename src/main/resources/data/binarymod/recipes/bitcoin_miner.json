@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "binarymod:computer"
+    },
+    {
+      "item": "binarymod:dark_net"
+    }
+  ],
+  "result": {
+    "item": "binarymod:bitcoin_miner",
+    "count": 1
+  }
+}

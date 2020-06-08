@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B#B",
+    "SCS",
+    "B#B"
+  ],
+  "key": {
+    "B": {
+      "item": "binarymod:byte"
+    },
+    "S": {
+      "item": "binarymod:file_safe"
+    },
+    "C": {
+      "item": "binarymod:sd_card_small"
+    },
+    "#": {
+      "item": "binarymod:code"
+    }
+  },
+  "result": {
+    "item": "binarymod:sd_card_medium",
+    "count": 1
+  }
+}

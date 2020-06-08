@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "FIF",
+    "C#C",
+    "FIF"
+  ],
+  "key": {
+    "C": {
+      "item": "binarymod:file_corrupt"
+    },
+    "F": {
+      "item": "binarymod:file_safe"
+    },
+    "I": {
+      "item": "binarymod:file_infect"
+    },
+    "#": {
+      "item": "binarymod:code"
+    }
+  },
+  "result": {
+    "item": "binarymod:plugin",
+    "count": 1
+  }
+}

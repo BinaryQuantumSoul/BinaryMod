@@ -2,6 +2,7 @@ package com.quantumsoul.binarymod.init;
 
 import com.quantumsoul.binarymod.client.render.entity.*;
 import com.quantumsoul.binarymod.client.render.tileentity.BitcoinTileRenderer;
+import com.quantumsoul.binarymod.client.render.tileentity.BlockProgTileRenderer;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
@@ -22,5 +23,6 @@ public class RenderInit
     public static void initTileEntityRenders()
     {
         ClientRegistry.bindTileEntityRenderer(TileEntityInit.BITCOIN_MINER.get(), BitcoinTileRenderer::new);
+        ClientRegistry.bindTileEntityRenderer(TileEntityInit.BLOCK_PROGRAMMER.get(), BlockProgTileRenderer::new);
     }
 }

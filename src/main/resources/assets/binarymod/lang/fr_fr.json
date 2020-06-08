@@ -25,6 +25,7 @@
   "block.binarymod.healer": "Soigneur",
   "block.binarymod.repairer": "Réparateur",
   "block.binarymod.bitcoin_miner": "Mineur de Bitcoin",
+  "block.binarymod.block_programmer": "Programmeur de Bloc",
 
 
   "item.binarymod.red_pill" : "Pilule Rouge",
@@ -47,7 +48,14 @@
   "item.binarymod.battery" : "Pile",
   "item.binarymod.dark_net": "Dark Net",
 
+  "item.binarymod.food": "Alimentation",
+  "item.binarymod.life": "Vie",
+  "item.binarymod.resistance": "Résistance",
+  "item.binarymod.repair": "Réparation",
+  "item.binarymod.fly": "Vol",
+
   "item.binarymod.upgrade" : "Amélioration",
+  "item.binarymod.plugin": " Extension",
   "item.binarymod.source" : "Code Source",
 
   "item.binarymod.onion" : "Oignon",
@@ -91,5 +99,10 @@
   "gui.binarymod.computer_dark_net": "Web Obscur",
   "gui.binarymod.computer_unload": "Fermer",
   "gui.binarymod.computer_load": "Charger",
-  "gui.binarymod.scrollbar": "Barre de Défilement"
+  "gui.binarymod.scrollbar": "Barre de Défilement",
+  "gui.binarymod.blockprog_program": "Programmer",
+  "gui.binarymod.block_programmer": "Programmeur de Bloc",
+
+  "machine.binarymod.block_programmer_0": "Aucun processus",
+  "machine.binarymod.block_programmer_1": "Programmation.."
 }

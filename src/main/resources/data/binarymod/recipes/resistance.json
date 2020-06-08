@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#B#",
+    "###"
+  ],
+  "key": {
+    "B": {
+      "item": "binarymod:byte"
+    },
+    "#": {
+      "item": "binarymod:firebrick"
+    }
+  },
+  "result": {
+    "item": "binarymod:resistance",
+    "count": 1
+  }
+}

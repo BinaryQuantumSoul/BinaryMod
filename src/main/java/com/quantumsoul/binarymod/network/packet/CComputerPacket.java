@@ -3,6 +3,7 @@ package com.quantumsoul.binarymod.network.packet;
 import com.quantumsoul.binarymod.tileentity.ComputerTileEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.network.NetworkEvent;
 
@@ -41,9 +42,11 @@ public class CComputerPacket
 
             if (player.world.isBlockLoaded(packet.pos))
             {
-                ComputerTileEntity tileEntity = (ComputerTileEntity) player.world.getTileEntity(packet.pos);
-                if (tileEntity != null)
+                TileEntity te = player.world.getTileEntity(packet.pos);
+                if (te instanceof ComputerTileEntity)
                 {
+                    ComputerTileEntity tileEntity = (ComputerTileEntity) te;
+
                     if (packet.load)
                         tileEntity.load();
                     else

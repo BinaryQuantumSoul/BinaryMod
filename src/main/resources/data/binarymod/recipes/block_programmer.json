@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "binarymod:computer"
+    },
+    {
+      "item": "binarymod:code"
+    }
+  ],
+  "result": {
+    "item": "binarymod:block_programmer",
+    "count": 1
+  }
+}

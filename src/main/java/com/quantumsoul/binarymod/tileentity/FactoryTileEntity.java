@@ -8,6 +8,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -16,7 +17,7 @@ import static com.quantumsoul.binarymod.util.WorldUtils.dropStacks;
 
 public abstract class FactoryTileEntity extends MachineTileEntity implements IUpgradableMachine
 {
-    private static final int DOING_TIME = 1200;
+    private static final int DOING_TIME = 200;
 
     private final int maxLevel;
     private int level = 0;
@@ -43,7 +44,7 @@ public abstract class FactoryTileEntity extends MachineTileEntity implements IUp
             init = true;
         }
 
-        if (!done)
+        if (!world.isRemote && !done)
         {
             timer++;
 
@@ -92,13 +93,13 @@ public abstract class FactoryTileEntity extends MachineTileEntity implements IUp
     }
 
     @Override
-    public void drop(BlockPos pos)
+    public void drop(World worldIn, BlockPos pos)
     {
         if(done)
         {
             List<ItemStack> drops = getDrops(level);
             if (drops != null)
-                dropStacks(world, pos, drops);
+                dropStacks(worldIn, pos, drops);
         }
     }
 

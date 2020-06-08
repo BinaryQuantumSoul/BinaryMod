@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#B#",
+    "###"
+  ],
+  "key": {
+    "B": {
+      "item": "binarymod:byte"
+    },
+    "#": {
+      "item": "binarymod:void"
+    }
+  },
+  "result": {
+    "item": "binarymod:fly",
+    "count": 1
+  }
+}

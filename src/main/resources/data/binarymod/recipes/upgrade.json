@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "FCF",
+    "I#I",
+    "FCF"
+  ],
+  "key": {
+    "C": {
+      "item": "binarymod:file_corrupt"
+    },
+    "F": {
+      "item": "binarymod:file_safe"
+    },
+    "I": {
+      "item": "binarymod:file_infect"
+    },
+    "#": {
+      "item": "binarymod:code"
+    }
+  },
+  "result": {
+    "item": "binarymod:upgrade",
+    "count": 1
+  }
+}

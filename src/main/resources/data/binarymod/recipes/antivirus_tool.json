@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BFB",
+    "IPI",
+    "BFB"
+  ],
+  "key": {
+    "B": {
+      "item": "binarymod:byte"
+    },
+    "F": {
+      "item": "binarymod:firebrick"
+    },
+    "I": {
+      "item": "binarymod:file_infect"
+    },
+    "P": {
+      "item": "minecraft:diamond_axe"
+    }
+  },
+  "result": {
+    "item": "binarymod:antivirus_tool",
+    "count": 1
+  }
+}

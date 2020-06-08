@@ -116,7 +116,7 @@ public class ComputerScreen extends ContainerScreen<ComputerContainer>
 
     protected void notFrozenToolTip(int x, int y)
     {
-        if (minecraft.player.inventory.getItemStack().isEmpty() && hoveredSlot != null && !(hoveredSlot.getHasStack() && hoveredSlot.getStack().getItem() instanceof SDCardItem && !hoveredSlot.canTakeStack(playerInventory.player)))
+        if (minecraft.player.inventory.getItemStack().isEmpty() && hoveredSlot != null && hoveredSlot.getHasStack() && !(hoveredSlot.getStack().getItem() instanceof SDCardItem && !hoveredSlot.canTakeStack(playerInventory.player)))
             this.renderTooltip(hoveredSlot.getStack(), x, y);
     }
 
@@ -189,8 +189,8 @@ public class ComputerScreen extends ContainerScreen<ComputerContainer>
                 if (isHovering(guiLeft + 30, guiTop + 53 + 22 * i, 16, 16, (int) mouseX, (int) mouseY) && money >= currents[i].getPrice())
                     if (buyRecipe(currents[i], container.playerInv))
                     {
-                        NetworkInit.CHANNEL.sendToServer(new CBtcBuyPacket(currents[i]));
                         getMinecraft().displayGuiScreen(null);
+                        NetworkInit.CHANNEL.sendToServer(new CBtcBuyPacket(currents[i]));
                         return true;
                     }
 

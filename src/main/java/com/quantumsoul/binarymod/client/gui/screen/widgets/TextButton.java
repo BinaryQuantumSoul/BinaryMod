@@ -40,7 +40,7 @@ public class TextButton extends Button
         this.renderBg(minecraft, p1, p2);
 
         FontRenderer fontrenderer = minecraft.fontRenderer;
-        int color = isHovered() ? 0x000000 : 0x00FF00;
+        int color = isHovered() ? 0x000000 : 0x4CFF00;
         String s = getMessage();
         fontrenderer.drawString(s, this.x + (this.width - fontrenderer.getStringWidth(s)) / 2.0F, this.y + (this.height - 8) / 2.0F, color);
     }

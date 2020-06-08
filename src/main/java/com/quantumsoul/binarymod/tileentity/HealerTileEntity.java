@@ -17,7 +17,7 @@ public class HealerTileEntity extends FactoryTileEntity
     @Override
     void doAction(PlayerEntity player, int level)
     {
-        player.heal((level + 1) * 2.5F);
+        player.heal((float) (2.5F * Math.pow(2, level)));
     }
 
     @Nullable

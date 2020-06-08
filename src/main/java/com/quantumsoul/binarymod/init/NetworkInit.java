@@ -1,6 +1,7 @@
 package com.quantumsoul.binarymod.init;
 
 import com.quantumsoul.binarymod.BinaryMod;
+import com.quantumsoul.binarymod.network.packet.CBlockProgPacket;
 import com.quantumsoul.binarymod.network.packet.CBtcBuyPacket;
 import com.quantumsoul.binarymod.network.packet.SBtcResetValuePacket;
 import com.quantumsoul.binarymod.network.packet.CComputerPacket;
@@ -24,5 +25,6 @@ public class NetworkInit
         CHANNEL.messageBuilder(CComputerPacket.class, 0).encoder(CComputerPacket::serialize).decoder(CComputerPacket::deserialize).consumer(CComputerPacket::handle).add();
         CHANNEL.messageBuilder(SBtcResetValuePacket.class, 1).encoder(SBtcResetValuePacket::serialize).decoder(SBtcResetValuePacket::deserialize).consumer(SBtcResetValuePacket::handle).add();
         CHANNEL.messageBuilder(CBtcBuyPacket.class, 2).encoder(CBtcBuyPacket::serialize).decoder(CBtcBuyPacket::deserialize).consumer(CBtcBuyPacket::handle).add();
+        CHANNEL.messageBuilder(CBlockProgPacket.class, 3).encoder(CBlockProgPacket::serialize).decoder(CBlockProgPacket::deserialize).consumer(CBlockProgPacket::handle).add();
     }
 }
