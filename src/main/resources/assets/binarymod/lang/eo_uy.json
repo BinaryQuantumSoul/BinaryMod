@@ -27,6 +27,11 @@
   "block.binarymod.bitcoin_miner": "Minilo de Bitmono",
   "block.binarymod.block_programmer": "Blokprogramisto",
 
+  "block.binarymod.mystery_box": "Mistera Skatolo",
+  "block.binarymod.trojan": "Troja Ĉevalo",
+  "block.binarymod.key_logger": "Keylogger",
+  "block.binarymod.backdoor": "Malantaŭa pordo",
+
 
   "item.binarymod.red_pill" : "Ruĝa Pilolo",
   "item.binarymod.blue_pill" : "Blua Pilolo",
@@ -81,6 +86,10 @@
   "tooltip.binarymod.sd": "Stokado Uzado: %d%%",
   "tooltip.binarymod.sd_empty": "Malplena",
   "tooltip.binarymod.bitcoin": "%dB",
+
+  "tooltip.binarymod.trojan": "Altiras proksima mobojn",
+  "tooltip.binarymod.key_logger": "Doloras estaĵojn",
+  "tooltip.binarymod.backdoor": "Kaŝa irejo",
 
 
   "entity.binarymod.one": "Un",

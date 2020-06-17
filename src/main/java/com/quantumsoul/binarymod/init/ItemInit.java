@@ -16,6 +16,7 @@ public class ItemInit
 
     public static final Item.Properties BASE = new Item.Properties().group(ItemGroupInit.instance);
     public static final Item.Properties MACHINE = new Item.Properties().group(ItemGroupInit.instance).maxStackSize(1);
+    public static final Item.Properties SD = new Item.Properties().group(ItemGroupInit.instance).maxDamage(100);
     private static final Item.Properties FAKE_FOOD = new Item.Properties().food(new Food.Builder().setAlwaysEdible().hunger(0).saturation(0F).build()).maxStackSize(1).group(ItemGroupInit.instance);
     private static final Item.Properties ONION_FOOD = new Item.Properties().group(ItemGroupInit.instance).food(new Food.Builder().hunger(6).saturation(0.4F).build());
 
@@ -40,9 +41,9 @@ public class ItemInit
     public static final RegistryObject<Item> ANTIVIRUS_TOOL = ITEMS.register("antivirus_tool", () -> new AxeItem(ItemTier.DIAMOND, 5F, -3F, special()));
     //public static final RegistryObject<Item> DEBUG_TOOL = ITEMS.register("debug_tool", () -> new DebugItem(BASE));
 
-    public static final RegistryObject<Item> SD_CARD_SMALL = ITEMS.register("sd_card_small", () -> new SDCardItem(MACHINE, SDCardItem.SDSize.SMALL));
-    public static final RegistryObject<Item> SD_CARD_MEDIUM = ITEMS.register("sd_card_medium", () -> new SDCardItem(MACHINE, SDCardItem.SDSize.MEDIUM));
-    public static final RegistryObject<Item> SD_CARD_BIG = ITEMS.register("sd_card_big", () -> new SDCardItem(MACHINE, SDCardItem.SDSize.BIG));
+    public static final RegistryObject<Item> SD_CARD_SMALL = ITEMS.register("sd_card_small", () -> new SDCardItem(SD, SDCardItem.SDSize.SMALL));
+    public static final RegistryObject<Item> SD_CARD_MEDIUM = ITEMS.register("sd_card_medium", () -> new SDCardItem(SD, SDCardItem.SDSize.MEDIUM));
+    public static final RegistryObject<Item> SD_CARD_BIG = ITEMS.register("sd_card_big", () -> new SDCardItem(SD, SDCardItem.SDSize.BIG));
     //public static final RegistryObject<Item> BATTERY = ITEMS.register("battery", () -> new BatteryItem(MACHINE));
     public static final RegistryObject<Item> DARK_NET = ITEMS.register("dark_net", () -> new Item(MACHINE));
 

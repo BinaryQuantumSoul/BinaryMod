@@ -25,6 +25,7 @@ public class BinDimBiomeFeatures
     public static void addOres(Biome biome)
     {
         biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(FILLER_BINARY, BlockInit.CODE_BLOCK.get().getDefaultState(), 6)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(1, 0, 0, 128))));
+        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(FILLER_BINARY, BlockInit.MYSTERY_BOX.get().getDefaultState(), 4)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(1, 0, 0, 128))));
     }
 
     public static void addBugVirus(Biome biome)

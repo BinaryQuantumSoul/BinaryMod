@@ -1,6 +1,6 @@
 {
   "type": "binarymod:dark_web",
-  "price": 30,
-  "item": "binarymod:bit",
+  "price": 5000,
+  "item": "binarymod:key_logger",
   "isSource": true
 }

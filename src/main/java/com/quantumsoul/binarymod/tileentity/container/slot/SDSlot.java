@@ -47,6 +47,8 @@ public class SDSlot extends SlotItemHandler
                 count += (float) stack.getCount() / stack.getMaxStackSize();
         }
 
-        sdCard.setTagInfo("storage", IntNBT.valueOf((int) (count / ((SDCardItem)sdCard.getItem()).getInventorySize() * 100)));
+        int storage = (int) (count / ((SDCardItem)sdCard.getItem()).getInventorySize() * 100);
+        sdCard.setTagInfo("storage", IntNBT.valueOf(storage));
+        sdCard.setDamage(100 - storage);
     }
 }

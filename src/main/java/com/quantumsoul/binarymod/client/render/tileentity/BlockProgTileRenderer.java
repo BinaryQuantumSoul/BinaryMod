@@ -3,6 +3,7 @@ package com.quantumsoul.binarymod.client.render.tileentity;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import com.quantumsoul.binarymod.block.MachineBlock;
+import com.quantumsoul.binarymod.init.BlockInit;
 import com.quantumsoul.binarymod.tileentity.BlockProgTileEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -12,6 +13,8 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class BlockProgTileRenderer extends TileEntityRenderer<BlockProgTileEntity>
@@ -67,9 +70,17 @@ public class BlockProgTileRenderer extends TileEntityRenderer<BlockProgTileEntit
         {
             matrixStackIn.push();
             matrixStackIn.translate(0.5D, 0.625D, 0.5D);
-            time = time > 360F ? 0F : time + 2.5F;
+            time = time > 360F ? 0F : time + 1F;
             matrixStackIn.rotate(Vector3f.YP.rotationDegrees(time));
-            Minecraft.getInstance().getItemRenderer().renderItem(tileEntityIn.getResult(), ItemCameraTransforms.TransformType.GROUND, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn);
+
+            ItemStack stack = tileEntityIn.getResult();
+            if(stack.getItem() instanceof BlockItem && ((BlockItem) stack.getItem()).getBlock() != BlockInit.BACKDOOR.get())
+            {
+                matrixStackIn.scale(1.5F, 1.5F, 1.5F);
+                matrixStackIn.translate(0F, -0.1F, 0F);
+            }
+            Minecraft.getInstance().getItemRenderer().renderItem(stack, ItemCameraTransforms.TransformType.GROUND, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn);
+
             matrixStackIn.pop();
         }
     }

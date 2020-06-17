@@ -1,13 +1,22 @@
 package com.quantumsoul.binarymod.init;
 
+import com.quantumsoul.binarymod.BinaryMod;
+import com.quantumsoul.binarymod.client.render.block.BackdoorLoader;
 import com.quantumsoul.binarymod.client.render.entity.*;
 import com.quantumsoul.binarymod.client.render.tileentity.BitcoinTileRenderer;
 import com.quantumsoul.binarymod.client.render.tileentity.BlockProgTileRenderer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class RenderInit
 {
+    public static void initBlockRenders()
+    {
+        ModelLoaderRegistry.registerLoader(new ResourceLocation(BinaryMod.MOD_ID + ":backdoor_loader"), new BackdoorLoader());
+    }
+
     public static void initEntityRenders()
     {
         RenderingRegistry.registerEntityRenderingHandler(EntityInit.ONE.get(), OneRenderer::new);

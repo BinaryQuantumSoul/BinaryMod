@@ -35,18 +35,21 @@ public class SDCardItem extends Item
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        IntNBT nbt = (IntNBT) stack.getOrCreateTag().get("storage");
-        if(nbt != null)
+        if (flagIn.isAdvanced())
         {
-            int storage = nbt.getInt();
-            if(storage != 0)
+            IntNBT nbt = (IntNBT) stack.getOrCreateTag().get("storage");
+            if (nbt != null)
             {
-                tooltip.add(new StringTextComponent(TextFormatting.GRAY + I18n.format("tooltip.binarymod.sd", storage)));
-                return;
+                int storage = nbt.getInt();
+                if (storage != 0)
+                {
+                    tooltip.add(new StringTextComponent(TextFormatting.GRAY + I18n.format("tooltip.binarymod.sd", storage)));
+                    return;
+                }
             }
-        }
 
-        tooltip.add(new StringTextComponent(TextFormatting.GRAY + I18n.format("tooltip.binarymod.sd_empty")));
+            tooltip.add(new StringTextComponent(TextFormatting.GRAY + I18n.format("tooltip.binarymod.sd_empty")));
+        }
     }
 
     public int getInventorySize()

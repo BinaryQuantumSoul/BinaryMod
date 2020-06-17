@@ -39,17 +39,7 @@ public class FirewallBlock extends Block
         if(player.isCrouching() && !state.get(USED))
         {
             worldIn.setBlockState(pos, state.with(USED, true), 2);
-
-            int n = 1 + worldIn.rand.nextInt(3);
-            for(int i = 0 ; i <= n; i++)
-            {
-                double x = i % 2 - 0.5D;
-                double z = (double)i / 2 - 0.5D;
-
-                WormEntity worm = EntityInit.WORM.get().create(worldIn);
-                worm.setLocationAndAngles(player.getPosX() + x, player.getPosY() + 0.5D, player.getPosZ() + z, worldIn.rand.nextFloat() * 360.0F, 0.0F);
-                worldIn.addEntity(worm);
-            }
+            player.addItemStackToInventory(new ItemStack(ItemInit.FIREBRICK.get()));
         }
     }
 

@@ -29,6 +29,7 @@ public class BlockInit
     private static final Block.Properties ALIVE = Block.Properties.create(Material.WOOD).hardnessAndResistance(4F).sound(SoundType.NETHER_WART);
     private static final Block.Properties DEAD = Block.Properties.create(Material.WOOD).hardnessAndResistance(1.5F).sound(SoundType.NETHER_WART);
     private static final Block.Properties MACHINE = Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F).sound(SoundType.METAL).lightValue(7);
+    private static final Block.Properties NOT_SOLID = Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F).notSolid();
 
     public static final RegistryObject<Block> BINARY_ORE = BLOCKS.register("binary_ore", () -> new BinaryOreBlock(BASE));
     public static final RegistryObject<Block> BINARY_BLOCK = BLOCKS.register("binary_block", () -> new Block(BASE));
@@ -57,6 +58,11 @@ public class BlockInit
     public static final RegistryObject<Block> REPAIRER = MACHINES.register("repairer", () -> FactoryBlock.create(MACHINE, RepairerTileEntity::new, 4));
     public static final RegistryObject<Block> BITCOIN_MINER = MACHINES.register("bitcoin_miner", () -> UpgradableBlock.create(MACHINE, BitcoinTileEntity::new, 4));
     public static final RegistryObject<Block> BLOCK_PROGRAMMER = MACHINES.register("block_programmer", () -> new HalfMachineBlock(MACHINE, BlockProgTileEntity::new));
+
+    public static final RegistryObject<Block> MYSTERY_BOX = BLOCKS.register("mystery_box", () -> new MysteryBlock(BASE));
+    public static final RegistryObject<Block> TROJAN = BLOCKS.register("trojan", () -> new TrojanBlock(BASE));
+    public static final RegistryObject<Block> KEY_LOGGER = BLOCKS.register("key_logger", () -> new KeyLoggerBlock(BASE));
+    public static final RegistryObject<Block> BACKDOOR = BLOCKS.register("backdoor", () -> new BackdoorBlock(NOT_SOLID));
 
     @SubscribeEvent
     public static void registerItems(final RegistryEvent.Register<Item> event)

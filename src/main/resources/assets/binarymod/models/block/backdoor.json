@@ -1,0 +1,6 @@
+{
+  "loader": "binarymod:backdoor_loader",
+  "texture": {
+    "particle": "binarymod:block/bug_block"
+  }
+}

@@ -44,6 +44,7 @@ public class BinaryMod
 
     private void clientSetup(final FMLClientSetupEvent event)
     {
+        RenderInit.initBlockRenders();
         RenderInit.initEntityRenders();
         RenderInit.initTileEntityRenders();
         ScreenInit.initScreens();

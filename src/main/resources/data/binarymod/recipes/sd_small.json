@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "binarymod:sd",
   "pattern": [
     "B#B",
     "SCS",

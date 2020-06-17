@@ -1,6 +1,6 @@
 {
   "type": "binarymod:dark_web",
-  "price": 80,
-  "item": "binarymod:byte",
+  "price": 5000,
+  "item": "binarymod:trojan",
   "isSource": true
 }

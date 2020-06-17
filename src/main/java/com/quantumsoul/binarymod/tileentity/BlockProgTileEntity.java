@@ -19,7 +19,7 @@ import static com.quantumsoul.binarymod.item.SourceItem.getSourceItem;
 
 public class BlockProgTileEntity extends ProgrammerTileEntity implements ITickableTileEntity
 {
-    private static final int DOING_TIME = 600; //todo 400
+    private static final int DOING_TIME = 400;
 
     private int timer = 0;
     private boolean doing = false;
