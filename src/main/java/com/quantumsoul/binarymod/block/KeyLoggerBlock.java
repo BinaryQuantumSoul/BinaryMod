@@ -1,6 +1,7 @@
 package com.quantumsoul.binarymod.block;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -9,6 +10,8 @@ import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
@@ -39,6 +42,6 @@ public class KeyLoggerBlock extends Block
     {
         super.addInformation(stack, worldIn, tooltip, flagIn);
 
-        tooltip.add(new TranslationTextComponent("tooltip.binarymod.key_logger"));
+        tooltip.add(new StringTextComponent(TextFormatting.GRAY + I18n.format("tooltip.binarymod.key_logger")));
     }
 }
