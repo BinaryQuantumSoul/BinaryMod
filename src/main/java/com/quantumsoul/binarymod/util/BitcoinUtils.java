@@ -8,7 +8,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BitcoinUtils
 {
@@ -26,6 +28,7 @@ public class BitcoinUtils
     }
 
     private static final Item[] btc_items = {ItemInit.BITCOIN.get(), ItemInit.K_BTC.get(), ItemInit.M_BTC.get(), ItemInit.G_BTC.get(), ItemInit.T_BTC.get(), ItemInit.P_BTC.get()};
+    public static final List<ItemStack> BTC_STACKS = Arrays.stream(BitcoinUtils.btc_items).map(ItemStack::new).collect(Collectors.toList());
 
     public static ItemStack getBitcoinStack(double value)
     {
@@ -33,7 +36,7 @@ public class BitcoinUtils
         {
             double remainder = value / Math.pow(8, i);
             if ((int) remainder > 0)
-                return new ItemStack(btc_items[i]);
+                return BTC_STACKS.get(i);
         }
 
         return new ItemStack(ItemInit.BITCOIN.get());

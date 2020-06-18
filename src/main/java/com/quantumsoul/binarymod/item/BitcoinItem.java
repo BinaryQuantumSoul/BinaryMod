@@ -46,8 +46,11 @@ public class BitcoinItem extends Item
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        int val = getValue();
-        if (val != 1)
-            tooltip.add(new StringTextComponent(TextFormatting.GOLD + I18n.format("tooltip.binarymod.bitcoin", val)));
+        if (flagIn.isAdvanced())
+        {
+            int val = getValue();
+            if (val != 1)
+                tooltip.add(new StringTextComponent(TextFormatting.GOLD + I18n.format("tooltip.binarymod.bitcoin", val)));
+        }
     }
 }

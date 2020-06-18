@@ -25,12 +25,14 @@ public class DarkWebRecipe implements IRecipe<IInventory>
     private final ResourceLocation id;
     private final int price;
     private final ItemStack result;
+    private final boolean isSource;
 
-    public DarkWebRecipe(ResourceLocation idIn, int priceIn, ItemStack resultIn)
+    public DarkWebRecipe(ResourceLocation idIn, int priceIn, ItemStack resultIn, boolean isSourceIn)
     {
         id = idIn;
         price = priceIn;
         result = resultIn;
+        isSource = isSourceIn;
     }
 
     @Override
@@ -60,6 +62,11 @@ public class DarkWebRecipe implements IRecipe<IInventory>
     public int getPrice()
     {
         return price;
+    }
+
+    public boolean isSource()
+    {
+        return isSource;
     }
 
     @Override
@@ -106,7 +113,7 @@ public class DarkWebRecipe implements IRecipe<IInventory>
             else
                 stack = new ItemStack(item);
 
-            return new DarkWebRecipe(recipeId, price, stack);
+            return new DarkWebRecipe(recipeId, price, stack, isSource);
         }
 
         @Nullable
@@ -115,8 +122,9 @@ public class DarkWebRecipe implements IRecipe<IInventory>
         {
             int price = buffer.readVarInt();
             ItemStack result = buffer.readItemStack();
+            boolean isSource = buffer.readBoolean();
 
-            return new DarkWebRecipe(recipeId, price, result);
+            return new DarkWebRecipe(recipeId, price, result, isSource);
         }
 
         @Override
@@ -124,6 +132,7 @@ public class DarkWebRecipe implements IRecipe<IInventory>
         {
             buffer.writeVarInt(recipe.price);
             buffer.writeItemStack(recipe.result);
+            buffer.writeBoolean(recipe.isSource);
         }
     }
 }

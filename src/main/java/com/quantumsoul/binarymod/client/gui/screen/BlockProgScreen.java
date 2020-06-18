@@ -17,7 +17,6 @@ import java.util.Arrays;
 public class BlockProgScreen extends ContainerScreen<BlockProgContainer>
 {
     private static final ResourceLocation TEXTURE = new ResourceLocation(BinaryMod.MOD_ID, "textures/gui/container/block_programmer.png");
-    private static final String[] text = {"loading", "loading 25%", "loading 50%", "loading 75%", ""};
 
     public BlockProgScreen(BlockProgContainer screenContainer, PlayerInventory inv, ITextComponent titleIn)
     {
@@ -66,14 +65,7 @@ public class BlockProgScreen extends ContainerScreen<BlockProgContainer>
         font.drawString(playerInventory.getName().getFormattedText(), 45, ySize - 90, 0xFCC900);
 
         buttons.get(0).visible = !container.tileEntity.isDoing();
-        if(container.tileEntity.isDoing())
-        {
-            font.drawString(String.format("> Loading %d%%", (int)(container.tileEntity.getProgress() * 100F)), 51, 25, 0x4CFF00);
-            /*
-            int index = (int) (container.tileEntity.getProgress() * text.length - 1);
-            for (int i = 0; i < 3; i++)
-                if (index - i >= 0)
-                    font.drawString("> " + text[index - i], 51, 25 + 13 * i, 0x4CFF00);*/
-        }
+        if (container.tileEntity.isDoing())
+            font.drawString(String.format("> Loading %d%%", (int) (container.tileEntity.getProgress() * 100F)), 51, 25, 0x4CFF00);
     }
 }

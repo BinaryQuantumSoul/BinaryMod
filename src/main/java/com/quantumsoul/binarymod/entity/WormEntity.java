@@ -61,7 +61,6 @@ public class WormEntity extends MonsterEntity
     @Override
     public void remove(boolean keepData)
     {
-        LogManager.getLogger().debug(world.isRemote);
         if (!world.isRemote && this.getDuplicate() && this.getHealth() <= 0.0F && !this.removed)
         {
             double x = rand.nextBoolean() ? 0.5D : -0.5D;
