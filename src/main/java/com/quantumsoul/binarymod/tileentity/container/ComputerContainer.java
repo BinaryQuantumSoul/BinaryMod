@@ -9,6 +9,7 @@ import com.quantumsoul.binarymod.tileentity.container.slot.SDSlot;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -57,7 +58,7 @@ public class ComputerContainer extends ProgrammerContainer
 
             case DARK_NET:
                 addSlot(new FrozenComputerSlot(contents, 0, 92, 18));
-                IItemHandler handler = new ItemStackHandler(3);
+                ItemStackHandler handler = new ItemStackHandler(3);
                 for(int i = 0; i < 3; i++)
                     addSlot(new FrozenComputerSlot(handler, i, 30, 53 + 22 * i));
                 break;
@@ -69,6 +70,7 @@ public class ComputerContainer extends ProgrammerContainer
         }
     }
 
+    //======================================== SD ========================================
     private void bindSDInventory()
     {
         ItemStack stack = getStack();
@@ -138,6 +140,7 @@ public class ComputerContainer extends ProgrammerContainer
         return ((SDCardItem)getStack().getItem()).getInventorySize();
     }
 
+    //======================================== TILE ENTITY ========================================
     public ComputerTileEntity.ComputerState getState()
     {
         return tileEntity.getState();
@@ -150,9 +153,11 @@ public class ComputerContainer extends ProgrammerContainer
 
     public void load(boolean load)
     {
-        if (load)
-            tileEntity.load();
-        else
-            tileEntity.unload();
+        tileEntity.load(load);
+    }
+
+    public void openGui(ServerPlayerEntity player)
+    {
+        tileEntity.openGui(player);
     }
 }

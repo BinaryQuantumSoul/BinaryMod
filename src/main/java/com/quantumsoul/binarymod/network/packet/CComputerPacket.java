@@ -1,11 +1,13 @@
 package com.quantumsoul.binarymod.network.packet;
 
+import com.quantumsoul.binarymod.init.NetworkInit;
 import com.quantumsoul.binarymod.tileentity.ComputerTileEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.network.NetworkEvent;
+import net.minecraftforge.fml.network.PacketDistributor;
 
 import java.util.function.Supplier;
 
@@ -28,10 +30,7 @@ public class CComputerPacket
 
     public static CComputerPacket deserialize(PacketBuffer buf)
     {
-        BlockPos pos = buf.readBlockPos();
-        boolean load = buf.readBoolean();
-
-        return new CComputerPacket(pos, load);
+        return new CComputerPacket(buf.readBlockPos(), buf.readBoolean());
     }
 
     public static void handle(CComputerPacket packet, Supplier<NetworkEvent.Context> context)
@@ -47,12 +46,11 @@ public class CComputerPacket
                 {
                     ComputerTileEntity tileEntity = (ComputerTileEntity) te;
 
-                    if (packet.load)
-                        tileEntity.load();
-                    else
-                        tileEntity.unload();
+                    player.closeContainer();
+                    tileEntity.load(packet.load);
+                    //tileEntity.openGui(player);
 
-                    tileEntity.openGui(player);
+                    NetworkInit.CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new SComputerPacket(packet.pos, packet.load));
                 }
             }
         });

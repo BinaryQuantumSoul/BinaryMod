@@ -65,14 +65,15 @@ public class MachineBlock extends Block
                 IUpgradableMachine upgradableMachine = (IUpgradableMachine) tileEntity;
 
                 ItemStack holdItem = player.getHeldItem(hand);
-                if (holdItem.getItem() == ItemInit.UPGRADE.get() && upgradableMachine.upgrade())
+                if (holdItem.getItem() == ItemInit.UPGRADE.get())
                 {
-                    if (!player.abilities.isCreativeMode)
-                        holdItem.shrink(1);
+                    if (upgradableMachine.upgrade())
+                    {
+                        if (!player.abilities.isCreativeMode)
+                            holdItem.shrink(1);
 
-                    upgradableMachine.execute(player);
-
-                    return ActionResultType.CONSUME;
+                        return ActionResultType.CONSUME;
+                    }
                 }
                 else if (!upgradableMachine.execute(player))
                     return ActionResultType.FAIL;

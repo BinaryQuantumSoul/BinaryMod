@@ -54,13 +54,12 @@ public class ComputerTileEntity extends ProgrammerTileEntity
     public void setState(ComputerState state)
     {
         this.state = state;
+        this.markDirty();
     }
 
     protected ComputerState checkState(ItemStack stack)
     {
-        if(stack.isEmpty())
-            return ComputerState.BASE;
-        else if (stack.getItem() instanceof SDCardItem)
+        if (stack.getItem() instanceof SDCardItem)
             return ComputerState.SD;
 //        else if (stack.getItem() == ItemInit.BATTERY.get()) todo
 //            return ComputerState.BATTERY;
@@ -70,17 +69,12 @@ public class ComputerTileEntity extends ProgrammerTileEntity
             return ComputerState.BASE;
     }
 
-    public void load()
+    public void load(boolean load)
     {
-        ItemStack stack = contents.getStackInSlot(0);
-
-        ComputerState state = checkState(stack);
-        setState(state);
-    }
-
-    public void unload()
-    {
-        setState(ComputerState.BASE);
+        if (load)
+            setState(checkState(contents.getStackInSlot(0)));
+        else
+            setState(ComputerState.BASE);
     }
 
     //=================================================== DATA ===================================================

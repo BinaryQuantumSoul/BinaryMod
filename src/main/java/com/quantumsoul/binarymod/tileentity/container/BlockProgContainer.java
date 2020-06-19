@@ -8,10 +8,8 @@ import com.quantumsoul.binarymod.tileentity.container.slot.ResultSlot;
 import com.quantumsoul.binarymod.tileentity.container.slot.UniqueSlot;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.items.IItemHandler;
 
 import static com.quantumsoul.binarymod.item.SourceItem.getSourceItem;
@@ -27,7 +25,7 @@ public class BlockProgContainer extends ProgrammerContainer
 
     public BlockProgContainer(int id, PlayerInventory playerInv, BlockProgTileEntity tile)
     {
-        super(ContainerInit.BLOCK_PROGRAMMER.get(), id, 3);
+        super(ContainerInit.BLOCK_PROGRAMMER.get(), id, BlockProgTileEntity.SLOT_NUMBER);
         tileEntity = tile;
 
         IItemHandler tileInv = tile.getContents();
@@ -45,6 +43,6 @@ public class BlockProgContainer extends ProgrammerContainer
         ItemStack result = getSourceItem(getSlot(0).getStack());
         ItemStack resultSlot = getSlot(2).getStack();
 
-        return getSlot(1).getHasStack() && result != null && (resultSlot.isEmpty() || (resultSlot.getItem() == result.getItem() && resultSlot.getCount() < resultSlot.getMaxStackSize())) ;
+        return getSlot(1).getHasStack() && result != null && (resultSlot.isEmpty() || (resultSlot.getItem() == result.getItem() && resultSlot.getCount() < resultSlot.getMaxStackSize()));
     }
 }

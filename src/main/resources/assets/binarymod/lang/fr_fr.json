@@ -113,5 +113,7 @@
   "gui.binarymod.block_programmer": "Programmeur de Bloc",
 
   "machine.binarymod.block_programmer_0": "Aucun processus",
-  "machine.binarymod.block_programmer_1": "Programmation.."
+  "machine.binarymod.block_programmer_1": "Programmation..",
+
+  "info.binarymod.upgrade": "Shift-cliquer sur une machine pour l'améliorer"
 }

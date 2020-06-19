@@ -2,14 +2,16 @@ package com.quantumsoul.binarymod.recipe.jei;
 
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.init.BlockInit;
+import com.quantumsoul.binarymod.init.ItemInit;
 import com.quantumsoul.binarymod.init.RecipeInit;
 import com.quantumsoul.binarymod.recipe.DarkWebRecipe;
+import com.quantumsoul.binarymod.tileentity.container.BlockProgContainer;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
-import mezz.jei.api.registration.IRecipeCatalystRegistration;
-import mezz.jei.api.registration.IRecipeCategoryRegistration;
-import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.registration.*;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -32,6 +34,12 @@ public class BinaryModJEIPlugin implements IModPlugin
     public ResourceLocation getPluginUid()
     {
         return new ResourceLocation(BinaryMod.MOD_ID, "plugin");
+    }
+
+    @Override
+    public void registerItemSubtypes(ISubtypeRegistration registration)
+    {
+        registration.useNbtForSubtypes(ItemInit.SOURCE.get());
     }
 
     @Override
@@ -70,12 +78,21 @@ public class BinaryModJEIPlugin implements IModPlugin
         {
             e.printStackTrace();
         }
+
+        registration.addIngredientInfo(new ItemStack(ItemInit.UPGRADE.get()), VanillaTypes.ITEM, I18n.format("info.binarymod.upgrade"));
+    }
+
+    @Override
+    public void registerRecipeTransferHandlers(@Nonnull IRecipeTransferRegistration registration)
+    {
+        registration.addRecipeTransferHandler(BlockProgContainer.class, BlockProgCategory.UID, 0, 2, 3, 36);
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration)
     {
         registration.addRecipeCatalyst(new ItemStack(BlockInit.COMPUTER.get()), DarkWebCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ItemInit.DARK_NET.get()), DarkWebCategory.UID);
         registration.addRecipeCatalyst(new ItemStack(BlockInit.BLOCK_PROGRAMMER.get()), BlockProgCategory.UID);
 
         registration.addRecipeCatalyst(new ItemStack(BlockInit.FEEDER.get()), FeederCategory.UID);

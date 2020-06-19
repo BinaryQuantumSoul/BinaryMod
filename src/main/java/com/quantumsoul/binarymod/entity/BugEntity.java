@@ -192,11 +192,8 @@ public class BugEntity extends MonsterEntity
         @Override
         public void tick()
         {
-            if (Math.abs(entity.getPosX() % 1) != 0.5D || entity.getPosY() % 1 != 0.0D || Math.abs(entity.getPosZ() % 1) != 0.5D || entity.rotationYaw != 0.0F || entity.rotationPitch != 0F)
-            {
-                entity.moveToBlockPosAndAngles(entity.getPosition(), 0.0F, 0.0F);
-                entity.setMimic(entity.world.getBlockState(entity.getPosition().down()));
-            }
+            entity.moveToBlockPosAndAngles(entity.getPosition(), 0.0F, 0.0F);
+            entity.setMimic(entity.world.getBlockState(entity.getPosition().down()));
             entity.setRenderYawOffset(0.0F);
         }
     }

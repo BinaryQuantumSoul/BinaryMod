@@ -20,6 +20,7 @@ import static com.quantumsoul.binarymod.item.SourceItem.getSourceItem;
 public class BlockProgTileEntity extends ProgrammerTileEntity implements ITickableTileEntity
 {
     private static final int DOING_TIME = 400;
+    public static final int SLOT_NUMBER = 3;
 
     private int timer = 0;
     private boolean doing = false;
@@ -27,7 +28,7 @@ public class BlockProgTileEntity extends ProgrammerTileEntity implements ITickab
 
     public BlockProgTileEntity()
     {
-        super(TileEntityInit.BLOCK_PROGRAMMER.get(), 3);
+        super(TileEntityInit.BLOCK_PROGRAMMER.get(), SLOT_NUMBER);
     }
 
     @Nonnull

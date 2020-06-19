@@ -53,6 +53,8 @@ public class BitcoinTileEntity extends MachineTileEntity implements IUpgradableM
             level++;
             world.setBlockState(pos, getBlockState().with(LEVEL, level), 3);
             markDirty();
+
+            return true;
         }
 
         return false;
