@@ -8,7 +8,6 @@ import mezz.jei.api.ingredients.IIngredients;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -16,7 +15,7 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepairerCategory extends FactoryCategory
+public class RepairerCategory extends UpgradableCategory
 {
     public static final ResourceLocation UID = new ResourceLocation(BinaryMod.MOD_ID, "repairer");
 

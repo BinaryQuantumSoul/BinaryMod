@@ -112,8 +112,12 @@
   "gui.binarymod.blockprog_program": "Programi",
   "gui.binarymod.block_programmer": "Blokprogramisto",
 
+  "machine.binarymod.click": "Klaki por",
+  "machine.binarymod.feeder": "rekolti",
+  "machine.binarymod.healer": "kuraci",
+  "machine.binarymod.repairer": "ripari",
   "machine.binarymod.block_programmer_0": "Ne operaciata",
   "machine.binarymod.block_programmer_1": "Programata..",
 
-  "info.binarymod.upgrade": "Kaŭrklaki maŝinan por plibonigi ĝin"
+  "info.binarymod.upgrade": "Klaki maŝinan por plibonigi ĝin"
 }

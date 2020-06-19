@@ -1,3 +1,6 @@
 {
-  "parent": "binarymod:block/repairer_3"
+  "parent": "binarymod:block/machine",
+  "textures": {
+    "front": "binarymod:block/repairer_item"
+  }
 }

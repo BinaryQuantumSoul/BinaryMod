@@ -1,11 +1,9 @@
 package com.quantumsoul.binarymod.tileentity;
 
 import com.quantumsoul.binarymod.block.FactoryBlock;
-import com.quantumsoul.binarymod.block.UpgradableBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.state.IntegerProperty;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -15,34 +13,23 @@ import java.util.List;
 
 import static com.quantumsoul.binarymod.util.WorldUtils.dropStacks;
 
-public abstract class FactoryTileEntity extends MachineTileEntity implements IUpgradableMachine
+public abstract class FactoryTileEntity extends UpgradableTileEntity
 {
-    private static final int DOING_TIME = 200;
-
-    private final int maxLevel;
-    private int level = 0;
+    private static final int DOING_TIME = 600;
 
     private int timer = 0;
     private boolean done = false;
 
-    private IntegerProperty LEVEL;
-    private boolean init = false;
-
     public FactoryTileEntity(TileEntityType<?> tileEntityTypeIn, int levels)
     {
-        super(tileEntityTypeIn);
-        this.maxLevel = levels - 1;
+        super(tileEntityTypeIn, levels);
     }
 
     //=================================================== PROCESS ===================================================
     @Override
     public void tick()
     {
-        if(!init)
-        {
-            LEVEL = ((UpgradableBlock)world.getBlockState(pos).getBlock()).LEVEL;
-            init = true;
-        }
+        super.tick();
 
         if (!world.isRemote && !done)
         {
@@ -58,38 +45,17 @@ public abstract class FactoryTileEntity extends MachineTileEntity implements IUp
     }
 
     @Override
-    public boolean upgrade()
-    {
-        if (level < maxLevel)
-        {
-            level++;
-            world.setBlockState(pos, getBlockState().with(LEVEL, level), 3);
-            reset();
-
-            return true;
-        }
-
-        return false;
-    }
-
-    @Override
     public boolean execute(PlayerEntity player)
     {
         if (done)
         {
             doAction(player, level);
-            reset();
+            upgradeResets();
 
             return true;
         }
 
         return false;
-    }
-
-    @Override
-    public void setLevel(int lev)
-    {
-        level = lev;
     }
 
     @Override
@@ -103,12 +69,17 @@ public abstract class FactoryTileEntity extends MachineTileEntity implements IUp
         }
     }
 
-    private void reset()
+    @Override
+    protected void upgradeResets()
     {
         timer = 0;
         done = false;
         world.setBlockState(pos, getBlockState().with(FactoryBlock.DONE, done), 3);
-        this.markDirty();
+    }
+
+    public boolean isDone()
+    {
+        return done;
     }
 
     abstract void doAction(PlayerEntity player, int level);
@@ -122,7 +93,6 @@ public abstract class FactoryTileEntity extends MachineTileEntity implements IUp
     {
         super.write(compound);
 
-        compound.putInt("level", level);
         compound.putInt("timer", timer);
         compound.putBoolean("done", done);
 
@@ -134,7 +104,6 @@ public abstract class FactoryTileEntity extends MachineTileEntity implements IUp
     {
         super.read(compound);
 
-        level = compound.getInt("level");
         timer = compound.getInt("timer");
         done = compound.getBoolean("done");
     }

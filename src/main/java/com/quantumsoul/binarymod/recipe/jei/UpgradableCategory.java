@@ -18,12 +18,12 @@ import org.apache.commons.lang3.tuple.Pair;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public abstract class FactoryCategory implements IRecipeCategory<Byte>
+public abstract class UpgradableCategory implements IRecipeCategory<Byte>
 {
     private final IDrawableStatic background;
     private final List<Pair<String, ItemStack>> content;
 
-    public FactoryCategory(IGuiHelper guiHelper)
+    public UpgradableCategory(IGuiHelper guiHelper)
     {
         content = getContents();
         background = guiHelper.createDrawable(new ResourceLocation(BinaryMod.MOD_ID, "textures/gui/jei.png"), 0, 128, 175, 20 * content.size());

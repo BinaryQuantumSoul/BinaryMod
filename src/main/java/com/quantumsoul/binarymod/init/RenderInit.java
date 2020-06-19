@@ -5,6 +5,7 @@ import com.quantumsoul.binarymod.client.render.block.BackdoorLoader;
 import com.quantumsoul.binarymod.client.render.entity.*;
 import com.quantumsoul.binarymod.client.render.tileentity.BitcoinTileRenderer;
 import com.quantumsoul.binarymod.client.render.tileentity.BlockProgTileRenderer;
+import com.quantumsoul.binarymod.client.render.tileentity.FactoryTileRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -31,6 +32,10 @@ public class RenderInit
 
     public static void initTileEntityRenders()
     {
+        ClientRegistry.bindTileEntityRenderer(TileEntityInit.FEEDER.get(), r -> new FactoryTileRenderer(r, "feeder"));
+        ClientRegistry.bindTileEntityRenderer(TileEntityInit.HEALER.get(), r -> new FactoryTileRenderer(r, "healer"));
+        ClientRegistry.bindTileEntityRenderer(TileEntityInit.REPAIRER.get(), r -> new FactoryTileRenderer(r, "repairer"));
+
         ClientRegistry.bindTileEntityRenderer(TileEntityInit.BITCOIN_MINER.get(), BitcoinTileRenderer::new);
         ClientRegistry.bindTileEntityRenderer(TileEntityInit.BLOCK_PROGRAMMER.get(), BlockProgTileRenderer::new);
     }

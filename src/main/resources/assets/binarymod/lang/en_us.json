@@ -112,8 +112,12 @@
   "gui.binarymod.blockprog_program": "Program",
   "gui.binarymod.block_programmer": "Block Programmer",
 
+  "machine.binarymod.click": "Click to",
+  "machine.binarymod.feeder": "collect",
+  "machine.binarymod.healer": "heal",
+  "machine.binarymod.repairer": "repair",
   "machine.binarymod.block_programmer_0": "No process",
   "machine.binarymod.block_programmer_1": "Programming..",
 
-  "info.binarymod.upgrade": "Shift click on a machine to upgrade it"
+  "info.binarymod.upgrade": "Click on a machine to upgrade it"
 }

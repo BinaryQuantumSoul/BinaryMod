@@ -1,6 +1,5 @@
 package com.quantumsoul.binarymod.tileentity;
 
-import com.quantumsoul.binarymod.block.UpgradableBlock;
 import com.quantumsoul.binarymod.init.NetworkInit;
 import com.quantumsoul.binarymod.init.TileEntityInit;
 import com.quantumsoul.binarymod.network.packet.SBtcResetValuePacket;
@@ -8,7 +7,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.state.IntegerProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.PacketDistributor;
@@ -16,54 +14,24 @@ import net.minecraftforge.fml.network.PacketDistributor;
 import static com.quantumsoul.binarymod.util.BitcoinUtils.getBitcoinStacks;
 import static com.quantumsoul.binarymod.util.WorldUtils.dropStacks;
 
-public class BitcoinTileEntity extends MachineTileEntity implements IUpgradableMachine
+public class BitcoinTileEntity extends UpgradableTileEntity
 {
     private static final double MINUTE = 1200D;
 
-    private int level = 0;
     private double value = 0.0D;
-
-    private IntegerProperty LEVEL;
-    private boolean init = false;
 
     public BitcoinTileEntity()
     {
-        super(TileEntityInit.BITCOIN_MINER.get());
+        super(TileEntityInit.BITCOIN_MINER.get(), 4);
     }
 
     //=================================================== PROCESS ===================================================
     @Override
     public void tick()
     {
-        if (!init)
-        {
-            LEVEL = ((UpgradableBlock) world.getBlockState(pos).getBlock()).LEVEL;
-            init = true;
-        }
+        super.tick();
 
         value += 0.5D * Math.pow(7, level) / MINUTE;
-    }
-
-    @Override
-    public boolean upgrade()
-    {
-        int maxLevel = 3;
-        if (level < maxLevel)
-        {
-            level++;
-            world.setBlockState(pos, getBlockState().with(LEVEL, level), 3);
-            markDirty();
-
-            return true;
-        }
-
-        return false;
-    }
-
-    @Override
-    public void setLevel(int level)
-    {
-        this.level = level;
     }
 
     @Override
@@ -106,7 +74,6 @@ public class BitcoinTileEntity extends MachineTileEntity implements IUpgradableM
     {
         super.write(compound);
 
-        compound.putInt("level", level);
         compound.putDouble("value", value);
 
         return compound;
@@ -117,7 +84,6 @@ public class BitcoinTileEntity extends MachineTileEntity implements IUpgradableM
     {
         super.read(compound);
 
-        level = compound.getInt("level");
         value = compound.getDouble("value");
     }
 }
