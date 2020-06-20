@@ -12,9 +12,9 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '0.0.0.0'
+version = '1.0'
 group = 'com.quantumsoul.binarymod'
-archivesBaseName = "BinaryDimension-${mc_version}-${version}"
+archivesBaseName = "BinaryDimension-${mc_version}"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
