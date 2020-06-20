@@ -44,14 +44,14 @@ public class VirusEntity extends SlimeEntity
     protected void setSlimeSize(int size, boolean resetHealth)
     {
         super.setSlimeSize(size, resetHealth);
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(size * size * 3F);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.4F + 0.1F * (float) size);
+        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(size * size * 1.5F);
+        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.4F + 0.2F * (float) size);
     }
 
     @Override
     protected float func_225512_er_() //damages
     {
-        return super.func_225512_er_() + 2.0F;
+        return super.func_225512_er_() + 1.5F;
     }
 
     @Override
