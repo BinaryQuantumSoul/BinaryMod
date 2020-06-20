@@ -2,7 +2,9 @@ package com.quantumsoul.binarymod.tileentity;
 
 import com.quantumsoul.binarymod.init.TileEntityInit;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ToolItem;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -25,7 +27,7 @@ public class RepairerTileEntity extends FactoryTileEntity
                 break;
 
             ItemStack stack = player.inventory.getStackInSlot(i);
-            if(stack.isDamaged())
+            if((stack.getItem() instanceof ToolItem || stack.getItem() instanceof ArmorItem) && stack.isDamaged())
             {
                 int damage = stack.getDamage();
                 int repair = Math.min(damage, amount);

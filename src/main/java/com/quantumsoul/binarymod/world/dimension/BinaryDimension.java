@@ -87,6 +87,12 @@ public class BinaryDimension extends Dimension
     }
 
     @Override
+    public boolean isNether()
+    {
+        return false;
+    }
+
+    @Override
     public float calculateCelestialAngle(long worldTime, float partialTicks)
     {
         return 0.5F;

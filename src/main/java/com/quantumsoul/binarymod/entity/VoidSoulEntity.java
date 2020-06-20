@@ -2,6 +2,7 @@ package com.quantumsoul.binarymod.entity;
 
 import com.quantumsoul.binarymod.init.BlockInit;
 import com.quantumsoul.binarymod.init.EntityInit;
+import com.quantumsoul.binarymod.init.SoundInit;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.SpawnReason;
@@ -12,6 +13,8 @@ import net.minecraft.entity.passive.IFlyingAnimal;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.pathfinding.FlyingPathNavigator;
 import net.minecraft.pathfinding.PathNavigator;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.IWorld;
@@ -83,4 +86,27 @@ public class VoidSoulEntity extends MonsterEntity implements IFlyingAnimal
     }
 
     //=================================================== SOUND ===================================================
+    @Override
+    protected SoundEvent getAmbientSound()
+    {
+        return SoundInit.VOID_SOUL_AMBIENT.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+    {
+        return SoundInit.VOID_SOUL_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound()
+    {
+        return SoundInit.VOID_SOUL_DEATH.get();
+    }
+
+    @Override
+    protected float getSoundVolume()
+    {
+        return 0.7F;
+    }
 }

@@ -1,6 +1,7 @@
 package com.quantumsoul.binarymod.entity;
 
 import com.quantumsoul.binarymod.init.EntityInit;
+import com.quantumsoul.binarymod.init.SoundInit;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.goal.*;
@@ -9,7 +10,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTables;
 import org.apache.logging.log4j.LogManager;
@@ -109,5 +112,30 @@ public class WormEntity extends MonsterEntity
     public void setSecond()
     {
         this.getDataManager().set(DUPLICATE, false);
+    }
+
+    //=================================================== SOUND ===================================================
+    @Override
+    protected SoundEvent getAmbientSound()
+    {
+        return SoundInit.WORM_AMBIENT.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+    {
+        return SoundInit.WORM_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound()
+    {
+        return SoundInit.WORM_DEATH.get();
+    }
+
+    @Override
+    protected float getSoundVolume()
+    {
+        return 0.5F;
     }
 }

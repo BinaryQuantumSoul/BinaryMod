@@ -2,6 +2,7 @@ package com.quantumsoul.binarymod.entity;
 
 import com.quantumsoul.binarymod.init.EntityInit;
 import com.quantumsoul.binarymod.init.ItemInit;
+import com.quantumsoul.binarymod.init.SoundInit;
 import com.quantumsoul.binarymod.util.WorldUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
@@ -116,29 +117,25 @@ public class OneZeroEntity extends AnimalEntity
     @Override
     protected SoundEvent getAmbientSound()
     {
-        return null;
+        return SoundInit.ONE_ZERO_AMBIENT.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSourceIn)
     {
-        return SoundEvents.ENTITY_GENERIC_HURT;
+        return SoundInit.ONE_ZERO_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound()
     {
-        return SoundEvents.ENTITY_GENERIC_DEATH;
+        return SoundInit.ONE_ZERO_DEATH.get();
     }
-
-    @Override
-    protected void playStepSound(BlockPos pos, BlockState blockIn)
-    {}
 
     @Override
     protected float getSoundVolume()
     {
-        return 0.4F;
+        return this instanceof ZeroEntity ? 0.8F : 1F;
     }
 
     //=================================================== GOALS ===================================================

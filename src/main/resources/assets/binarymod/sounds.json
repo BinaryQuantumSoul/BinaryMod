@@ -1,0 +1,55 @@
+{
+  "entity.one_zero.ambient": {
+    "category": "entity",
+    "subtitle": "entity.one_zero.ambient",
+    "sounds": ["binarymod:entity/one_zero_ambient"]
+  },
+  "entity.one_zero.hurt": {
+    "category": "entity",
+    "subtitle": "entity.one_zero.hurt",
+    "sounds": ["binarymod:entity/one_zero_hurt"]
+  },
+  "entity.one_zero.death": {
+    "category": "entity",
+    "subtitle": "entity.one_zero.death",
+    "sounds": ["binarymod:entity/one_zero_death"]
+  },
+
+  "entity.virus.squish": {
+    "category": "entity",
+    "subtitle": "entity.virus.squish",
+    "sounds": ["binarymod:entity/virus_squish", "binarymod:entity/virus_squish1", "binarymod:entity/virus_squish2"]
+  },
+
+  "entity.void_soul.ambient": {
+    "category": "entity",
+    "subtitle": "entity.void_soul.ambient",
+    "sounds": ["binarymod:entity/void_soul_ambient"]
+  },
+  "entity.void_soul.hurt": {
+    "category": "entity",
+    "subtitle": "entity.void_soul.hurt",
+    "sounds": ["binarymod:entity/void_soul_hurt"]
+  },
+  "entity.void_soul.death": {
+    "category": "entity",
+    "subtitle": "entity.void_soul.death",
+    "sounds": ["binarymod:entity/void_soul_death"]
+  },
+
+  "entity.worm.ambient": {
+    "category": "entity",
+    "subtitle": "entity.worm.ambient",
+    "sounds": ["binarymod:entity/worm_ambient", "binarymod:entity/worm_ambient1"]
+  },
+  "entity.worm.hurt": {
+    "category": "entity",
+    "subtitle": "entity.worm.hurt",
+    "sounds": ["binarymod:entity/worm_hurt"]
+  },
+  "entity.worm.death": {
+    "category": "entity",
+    "subtitle": "entity.worm.death",
+    "sounds": ["binarymod:entity/worm_death"]
+  }
+}
