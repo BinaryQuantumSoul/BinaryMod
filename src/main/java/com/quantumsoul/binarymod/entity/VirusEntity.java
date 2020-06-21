@@ -28,21 +28,9 @@ public class VirusEntity extends SlimeEntity
 
     //=================================================== AI ===================================================
     @Override
-    public void registerAttributes()
-    {
-        super.registerAttributes();
-    }
-
-    @Override
     public boolean onLivingFall(float distance, float damageMultiplier)
     {
         return onBinDimLivingFall(world, this.getPosition(), () -> super.onLivingFall(distance, damageMultiplier));
-    }
-
-    @Override
-    protected void setSlimeSize(int size, boolean resetHealth)
-    {
-        super.setSlimeSize(size, resetHealth);
     }
 
     @Override
