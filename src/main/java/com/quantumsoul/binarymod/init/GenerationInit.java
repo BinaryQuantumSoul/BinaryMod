@@ -48,8 +48,8 @@ public class GenerationInit
             creatures.add(new Biome.SpawnListEntry(EntityInit.ZERO.get(), 75, 3, 5));
 
             List<Biome.SpawnListEntry> monsters = b.getSpawns(EntityClassification.MONSTER);
-            monsters.add(new Biome.SpawnListEntry(EntityInit.BUG.get(), 40, 3, 4));
-            monsters.add(new Biome.SpawnListEntry(EntityInit.VIRUS.get(), 25, 1, 2));
+            monsters.add(new Biome.SpawnListEntry(EntityInit.BUG.get(), 25, 2, 3));
+            monsters.add(new Biome.SpawnListEntry(EntityInit.VIRUS.get(), 13, 1, 1));
             monsters.add(new Biome.SpawnListEntry(EntityInit.WORM.get(), 5, 1, 2));
         });
 

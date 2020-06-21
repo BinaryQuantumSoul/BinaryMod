@@ -40,21 +40,21 @@ public class BugEntity extends MonsterEntity
     protected void registerGoals()
     {
         this.goalSelector.addGoal(0, new SwimGoal(this));
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1D, true));
-        this.goalSelector.addGoal(2, new GroupGoal(this, 0.8D));
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 0.8D, true));
+        this.goalSelector.addGoal(2, new GroupGoal(this, 0.6D));
         this.goalSelector.addGoal(3, new HideGoal(this));
 
         this.targetSelector.addGoal(0, new HurtByTargetGoal(this, PlayerEntity.class));
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, false));
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
     }
 
     @Override
     protected void registerAttributes()
     {
         super.registerAttributes();
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(12.0D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.4D);
-        this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5D);
+        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(9.0D);
+        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.2D);
+        this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2D);
     }
 
     @Override
