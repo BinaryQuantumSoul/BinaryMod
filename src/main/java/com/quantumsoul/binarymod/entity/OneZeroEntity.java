@@ -4,7 +4,6 @@ import com.quantumsoul.binarymod.init.EntityInit;
 import com.quantumsoul.binarymod.init.ItemInit;
 import com.quantumsoul.binarymod.init.SoundInit;
 import com.quantumsoul.binarymod.util.WorldUtils;
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.passive.AnimalEntity;
@@ -14,12 +13,12 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.Field;
@@ -139,26 +138,14 @@ public class OneZeroEntity extends AnimalEntity
     }
 
     //=================================================== GOALS ===================================================
-    protected class OneZeroParentGoal extends FollowParentGoal
+    protected static class OneZeroParentGoal extends FollowParentGoal
     {
-        private Field childAnimal;
-        private Field parentAnimal;
+        private static final Field childAnimal = ObfuscationReflectionHelper.findField(FollowParentGoal.class, "field_75348_a");
+        private static final Field parentAnimal = ObfuscationReflectionHelper.findField(FollowParentGoal.class, "field_75346_b");
 
         public OneZeroParentGoal(AnimalEntity animal, double speed)
         {
             super(animal, speed);
-
-            try
-            {
-                childAnimal = FollowParentGoal.class.getDeclaredField("childAnimal");
-                childAnimal.setAccessible(true);
-
-                parentAnimal = FollowParentGoal.class.getDeclaredField("parentAnimal");
-                parentAnimal.setAccessible(true);
-            } catch (NoSuchFieldException e)
-            {
-                e.printStackTrace();
-            }
         }
 
         @Override

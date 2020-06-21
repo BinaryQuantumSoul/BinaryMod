@@ -1,5 +1,5 @@
 {
-  "type": "binarymod:sd",
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "B#B",
     "SCS",
@@ -13,6 +13,7 @@
       "item": "binarymod:file_safe"
     },
     "C": {
+      "type": "binarymod:sd",
       "item": "binarymod:sd_card_small"
     },
     "#": {
@@ -20,7 +21,11 @@
     }
   },
   "result": {
+    "type": "minecraft:item_nbt",
     "item": "binarymod:sd_card_medium",
-    "count": 1
+    "count": 1,
+    "nbt": {
+      "Damage": 100
+    }
   }
 }

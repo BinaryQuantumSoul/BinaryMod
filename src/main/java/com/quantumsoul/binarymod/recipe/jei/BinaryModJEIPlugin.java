@@ -18,6 +18,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import javax.annotation.Nonnull;
 import java.lang.reflect.Method;
@@ -29,6 +30,8 @@ import java.util.stream.Collectors;
 @JeiPlugin
 public class BinaryModJEIPlugin implements IModPlugin
 {
+    private static final Method getRecipes = ObfuscationReflectionHelper.findMethod(RecipeManager.class, "func_215366_a", IRecipeType.class);
+
     @Nonnull
     @Override
     public ResourceLocation getPluginUid()
@@ -66,8 +69,6 @@ public class BinaryModJEIPlugin implements IModPlugin
 
         try
         {
-            Method getRecipes = RecipeManager.class.getDeclaredMethod("getRecipes", IRecipeType.class);
-            getRecipes.setAccessible(true);
             @SuppressWarnings({"unchecked", "ConstantConditions"})
             Collection<IRecipe<IInventory>> darkWebRecipes = ((Map<ResourceLocation, IRecipe<IInventory>>)getRecipes.invoke(Minecraft.getInstance().world.getRecipeManager(), RecipeInit.DARK_WEB)).values();
 

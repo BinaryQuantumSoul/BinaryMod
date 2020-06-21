@@ -37,6 +37,7 @@ public class BinaryMod
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        RecipeInit.initIngredients();
         NetworkInit.initPackets();
         DeferredWorkQueue.runLater(GenerationInit::initOres);
         DeferredWorkQueue.runLater(GenerationInit::initSpawns);

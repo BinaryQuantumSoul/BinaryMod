@@ -54,7 +54,7 @@ public class TrojanBlock extends Block
     @Override
     public int tickRate(IWorldReader worldIn)
     {
-        return 1;
+        return 5;
     }
 
     @Override

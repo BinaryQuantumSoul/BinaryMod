@@ -12,7 +12,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.0'
+version = 'beta-1.0'
 group = 'com.quantumsoul.binarymod'
 archivesBaseName = "BinaryDimension-${mc_version}"
 
