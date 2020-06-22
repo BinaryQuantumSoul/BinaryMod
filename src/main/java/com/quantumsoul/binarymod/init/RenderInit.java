@@ -28,6 +28,8 @@ public class RenderInit
 
         RenderingRegistry.registerEntityRenderingHandler(EntityInit.VOID_SOUL.get(), VoidSoulRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityInit.WORM.get(), WormRenderer::new);
+
+        RenderingRegistry.registerEntityRenderingHandler(EntityInit.BULLET.get(), BulletRenderer::new);
     }
 
     public static void initTileEntityRenders()

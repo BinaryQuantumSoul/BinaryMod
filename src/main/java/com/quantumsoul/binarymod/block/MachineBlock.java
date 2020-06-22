@@ -1,9 +1,7 @@
 package com.quantumsoul.binarymod.block;
 
 import com.quantumsoul.binarymod.init.ItemInit;
-import com.quantumsoul.binarymod.tileentity.IProgrammerMachine;
-import com.quantumsoul.binarymod.tileentity.IUpgradableMachine;
-import com.quantumsoul.binarymod.tileentity.ProgrammerTileEntity;
+import com.quantumsoul.binarymod.tileentity.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
@@ -62,21 +60,38 @@ public class MachineBlock extends Block
 
             if (tileEntity instanceof IUpgradableMachine)
             {
-                IUpgradableMachine upgradableMachine = (IUpgradableMachine) tileEntity;
-
                 ItemStack holdItem = player.getHeldItem(hand);
                 if (holdItem.getItem() == ItemInit.UPGRADE.get())
                 {
-                    if (upgradableMachine.upgrade())
+                    if (((IUpgradableMachine) tileEntity).upgrade())
                     {
                         if (!player.abilities.isCreativeMode)
                             holdItem.shrink(1);
 
                         return ActionResultType.CONSUME;
                     }
-                }
-                else if (!upgradableMachine.execute(player))
+
                     return ActionResultType.FAIL;
+                }
+            }
+
+            if (tileEntity instanceof IExecutableMachine)
+            {
+                if (!((IExecutableMachine) tileEntity).execute(player))
+                    return ActionResultType.FAIL;
+            }
+            else if (tileEntity instanceof IOnOffMachine)
+            {
+                if (tileEntity instanceof ShooterTileEntity)
+                {
+                    ShooterTileEntity shooterTileEntity = (ShooterTileEntity) tileEntity;
+                    if (player.isCrouching())
+                        shooterTileEntity.list(player);
+                    else if (shooterTileEntity.canUse(player))
+                        shooterTileEntity.onOff();
+                }
+                else
+                    ((IOnOffMachine) tileEntity).onOff();
             }
             else if (tileEntity instanceof IProgrammerMachine)
                 ((IProgrammerMachine) tileEntity).openGui((ServerPlayerEntity) player);
@@ -93,8 +108,8 @@ public class MachineBlock extends Block
             if (!world.isRemote)
             {
                 final TileEntity tileEntity = world.getTileEntity(pos);
-                if(tileEntity instanceof IUpgradableMachine)
-                    ((IUpgradableMachine) tileEntity).drop(world, pos);
+                if(tileEntity instanceof IExecutableMachine)
+                    ((IExecutableMachine) tileEntity).drop(world, pos);
                 else if (tileEntity instanceof IProgrammerMachine)
                     ((IProgrammerMachine) tileEntity).dropAllContents(world, pos);
             }

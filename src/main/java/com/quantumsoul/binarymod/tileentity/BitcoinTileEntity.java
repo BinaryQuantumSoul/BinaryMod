@@ -14,7 +14,7 @@ import net.minecraftforge.fml.network.PacketDistributor;
 import static com.quantumsoul.binarymod.util.BitcoinUtils.getBitcoinStacks;
 import static com.quantumsoul.binarymod.util.WorldUtils.dropStacks;
 
-public class BitcoinTileEntity extends UpgradableTileEntity
+public class BitcoinTileEntity extends UpgradableTileEntity implements IExecutableMachine
 {
     private static final double MINUTE = 1200D;
 

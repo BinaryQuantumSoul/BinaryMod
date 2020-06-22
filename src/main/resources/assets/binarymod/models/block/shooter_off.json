@@ -1,0 +1,6 @@
+{
+  "parent": "binarymod:block/shooter",
+  "textures": {
+    "0": "binarymod:block/shooter_off"
+  }
+}

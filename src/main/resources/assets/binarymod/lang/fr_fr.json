@@ -24,6 +24,7 @@
   "block.binarymod.feeder": "Nourisseur",
   "block.binarymod.healer": "Soigneur",
   "block.binarymod.repairer": "Réparateur",
+  "block.binarymod.shooter": "Tireur",
   "block.binarymod.bitcoin_miner": "Mineur de Bitcoin",
   "block.binarymod.block_programmer": "Programmeur de Bloc",
 
@@ -98,6 +99,7 @@
   "entity.binarymod.virus" : "Virus",
   "entity.binarymod.void_soul" : "Âme Vide",
   "entity.binarymod.worm" : "Ver",
+  "entity.binarymod.bullet": "Tireur",
 
   "nameTag.binarymod.white_rabbit" : "Le Lapin Blanc",
 

@@ -8,17 +8,17 @@ import net.minecraft.tileentity.TileEntity;
 
 import java.util.function.Supplier;
 
-public class FactoryBlock extends UpgradableBlock
+public class BoolBlock extends UpgradableBlock
 {
     public static final BooleanProperty DONE = BooleanProperty.create("done");
 
-    public static FactoryBlock create(Properties builder, Supplier<TileEntity> tile, int levels)
+    public static BoolBlock create(Properties builder, Supplier<TileEntity> tile, int levels)
     {
         CONSTLEVELS = levels;
-        return new FactoryBlock(builder, tile);
+        return new BoolBlock(builder, tile);
     }
 
-    protected FactoryBlock(Properties builder, Supplier<TileEntity> tile)
+    protected BoolBlock(Properties builder, Supplier<TileEntity> tile)
     {
         super(builder, tile);
         setDefaultState(getDefaultState().with(DONE, false));

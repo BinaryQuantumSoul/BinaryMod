@@ -1,6 +1,6 @@
 package com.quantumsoul.binarymod.tileentity;
 
-import com.quantumsoul.binarymod.block.FactoryBlock;
+import com.quantumsoul.binarymod.block.BoolBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -13,7 +13,7 @@ import java.util.List;
 
 import static com.quantumsoul.binarymod.util.WorldUtils.dropStacks;
 
-public abstract class FactoryTileEntity extends UpgradableTileEntity
+public abstract class FactoryTileEntity extends UpgradableTileEntity implements IExecutableMachine
 {
     private static final int DOING_TIME = 600;
 
@@ -38,7 +38,7 @@ public abstract class FactoryTileEntity extends UpgradableTileEntity
             if (timer >= DOING_TIME)
             {
                 done = true;
-                world.setBlockState(pos, getBlockState().with(FactoryBlock.DONE, done), 3);
+                world.setBlockState(pos, getBlockState().with(BoolBlock.DONE, done), 2);
                 this.markDirty();
             }
         }
@@ -74,7 +74,7 @@ public abstract class FactoryTileEntity extends UpgradableTileEntity
     {
         timer = 0;
         done = false;
-        world.setBlockState(pos, getBlockState().with(FactoryBlock.DONE, done), 3);
+        world.setBlockState(pos, getBlockState().with(BoolBlock.DONE, done), 2);
     }
 
     public boolean isDone()

@@ -24,6 +24,7 @@
   "block.binarymod.feeder": "Feeder",
   "block.binarymod.healer": "Healer",
   "block.binarymod.repairer": "Repairer",
+  "block.binarymod.shooter": "Shooter",
   "block.binarymod.bitcoin_miner": "Bitcoin Miner",
   "block.binarymod.block_programmer": "Block Programmer",
 
@@ -98,6 +99,7 @@
   "entity.binarymod.virus" : "Virus",
   "entity.binarymod.void_soul" : "Void Soul",
   "entity.binarymod.worm" : "Worm",
+  "entity.binarymod.bullet": "Shooter",
 
   "nameTag.binarymod.white_rabbit" : "The White Rabbit",
 

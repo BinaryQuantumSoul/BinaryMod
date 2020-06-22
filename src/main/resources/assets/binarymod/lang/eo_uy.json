@@ -24,6 +24,7 @@
   "block.binarymod.feeder": "Nutrilo",
   "block.binarymod.healer": "Kuracilo",
   "block.binarymod.repairer": "Riparilo",
+  "block.binarymod.shooter": "Pafilo",
   "block.binarymod.bitcoin_miner": "Minilo de Bitmono",
   "block.binarymod.block_programmer": "Blokprogramisto",
 
@@ -98,6 +99,7 @@
   "entity.binarymod.virus" : "Viruso",
   "entity.binarymod.void_soul" : "Malplena Animo",
   "entity.binarymod.worm" : "Vermo",
+  "entity.binarymod.bullet": "Pafilo",
 
   "nameTag.binarymod.white_rabbit" : "La Blanka Kuniklo",
 

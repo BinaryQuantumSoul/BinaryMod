@@ -54,9 +54,10 @@ public class BlockInit
     public static final RegistryObject<Block> VIRUS_DEAD_BLOCK = BLOCKS.register("virus_dead_block", () -> new Block(DEAD));
 
     public static final RegistryObject<Block> COMPUTER = MACHINES.register("computer", () -> new MachineBlock(MACHINE, ComputerTileEntity::new));
-    public static final RegistryObject<Block> FEEDER = MACHINES.register("feeder", () -> FactoryBlock.create(MACHINE, FeederTileEntity::new, 2));
-    public static final RegistryObject<Block> HEALER = MACHINES.register("healer", () -> FactoryBlock.create(MACHINE, HealerTileEntity::new, 4));
-    public static final RegistryObject<Block> REPAIRER = MACHINES.register("repairer", () -> FactoryBlock.create(MACHINE, RepairerTileEntity::new, 4));
+    public static final RegistryObject<Block> FEEDER = MACHINES.register("feeder", () -> BoolBlock.create(MACHINE, FeederTileEntity::new, 2));
+    public static final RegistryObject<Block> HEALER = MACHINES.register("healer", () -> BoolBlock.create(MACHINE, HealerTileEntity::new, 4));
+    public static final RegistryObject<Block> REPAIRER = MACHINES.register("repairer", () -> BoolBlock.create(MACHINE, RepairerTileEntity::new, 4));
+    public static final RegistryObject<Block> SHOOTER = MACHINES.register("shooter", () -> ShooterBlock.create(MACHINE, ShooterTileEntity::new, 4));
     public static final RegistryObject<Block> BITCOIN_MINER = MACHINES.register("bitcoin_miner", () -> UpgradableBlock.create(MACHINE, BitcoinTileEntity::new, 4));
     public static final RegistryObject<Block> BLOCK_PROGRAMMER = MACHINES.register("block_programmer", () -> new HalfMachineBlock(MACHINE, BlockProgTileEntity::new));
 

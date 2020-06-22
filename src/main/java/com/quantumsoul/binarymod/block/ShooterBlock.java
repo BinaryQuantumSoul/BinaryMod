@@ -10,11 +10,17 @@ import net.minecraft.world.IBlockReader;
 
 import java.util.function.Supplier;
 
-public class HalfMachineBlock extends MachineBlock
+public class ShooterBlock extends BoolBlock
 {
-    VoxelShape shape = Block.makeCuboidShape(0D, 0D, 0D, 16D, 7D, 16D);
+    VoxelShape shape = Block.makeCuboidShape(6D, 0D, 6D, 10D, 14D, 10D);
 
-    public HalfMachineBlock(Properties builder, Supplier<TileEntity> tile)
+    public static ShooterBlock create(Properties builder, Supplier<TileEntity> tile, int levels)
+    {
+        CONSTLEVELS = levels;
+        return new ShooterBlock(builder, tile);
+    }
+
+    protected ShooterBlock(Properties builder, Supplier<TileEntity> tile)
     {
         super(builder, tile);
     }

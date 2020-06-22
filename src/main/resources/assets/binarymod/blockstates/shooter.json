@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "done=false": { "model": "binarymod:block/shooter_off" },
+    "done=true": { "model": "binarymod:block/shooter_on" }
+  }
+}

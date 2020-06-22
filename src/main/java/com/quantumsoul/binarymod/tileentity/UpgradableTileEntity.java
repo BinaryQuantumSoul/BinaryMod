@@ -5,7 +5,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.tileentity.TileEntityType;
 
-public abstract class UpgradableTileEntity extends MachineTileEntity implements IUpgradableMachine
+public class UpgradableTileEntity extends MachineTileEntity implements IUpgradableMachine
 {
     public final int maxLevel;
     public int level = 0;
@@ -42,7 +42,7 @@ public abstract class UpgradableTileEntity extends MachineTileEntity implements 
         if (level < maxLevel)
         {
             level++;
-            world.setBlockState(pos, getBlockState().with(LEVEL, level), 3);
+            world.setBlockState(pos, getBlockState().with(LEVEL, level), 2);
             upgradeResets();
             markDirty();
 

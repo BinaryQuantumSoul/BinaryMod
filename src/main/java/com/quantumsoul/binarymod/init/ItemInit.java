@@ -14,15 +14,15 @@ public class ItemInit
 {
     public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, BinaryMod.MOD_ID);
 
-    public static final Item.Properties BASE = new Item.Properties().group(ItemGroupInit.instance);
-    public static final Item.Properties MACHINE = new Item.Properties().group(ItemGroupInit.instance).maxStackSize(1);
-    public static final Item.Properties SD = new Item.Properties().group(ItemGroupInit.instance).maxDamage(100);
-    private static final Item.Properties FAKE_FOOD = new Item.Properties().food(new Food.Builder().setAlwaysEdible().hunger(0).saturation(0F).build()).maxStackSize(1).group(ItemGroupInit.instance);
-    private static final Item.Properties ONION_FOOD = new Item.Properties().group(ItemGroupInit.instance).food(new Food.Builder().hunger(6).saturation(0.4F).build());
+    public static final Item.Properties BASE = new Item.Properties().group(ItemGroupInit.BINDIM_TAB);
+    public static final Item.Properties MACHINE = new Item.Properties().group(ItemGroupInit.BINDIM_TAB).maxStackSize(1);
+    public static final Item.Properties SD = new Item.Properties().group(ItemGroupInit.BINDIM_TAB).maxDamage(100);
+    private static final Item.Properties FAKE_FOOD = new Item.Properties().food(new Food.Builder().setAlwaysEdible().hunger(0).saturation(0F).build()).maxStackSize(1).group(ItemGroupInit.BINDIM_TAB);
+    private static final Item.Properties ONION_FOOD = new Item.Properties().group(ItemGroupInit.BINDIM_TAB).food(new Food.Builder().hunger(6).saturation(0.4F).build());
 
     private static Item.Properties special()
     {
-        return new Item.Properties().group(ItemGroupInit.instance);
+        return new Item.Properties().group(ItemGroupInit.BINDIM_TAB);
     }
 
     public static final RegistryObject<Item> RED_PILL = ITEMS.register("red_pill", () -> new PillItem(PillItem.Pill.RED, FAKE_FOOD));
