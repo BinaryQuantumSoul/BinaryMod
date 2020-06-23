@@ -58,7 +58,7 @@ public class RepairerCategory extends UpgradableCategory
         List<Pair<String, ItemStack>> contents = new ArrayList<>();
 
         for (int i = 0; i < 4; i++)
-            contents.add(new ImmutablePair<>(String.format("%d damages", (int) (64D * Math.pow(4, i))), null));
+            contents.add(new ImmutablePair<>(I18n.format("jei.binarymod.repairer", (int) (64D * Math.pow(4, i))), null));
 
         return contents;
     }

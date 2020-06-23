@@ -117,9 +117,15 @@
   "machine.binarymod.click": "Cliquer pour",
   "machine.binarymod.feeder": "récolter",
   "machine.binarymod.healer": "régénérer",
+  "machine.binarymod.shooter_0": "%s enlevé",
+  "machine.binarymod.shooter_1": "%s ajouté",
   "machine.binarymod.repairer": "réparer",
-  "machine.binarymod.block_programmer_0": "Aucun processus",
+  "machine.binarymod.block_programmer_0": "En attente",
   "machine.binarymod.block_programmer_1": "Programmation..",
 
-  "info.binarymod.upgrade": "Cliquer sur une machine pour l'améliorer"
+  "info.binarymod.upgrade": "Cliquer sur une machine pour l'améliorer",
+  "jei.binarymod.healer": "%d coeurs",
+  "jei.binarymod.shooter": "toutes les %.2fs",
+  "jei.binarymod.repairer": "%d dégâts",
+  "jei.binarymod.bitcoin": "%.1f btc/min"
 }

@@ -12,6 +12,7 @@ import net.minecraft.nbt.ListNBT;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import org.apache.logging.log4j.LogManager;
 
 import java.io.DataOutput;
@@ -91,7 +92,7 @@ public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMac
         if (!removed)
             players.add(id);
 
-        player.sendMessage(new StringTextComponent(String.format(removed ? "removed %s": "added %s", id.toString())));
+        player.sendMessage(new TranslationTextComponent(removed ? "machine.binarymod.shooter_0": "machine.binarymod.shooter_1", player.getDisplayName()));
     }
 
     public boolean canUse(PlayerEntity player)

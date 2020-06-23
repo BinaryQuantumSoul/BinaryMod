@@ -63,7 +63,7 @@ public class BitcoinCategory extends UpgradableCategory
         List<Pair<String, ItemStack>> contents = new ArrayList<>();
 
         for (int i = 0; i < 4; i++)
-            contents.add(new ImmutablePair<>(String.format("%.1f btc/min", 0.5D * Math.pow(7, i)), new ItemStack(ItemInit.BITCOIN.get())));
+            contents.add(new ImmutablePair<>(I18n.format("jei.binarymod.bitcoin", 0.5D * Math.pow(7, i)), new ItemStack(ItemInit.BITCOIN.get())));
 
         return contents;
     }

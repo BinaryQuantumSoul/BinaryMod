@@ -54,6 +54,7 @@ public class BinaryModJEIPlugin implements IModPlugin
 
                 new FeederCategory(registration.getJeiHelpers().getGuiHelper()),
                 new HealerCategory(registration.getJeiHelpers().getGuiHelper()),
+                new ShooterCategory(registration.getJeiHelpers().getGuiHelper()),
                 new RepairerCategory(registration.getJeiHelpers().getGuiHelper()),
                 new BitcoinCategory(registration.getJeiHelpers().getGuiHelper())
         );
@@ -64,6 +65,7 @@ public class BinaryModJEIPlugin implements IModPlugin
     {
         registration.addRecipes(Collections.singleton((byte) 0), FeederCategory.UID);
         registration.addRecipes(Collections.singleton((byte) 0), HealerCategory.UID);
+        registration.addRecipes(Collections.singleton((byte) 0), ShooterCategory.UID);
         registration.addRecipes(Collections.singleton((byte) 0), RepairerCategory.UID);
         registration.addRecipes(Collections.singleton((byte) 0), BitcoinCategory.UID);
 
@@ -98,6 +100,7 @@ public class BinaryModJEIPlugin implements IModPlugin
 
         registration.addRecipeCatalyst(new ItemStack(BlockInit.FEEDER.get()), FeederCategory.UID);
         registration.addRecipeCatalyst(new ItemStack(BlockInit.HEALER.get()), HealerCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(BlockInit.SHOOTER.get()), ShooterCategory.UID);
         registration.addRecipeCatalyst(new ItemStack(BlockInit.REPAIRER.get()), RepairerCategory.UID);
         registration.addRecipeCatalyst(new ItemStack(BlockInit.BITCOIN_MINER.get()), BitcoinCategory.UID);
     }

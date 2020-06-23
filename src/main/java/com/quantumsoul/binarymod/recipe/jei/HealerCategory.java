@@ -58,7 +58,7 @@ public class HealerCategory extends UpgradableCategory
         List<Pair<String, ItemStack>> contents = new ArrayList<>();
 
         for (int i = 0; i < 4; i++)
-            contents.add(new ImmutablePair<>(String.format("%d hearts", (int) (1.25D * Math.pow(2, i))), null));
+            contents.add(new ImmutablePair<>(I18n.format("jei.binarymod.healer", (int) (1.25D * Math.pow(2, i))), null));
 
         return contents;
     }
