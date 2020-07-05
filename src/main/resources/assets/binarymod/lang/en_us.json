@@ -72,6 +72,8 @@
   "item.binarymod.btc_t": "TBitcoin",
   "item.binarymod.btc_p": "PBitcoin",
 
+  "item.binarymod.flyer": "Flyer",
+
   "itemGroup.binarymod.tab" : "Binary Dimension",
 
   "tooltip.binarymod.pill_red0" : "You take the red pill",
@@ -100,6 +102,7 @@
   "entity.binarymod.void_soul" : "Void Soul",
   "entity.binarymod.worm" : "Worm",
   "entity.binarymod.bullet": "Shooter",
+  "entity.binarymod.flyer": "Flyer",
 
   "nameTag.binarymod.white_rabbit" : "The White Rabbit",
 

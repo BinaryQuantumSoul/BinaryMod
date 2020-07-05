@@ -85,7 +85,7 @@ public class MachineBlock extends Block
                 if (tileEntity instanceof ShooterTileEntity)
                 {
                     ShooterTileEntity shooterTileEntity = (ShooterTileEntity) tileEntity;
-                    if (player.isCrouching())
+                    if (shooterTileEntity.isOff() && player.isCrouching())
                         shooterTileEntity.list(player);
                     else if (shooterTileEntity.canUse(player))
                         shooterTileEntity.onOff();

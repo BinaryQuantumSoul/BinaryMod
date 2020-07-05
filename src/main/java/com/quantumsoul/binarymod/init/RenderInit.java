@@ -30,6 +30,7 @@ public class RenderInit
         RenderingRegistry.registerEntityRenderingHandler(EntityInit.WORM.get(), WormRenderer::new);
 
         RenderingRegistry.registerEntityRenderingHandler(EntityInit.BULLET.get(), BulletRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityInit.FLYER.get(), FlyerRenderer::new);
     }
 
     public static void initTileEntityRenders()

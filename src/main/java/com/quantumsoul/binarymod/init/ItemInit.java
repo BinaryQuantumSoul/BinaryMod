@@ -15,7 +15,7 @@ public class ItemInit
     public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, BinaryMod.MOD_ID);
 
     public static final Item.Properties BASE = new Item.Properties().group(ItemGroupInit.BINDIM_TAB);
-    public static final Item.Properties MACHINE = new Item.Properties().group(ItemGroupInit.BINDIM_TAB).maxStackSize(1);
+    public static final Item.Properties NO_STACK = new Item.Properties().group(ItemGroupInit.BINDIM_TAB).maxStackSize(1);
     public static final Item.Properties SD = new Item.Properties().group(ItemGroupInit.BINDIM_TAB).maxDamage(100);
     private static final Item.Properties FAKE_FOOD = new Item.Properties().food(new Food.Builder().setAlwaysEdible().hunger(0).saturation(0F).build()).maxStackSize(1).group(ItemGroupInit.BINDIM_TAB);
     private static final Item.Properties ONION_FOOD = new Item.Properties().group(ItemGroupInit.BINDIM_TAB).food(new Food.Builder().hunger(6).saturation(0.4F).build());
@@ -45,7 +45,7 @@ public class ItemInit
     public static final RegistryObject<Item> SD_CARD_MEDIUM = ITEMS.register("sd_card_medium", () -> new SDCardItem(SD, SDCardItem.SDSize.MEDIUM));
     public static final RegistryObject<Item> SD_CARD_BIG = ITEMS.register("sd_card_big", () -> new SDCardItem(SD, SDCardItem.SDSize.BIG));
     //public static final RegistryObject<Item> BATTERY = ITEMS.register("battery", () -> new BatteryItem(MACHINE));
-    public static final RegistryObject<Item> DARK_NET = ITEMS.register("dark_net", () -> new Item(MACHINE));
+    public static final RegistryObject<Item> DARK_NET = ITEMS.register("dark_net", () -> new Item(NO_STACK));
 
     public static final RegistryObject<Item> FOOD = ITEMS.register("food", () -> new Item(BASE));
     public static final RegistryObject<Item> LIFE = ITEMS.register("life", () -> new Item(BASE));
@@ -55,7 +55,7 @@ public class ItemInit
 
     public static final RegistryObject<Item> UPGRADE = ITEMS.register("upgrade", () -> new Item(BASE));
     public static final RegistryObject<Item> PLUGIN = ITEMS.register("plugin", () -> new Item(BASE));
-    public static final RegistryObject<Item> SOURCE = ITEMS.register("source", () -> new SourceItem(MACHINE));
+    public static final RegistryObject<Item> SOURCE = ITEMS.register("source", () -> new SourceItem(NO_STACK));
 
     public static final RegistryObject<Item> ONION = ITEMS.register("onion", () -> new Item(ONION_FOOD));
     public static final RegistryObject<Item> BITCOIN = ITEMS.register("bitcoin", () -> new BitcoinItem(BASE, BitcoinItem.Bitcoin.UNIT));
@@ -64,4 +64,6 @@ public class ItemInit
     public static final RegistryObject<Item> G_BTC = ITEMS.register("btc_g", () -> new BitcoinItem(BASE, BitcoinItem.Bitcoin.GIGA));
     public static final RegistryObject<Item> T_BTC = ITEMS.register("btc_t", () -> new BitcoinItem(BASE, BitcoinItem.Bitcoin.TERA));
     public static final RegistryObject<Item> P_BTC = ITEMS.register("btc_p", () -> new BitcoinItem(BASE, BitcoinItem.Bitcoin.PETA));
+
+    public static final RegistryObject<Item> FLYER = ITEMS.register("flyer", () -> new EntityItem(NO_STACK, EntityInit.FLYER::get));
 }

@@ -72,6 +72,8 @@
   "item.binarymod.btc_t": "TBitmono",
   "item.binarymod.btc_p": "PBitmono",
 
+  "item.binarymod.flyer": "Flugilo",
+
   "itemGroup.binarymod.tab" : "Binary Dimension",
 
   "tooltip.binarymod.pill_red0" : "Prenu la ruĝan pilolon",
@@ -100,6 +102,7 @@
   "entity.binarymod.void_soul" : "Malplena Animo",
   "entity.binarymod.worm" : "Vermo",
   "entity.binarymod.bullet": "Pafilo",
+  "entity.binarymod.flyer": "Flugilo",
 
   "nameTag.binarymod.white_rabbit" : "La Blanka Kuniklo",
 

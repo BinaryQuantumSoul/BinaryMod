@@ -6,23 +6,21 @@ import com.quantumsoul.binarymod.init.TileEntityInit;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TranslationTextComponent;
-import org.apache.logging.log4j.LogManager;
 
-import java.io.DataOutput;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMachine
 {
+    private final EntityPredicate target_predicate = new EntityPredicate().setCustomPredicate(e -> !(e instanceof PlayerEntity) || shouldShoot((PlayerEntity) e));
+
     private boolean on = false;
     private int timer = 0;
     private List<UUID> players = new ArrayList<>();
@@ -44,15 +42,16 @@ public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMac
             if (timer <= 0)
             {
                 AxisAlignedBB aabb = new AxisAlignedBB(pos.add(-15D, -15D, -15D), pos.add(15D, 15D, 15D));
-                LivingEntity target = world.getClosestEntityWithinAABB(LivingEntity.class, EntityPredicate.DEFAULT, null, pos.getX(), pos.getY(), pos.getZ(),aabb);
+                LivingEntity target = world.getClosestEntityWithinAABB(LivingEntity.class, target_predicate, null, pos.getX(), pos.getY(), pos.getZ(),aabb);
                 
-                if (target != null && (!(target instanceof PlayerEntity) || !players.contains((target).getUniqueID())))
+                if (target != null)
                 {
-                    BulletEntity bullet = new BulletEntity(world, pos.getX() + 0.5F, pos.getY() + 1F, pos.getZ() + 0.5F);
+                    double dist = Math.sqrt(target.getDistanceSq(pos.getX(), pos.getY(), pos.getZ()));
+                    Vec3d motion = target.getMotion();
 
-                    double dx = target.getPosX() - pos.getX() - 0.5F;
-                    double dy = target.getPosY() - pos.getY();
-                    double dz = target.getPosZ() - pos.getZ() - 0.5F;
+                    double dx = target.getPosX() + motion.getX() * dist - pos.getX() - 0.5F;
+                    double dy = target.getPosY() - pos.getY() - 1.0F;
+                    double dz = target.getPosZ() + motion.getZ() * dist - pos.getZ() - 0.5F;
                     double dxz = Math.sqrt(dx * dx + dz * dz);
 
                     double yaw = Math.atan2(dz, dx) - Math.PI / 2D;
@@ -60,12 +59,15 @@ public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMac
                     double x = -Math.sin(yaw) * Math.cos(pitch);
                     double y = Math.sin(pitch);
                     double z = Math.cos(yaw) * Math.cos(pitch);
-                    LogManager.getLogger().debug(pitch * 180D / Math.PI);
 
-                    bullet.shoot(x, y, z, 1, 0.0F);
-                    world.addEntity(bullet);
-                    
-                    upgradeResets();
+                    if (Double.isFinite(x) && Double.isFinite(y) && Double.isFinite(z) && pitch >= -0.628F)
+                    {
+                        BulletEntity bullet = new BulletEntity(world, pos.getX() + 0.5F, pos.getY() + 1F, pos.getZ() + 0.5F);
+                        bullet.shoot(x, y, z, 1, 0.0F);
+                        world.addEntity(bullet);
+
+                        upgradeResets();
+                    }
                 }
             }
         }
@@ -98,6 +100,16 @@ public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMac
     public boolean canUse(PlayerEntity player)
     {
         return players.isEmpty() || players.contains(player.getUniqueID());
+    }
+
+    public boolean shouldShoot(PlayerEntity player)
+    {
+        return !players.contains(player.getUniqueID());
+    }
+
+    public boolean isOff()
+    {
+        return !on;
     }
 
     //=================================================== DATA ===================================================

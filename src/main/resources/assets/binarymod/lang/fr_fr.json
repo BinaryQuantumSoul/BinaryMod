@@ -72,6 +72,8 @@
   "item.binarymod.btc_t": "TBitcoin",
   "item.binarymod.btc_p": "PBitcoin",
 
+  "item.binarymod.flyer": "Voyageur",
+
   "itemGroup.binarymod.tab" : "Binary Dimension",
 
   "tooltip.binarymod.pill_red0" : "Choisis la pilule rouge",
@@ -100,6 +102,7 @@
   "entity.binarymod.void_soul" : "Âme Vide",
   "entity.binarymod.worm" : "Ver",
   "entity.binarymod.bullet": "Tireur",
+  "entity.binarymod.flyer": "Voyageur",
 
   "nameTag.binarymod.white_rabbit" : "Le Lapin Blanc",
 

@@ -22,4 +22,5 @@ public class EntityInit
     public static final RegistryObject<EntityType<WormEntity>> WORM = ENTITIES.register("worm", () -> EntityType.Builder.<WormEntity>create(WormEntity::new, EntityClassification.MONSTER).size(0.7F, 0.125F).build(BinaryMod.MOD_ID + ":worm"));
 
     public static final RegistryObject<EntityType<BulletEntity>> BULLET = ENTITIES.register("bullet", () -> EntityType.Builder.<BulletEntity>create(BulletEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(BinaryMod.MOD_ID + ":bullet"));
+    public static final RegistryObject<EntityType<FlyerEntity>> FLYER = ENTITIES.register("flyer", () -> EntityType.Builder.<FlyerEntity>create(FlyerEntity::new, EntityClassification.MISC).size(1F, 0.5F).build(BinaryMod.MOD_ID + ":flyer"));
 }

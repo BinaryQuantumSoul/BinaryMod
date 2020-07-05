@@ -5,13 +5,17 @@ import com.quantumsoul.binarymod.init.BlockInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
@@ -129,6 +133,22 @@ public class WorldUtils
     public static int getGroundLevel(IWorld worldIn, int x, int z)
     {
         return getGroundLevelFrom(worldIn, x, z, 0, false);
+    }
+
+    public static boolean isOnGround(Entity entity)
+    {
+        int x = MathHelper.floor(entity.getPosX());
+        int y = MathHelper.floor(entity.getPosY() - 0.01);
+        int z = MathHelper.floor(entity.getPosZ());
+
+        BlockPos pos = new BlockPos(x, y, z);
+        BlockState s = entity.world.getBlockState(pos);
+        VoxelShape shape = s.getShape(entity.world, pos);
+        if (shape.isEmpty())
+            return false;
+
+        AxisAlignedBB playerBox = entity.getBoundingBox();
+        return !s.isAir(entity.world, pos) && playerBox.offset(0, -0.01, 0).intersects(shape.getBoundingBox().offset(pos));
     }
 
     //MOBS

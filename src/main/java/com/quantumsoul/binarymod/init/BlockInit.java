@@ -75,6 +75,6 @@ public class BlockInit
                 registry.register(new BlockItem(block, ItemInit.BASE).setRegistryName(block.getRegistryName())));
 
         BlockInit.MACHINES.getEntries().stream().map(RegistryObject::get).forEach(block ->
-                registry.register(new BlockItem(block, ItemInit.MACHINE).setRegistryName(block.getRegistryName())));
+                registry.register(new BlockItem(block, ItemInit.NO_STACK).setRegistryName(block.getRegistryName())));
     }
 }
