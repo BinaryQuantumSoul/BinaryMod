@@ -2,40 +2,34 @@ package com.quantumsoul.binarymod.entity;
 
 import com.quantumsoul.binarymod.init.EntityInit;
 import com.quantumsoul.binarymod.init.ItemInit;
-import com.quantumsoul.binarymod.util.WorldUtils;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.GameSettings;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
-import net.minecraft.network.play.ServerPlayNetHandler;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.network.NetworkHooks;
 import org.apache.logging.log4j.LogManager;
-import org.lwjgl.glfw.GLFW;
 
 import javax.annotation.Nullable;
-import java.lang.reflect.Field;
 import java.util.List;
 
 import static com.quantumsoul.binarymod.util.WorldUtils.isOnGround;
 
 public class FlyerEntity extends Entity
 {
+    public boolean forwardDown = false, backDown = false;
+
     public FlyerEntity(World worldIn)
     {
         this(EntityInit.FLYER.get(), worldIn);
@@ -73,6 +67,12 @@ public class FlyerEntity extends Entity
     }
 
     @Override
+    protected boolean canTriggerWalking()
+    {
+        return false;
+    }
+
+    @Override
     public boolean processInitialInteract(PlayerEntity player, Hand hand)
     {
         if (player.isCrouching())
@@ -100,38 +100,37 @@ public class FlyerEntity extends Entity
     public void tick()
     {
         super.tick();
-        if (this.canPassengerSteer())
+
+        if (canPassengerSteer())
         {
             setMotion(getMotion().scale(0.5F).add(0D, -0.075D, 0D));
-            if (world.isRemote)
-                clientControl();
 
-            move(MoverType.SELF, getMotion());
-        }
-        else
-            setMotion(Vec3d.ZERO);
-    }
+            if (getControllingPassenger() instanceof LivingEntity)
+            {
+                LivingEntity controller = (LivingEntity) getControllingPassenger();
 
-    protected void clientControl()
-    {
-        if (isBeingRidden())
-        {
-            GameSettings set = Minecraft.getInstance().gameSettings;
+                rotationYaw = controller.rotationYaw;
+                rotationPitch = MathHelper.clamp(-controller.rotationPitch, -45F, 45F);
+                double radYaw = rotationYaw * Math.PI / 180D;
+                double radPitch = rotationPitch * Math.PI / 180D;
 
-            float forward = set.keyBindForward.isKeyDown() ? 0.5F : 0.0F;
+                float move = controller.moveForward / 2F;
+                setMotion(getMotion().add(-Math.sin(radYaw) * move, Math.sin(radPitch) * move, Math.cos(radYaw) * move));
 
-            rotationYaw = getControllingPassenger().rotationYaw;
-            rotationPitch = MathHelper.clamp(-getControllingPassenger().rotationPitch, -45F, 45F);
-            double radYaw = rotationYaw * Math.PI / 180D;
-            double radPitch = rotationPitch * Math.PI / 180D;
-
-            setMotion(getMotion().add(-Math.sin(radYaw) * forward, Math.sin(radPitch) * forward, Math.cos(radYaw) * forward));
+                move(MoverType.SELF, getMotion());
+            }
 
             if (isOnGround(this))
                 rotationPitch = 0F;
         }
-        else
-            rotationPitch = 0F;
+/*        else
+            setMotion(Vec3d.ZERO);*/
+    }
+
+    @Override
+    protected boolean canBeRidden(Entity entityIn)
+    {
+        return true;
     }
 
     @Override

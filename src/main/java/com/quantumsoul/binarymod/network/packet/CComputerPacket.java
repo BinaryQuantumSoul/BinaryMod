@@ -48,7 +48,6 @@ public class CComputerPacket
 
                     player.closeContainer();
                     tileEntity.load(packet.load);
-                    //tileEntity.openGui(player);
 
                     NetworkInit.CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new SComputerPacket(packet.pos, packet.load));
                 }

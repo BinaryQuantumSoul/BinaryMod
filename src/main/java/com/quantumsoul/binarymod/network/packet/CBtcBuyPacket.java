@@ -14,6 +14,8 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Supplier;
 
+import static com.quantumsoul.binarymod.util.BitcoinUtils.buyRecipe;
+
 public class CBtcBuyPacket
 {
     private final ResourceLocation id;
@@ -50,10 +52,9 @@ public class CBtcBuyPacket
                 Optional<?> opt = inv.player.world.getRecipeManager().getRecipe(packet.id);
                 if (opt.isPresent() && opt.get() instanceof DarkWebRecipe)
                 {
-                    player.closeContainer();
                     DarkWebRecipe recipe = (DarkWebRecipe) opt.get();
-                    PlayerEvents.darkWebRecipes.add(recipe);
-                    PlayerEvents.playerInventories.add(inv);
+                    player.closeContainer();
+                    buyRecipe(recipe, inv);
                 }
             }
         });

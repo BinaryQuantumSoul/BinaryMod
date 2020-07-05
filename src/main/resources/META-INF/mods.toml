@@ -12,7 +12,7 @@ logoFile="logo.png"
 credits="Windows, Java, The Matrix, WWW"
 authors="QuantumSoul"
 description='''
-Explore the matrix, fight bugs and viruses, go to the dark web and craft machines including a cute companion
+Explore the matrix, fight bugs and viruses, go to the dark web and craft machines
 '''
 
 [[dependencies.binarydimension]]

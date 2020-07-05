@@ -83,6 +83,7 @@ public class BinaryModJEIPlugin implements IModPlugin
         }
 
         registration.addIngredientInfo(new ItemStack(ItemInit.UPGRADE.get()), VanillaTypes.ITEM, I18n.format("info.binarymod.upgrade"));
+        registration.addIngredientInfo(new ItemStack(ItemInit.ANTIVIRUS_TOOL.get()), VanillaTypes.ITEM, I18n.format("info.binarymod.antivirus_tool"));
     }
 
     @Override

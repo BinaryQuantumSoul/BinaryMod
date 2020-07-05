@@ -127,6 +127,8 @@
   "machine.binarymod.block_programmer_1": "Programmation..",
 
   "info.binarymod.upgrade": "Cliquer sur une machine pour l'améliorer",
+  "info.binarymod.antivirus_tool": "Cliquer sur un bloc infecté pour le soigner\nTenir pour empêcher la propagation",
+
   "jei.binarymod.healer": "%d coeurs",
   "jei.binarymod.shooter": "toutes les %.2fs",
   "jei.binarymod.repairer": "%d dégâts",

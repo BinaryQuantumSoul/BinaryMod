@@ -126,7 +126,9 @@
   "machine.binarymod.block_programmer_0": "Atendanta",
   "machine.binarymod.block_programmer_1": "Programanta..",
 
-  "info.binarymod.upgrade": "Klaki maŝinan por plibonigi ĝin",
+  "info.binarymod.upgrade": "Klaki maŝinon por plibonigi ĝin",
+  "info.binarymod.antivirus_tool": "Klaki malsanan blokon por sani ĝin\nTeni por preventi kontaĝo",
+
   "jei.binarymod.healer": "%d koroj",
   "jei.binarymod.shooter": "ĉiu %.2fs",
   "jei.binarymod.repairer": "%d damaĝoj",
