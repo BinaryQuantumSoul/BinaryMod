@@ -19,7 +19,7 @@ import java.util.UUID;
 
 public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMachine
 {
-    private final EntityPredicate target_predicate = new EntityPredicate().setCustomPredicate(e -> !(e instanceof PlayerEntity) || shouldShoot((PlayerEntity) e));
+    private final EntityPredicate target_predicate = new EntityPredicate().setCustomPredicate(e -> aimYawPitch(e)[1] >= -0.628F && (!(e instanceof PlayerEntity) || shouldShoot((PlayerEntity) e)));
 
     private boolean on = false;
     private int timer = 0;
@@ -46,21 +46,13 @@ public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMac
                 
                 if (target != null)
                 {
-                    double dist = Math.sqrt(target.getDistanceSq(pos.getX(), pos.getY(), pos.getZ()));
-                    Vec3d motion = target.getMotion();
+                    double[] yawPitch = aimYawPitch(target);
 
-                    double dx = target.getPosX() + motion.getX() * dist - pos.getX() - 0.5F;
-                    double dy = target.getPosY() - pos.getY() - 1.0F;
-                    double dz = target.getPosZ() + motion.getZ() * dist - pos.getZ() - 0.5F;
-                    double dxz = Math.sqrt(dx * dx + dz * dz);
+                    double x = -Math.sin(yawPitch[0]) * Math.cos(yawPitch[1]);
+                    double y = Math.sin(yawPitch[1]);
+                    double z = Math.cos(yawPitch[0]) * Math.cos(yawPitch[1]);
 
-                    double yaw = Math.atan2(dz, dx) - Math.PI / 2D;
-                    double pitch = 0.5D * Math.asin(dxz * 0.05D) + Math.atan2(dy, dxz);
-                    double x = -Math.sin(yaw) * Math.cos(pitch);
-                    double y = Math.sin(pitch);
-                    double z = Math.cos(yaw) * Math.cos(pitch);
-
-                    if (Double.isFinite(x) && Double.isFinite(y) && Double.isFinite(z) && pitch >= -0.628F)
+                    if (Double.isFinite(x) && Double.isFinite(y) && Double.isFinite(z))
                     {
                         BulletEntity bullet = new BulletEntity(world, pos.getX() + 0.5F, pos.getY() + 1F, pos.getZ() + 0.5F);
                         bullet.shoot(x, y, z, 1, 0.0F);
@@ -110,6 +102,22 @@ public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMac
     public boolean isOff()
     {
         return !on;
+    }
+
+    protected double[] aimYawPitch(LivingEntity target)
+    {
+        double dist = Math.sqrt(target.getDistanceSq(pos.getX(), pos.getY(), pos.getZ()));
+        Vec3d motion = target.getMotion();
+
+        double dx = target.getPosX() + motion.getX() * dist - pos.getX() - 0.5F;
+        double dy = target.getPosY() - pos.getY() - 1.0F;
+        double dz = target.getPosZ() + motion.getZ() * dist - pos.getZ() - 0.5F;
+        double dxz = Math.sqrt(dx * dx + dz * dz);
+
+        double yaw = Math.atan2(dz, dx) - Math.PI / 2D;
+        double pitch = 0.5D * Math.asin(dxz * 0.05D) + Math.atan2(dy, dxz);
+
+        return new double[]{yaw, pitch};
     }
 
     //=================================================== DATA ===================================================

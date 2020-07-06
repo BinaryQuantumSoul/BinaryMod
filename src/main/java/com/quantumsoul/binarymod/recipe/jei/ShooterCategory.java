@@ -53,7 +53,7 @@ public class ShooterCategory extends UpgradableCategory
     @Override
     public IDrawable getIcon()
     {
-        return null;
+        return icon;
     }
 
     @Override

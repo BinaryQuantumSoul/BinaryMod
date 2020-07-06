@@ -34,55 +34,54 @@ public class WorldUtils
     public static BlockPos teleportPlayer(ServerPlayerEntity player, DimensionType destinationType, BlockPos destinationPos)
     {
         if (destinationType == null)
-            throw new NullPointerException("Destination dimension type is null !");
+            throw new IllegalArgumentException("Destination dimension type is null !");
 
         //LOAD WORLD
         ServerWorld nextWorld = player.getServer().getWorld(destinationType);
-        IChunk chunk = nextWorld.getChunk(destinationPos);
+        nextWorld.getChunk(destinationPos);
+
         int x = destinationPos.getX();
         int z = destinationPos.getZ();
         int maxHeight = nextWorld.getMaxHeight();
 
         //FIND SPAWN
         BlockPos.Mutable pos = new BlockPos.Mutable();
-        for (int y = maxHeight; y >= 0; y--)
+        boolean flag = false;
+        int y = 0;
+
+        for (int h = maxHeight; h >= 0; h--)
         {
-            pos.setPos(x, y - 1, z);
-            BlockState state = chunk.getBlockState(pos);
-            if (state != Blocks.AIR.getDefaultState() && state.getBlockHardness(nextWorld, pos) != -1F)
+            pos.setPos(x, h, z);
+
+            if (!nextWorld.isAirBlock(pos.down()) && nextWorld.getBlockState(pos.down()).getBlockHardness(nextWorld, pos.down()) != -1F && nextWorld.isAirBlock(pos) && nextWorld.isAirBlock(pos.up()))
             {
-                pos.setPos(x, y, z);
-                if (chunk.getBlockState(pos) == Blocks.AIR.getDefaultState())
+                flag = true;
+                y = h;
+            }
+        }
+
+        //CREATE 3x3 SPAWN
+        if (!flag)
+        {
+            y = maxHeight / 2;
+
+            pos.setPos(x, y, z);
+            BlockState biomeTopBlock = nextWorld.getBiome(pos).getSurfaceBuilderConfig().getTop();
+            for (int i = x - 1; i <= x + 1; i++)
+            {
+                for (int j = z - 1; j <= z + 1; j++)
                 {
-                    pos.setPos(x, y + 1, z);
-                    if (chunk.getBlockState(pos) == Blocks.AIR.getDefaultState())
+                    for (int d = -1; d <= 2; d++)
                     {
-                        player.teleport(nextWorld, x, y, z, player.rotationYaw, player.rotationPitch);
-                        return new BlockPos(x, y, z);
+                        pos.setPos(i, y + d, j);
+                        nextWorld.setBlockState(pos, d >= 0 ? Blocks.AIR.getDefaultState() : biomeTopBlock);
                     }
                 }
             }
         }
 
-        //CREATE 3x3 SPAWN
-        int y = maxHeight / 2;
-        pos.setPos(x, y, z);
-        BlockState biomeTopBlock = nextWorld.getBiome(pos).getSurfaceBuilderConfig().getTop();
-        for (int i = x - 1; i <= x + 1; i++)
-        {
-            for (int j = z - 1; j <= z + 1; j++)
-            {
-                pos.setPos(i, y - 1, j);
-                nextWorld.setBlockState(pos, biomeTopBlock);
-                for (int y1 = y; y1 <= y + 2; y1++)
-                {
-                    pos.setPos(i, y1, j);
-                    nextWorld.setBlockState(pos, Blocks.AIR.getDefaultState());
-                }
-            }
-        }
-        player.teleport(nextWorld, pos.getX(), pos.getY(), pos.getZ(), player.rotationYaw, player.rotationPitch);
-        return pos;
+        player.teleport(nextWorld, x, y, z, player.rotationYaw, player.rotationPitch);
+        return new BlockPos(x, y, z);
     }
 
     //GROUND CALCULATING

@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.ChunkGenerator;
+import org.apache.logging.log4j.LogManager;
 
 import javax.annotation.Nullable;
 
@@ -60,7 +61,8 @@ public class BinaryDimension extends Dimension
     public static void teleport(ServerPlayerEntity player)
     {
         BlockPos spawnPos = WorldUtils.teleportPlayer(player, DimensionInit.DIM_BINARY_TYPE, player.getPosition());
-        player.setSpawnPoint(spawnPos, true, false, DimensionInit.DIM_BINARY_TYPE);
+        player.setSpawnPoint(spawnPos, true, true, DimensionInit.DIM_BINARY_TYPE);
+        LogManager.getLogger().debug(spawnPos);
     }
 
     public static void teleportBack(ServerPlayerEntity player)
