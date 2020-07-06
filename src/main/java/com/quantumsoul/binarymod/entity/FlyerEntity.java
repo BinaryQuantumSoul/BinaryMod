@@ -123,8 +123,11 @@ public class FlyerEntity extends Entity
             if (isOnGround(this))
                 rotationPitch = 0F;
         }
-/*        else
-            setMotion(Vec3d.ZERO);*/
+        else
+        {
+            setMotion(Vec3d.ZERO);
+            move(MoverType.SELF, getMotion());
+        }
     }
 
     @Override
