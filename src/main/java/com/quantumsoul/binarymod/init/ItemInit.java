@@ -38,7 +38,7 @@ public class ItemInit
     public static final RegistryObject<Item> FILE_SAFE = ITEMS.register("file_safe", () -> new Item(BASE));
     public static final RegistryObject<Item> FILE_INFECT = ITEMS.register("file_infect", () -> new Item(BASE));
 
-    public static final RegistryObject<Item> ANTIVIRUS_TOOL = ITEMS.register("antivirus_tool", () -> new AxeItem(ItemTier.DIAMOND, 5F, -3F, special()));
+    public static final RegistryObject<Item> ANTIVIRUS = ITEMS.register("antivirus", () -> new AxeItem(ItemTier.DIAMOND, 5F, -3F, special()));
 
     public static final RegistryObject<Item> SD_CARD_SMALL = ITEMS.register("sd_card_small", () -> new SDCardItem(SD, SDCardItem.SDSize.SMALL));
     public static final RegistryObject<Item> SD_CARD_MEDIUM = ITEMS.register("sd_card_medium", () -> new SDCardItem(SD, SDCardItem.SDSize.MEDIUM));

@@ -15,6 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
@@ -67,6 +68,8 @@ public class MachineBlock extends Block
                     {
                         if (!player.abilities.isCreativeMode)
                             holdItem.shrink(1);
+
+                        player.sendMessage(new StringTextComponent(((IUpgradableMachine) tileEntity).getFormattedLevel()));
 
                         return ActionResultType.CONSUME;
                     }

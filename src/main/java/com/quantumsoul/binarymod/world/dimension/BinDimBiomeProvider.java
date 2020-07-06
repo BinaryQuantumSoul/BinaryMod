@@ -57,11 +57,6 @@ public class BinDimBiomeProvider extends BiomeProvider
         biomeLayer = ZoomLayer.NORMAL.apply(contextFactory.apply(1003), biomeLayer);
         biomeLayer = ZoomLayer.NORMAL.apply(contextFactory.apply(1004), biomeLayer);
         biomeLayer = ZoomLayer.NORMAL.apply(contextFactory.apply(1005), biomeLayer);
-        /*biomeLayer = ZoomLayer.NORMAL.apply(contextFactory.apply(1006), biomeLayer);
-        biomeLayer = ZoomLayer.NORMAL.apply(contextFactory.apply(1007), biomeLayer);
-        biomeLayer = ZoomLayer.NORMAL.apply(contextFactory.apply(1008), biomeLayer);
-        biomeLayer = ZoomLayer.NORMAL.apply(contextFactory.apply(1009), biomeLayer);
-        biomeLayer = ZoomLayer.NORMAL.apply(contextFactory.apply(1010), biomeLayer);*/
 
         return new Layer(biomeLayer);
     }

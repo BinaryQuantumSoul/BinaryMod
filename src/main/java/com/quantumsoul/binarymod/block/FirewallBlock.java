@@ -1,7 +1,5 @@
 package com.quantumsoul.binarymod.block;
 
-import com.quantumsoul.binarymod.entity.WormEntity;
-import com.quantumsoul.binarymod.init.EntityInit;
 import com.quantumsoul.binarymod.init.ItemInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

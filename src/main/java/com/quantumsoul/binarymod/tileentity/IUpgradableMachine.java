@@ -6,4 +6,5 @@ public interface IUpgradableMachine extends ITickableTileEntity
 {
     boolean upgrade();
     void setLevel(int level);
+    String getFormattedLevel();
 }

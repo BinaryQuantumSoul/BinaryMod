@@ -46,7 +46,7 @@
   "item.binarymod.file_safe" : "Dosiero",
   "item.binarymod.file_infect" : "Malsana Dosiero",
 
-  "item.binarymod.antivirus_tool" : "Kontraŭvirus",
+  "item.binarymod.antivirus" : "Kontraŭvirus",
 
   "item.binarymod.sd_card_small": "Standard SD",
   "item.binarymod.sd_card_medium": "High SD",
@@ -127,7 +127,7 @@
   "machine.binarymod.block_programmer_1": "Programanta..",
 
   "info.binarymod.upgrade": "Klaki maŝinon por plibonigi ĝin",
-  "info.binarymod.antivirus_tool": "Klaki malsanan blokon por sani ĝin\nTeni por preventi kontaĝo",
+  "info.binarymod.antivirus": "Klaki malsanan blokon por sani ĝin\nTeni por preventi kontaĝo",
 
   "jei.binarymod.healer": "%d koroj",
   "jei.binarymod.shooter": "ĉiu %.2fs",

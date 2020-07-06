@@ -1,7 +1,6 @@
 package com.quantumsoul.binarymod.network.packet;
 
 import com.quantumsoul.binarymod.init.ItemInit;
-import com.quantumsoul.binarymod.network.event.PlayerEvents;
 import com.quantumsoul.binarymod.recipe.DarkWebRecipe;
 import com.quantumsoul.binarymod.tileentity.container.ComputerContainer;
 import net.minecraft.entity.player.PlayerInventory;

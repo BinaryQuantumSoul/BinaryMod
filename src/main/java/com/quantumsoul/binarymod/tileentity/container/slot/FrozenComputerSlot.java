@@ -1,6 +1,5 @@
 package com.quantumsoul.binarymod.tileentity.container.slot;
 
-import com.quantumsoul.binarymod.tileentity.container.ComputerContainer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.items.IItemHandler;
 

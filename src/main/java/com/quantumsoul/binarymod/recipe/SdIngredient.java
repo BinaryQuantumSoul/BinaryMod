@@ -10,7 +10,6 @@ import net.minecraftforge.common.crafting.IIngredientSerializer;
 import net.minecraftforge.common.crafting.NBTIngredient;
 
 import javax.annotation.Nullable;
-import java.util.stream.Stream;
 
 public class SdIngredient extends NBTIngredient
 {

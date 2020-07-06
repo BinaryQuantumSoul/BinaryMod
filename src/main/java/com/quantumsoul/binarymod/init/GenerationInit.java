@@ -1,7 +1,6 @@
 package com.quantumsoul.binarymod.init;
 
 import com.quantumsoul.binarymod.entity.VoidSoulEntity;
-import com.quantumsoul.binarymod.entity.WormEntity;
 import com.quantumsoul.binarymod.util.WorldUtils;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;

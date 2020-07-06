@@ -12,8 +12,6 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-import java.util.Arrays;
-
 public class BlockProgScreen extends ContainerScreen<BlockProgContainer>
 {
     private static final ResourceLocation TEXTURE = new ResourceLocation(BinaryMod.MOD_ID, "textures/gui/container/block_programmer.png");

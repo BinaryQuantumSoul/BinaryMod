@@ -6,7 +6,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 

@@ -2,15 +2,12 @@ package com.quantumsoul.binarymod.entity;
 
 import com.quantumsoul.binarymod.init.EntityInit;
 import com.quantumsoul.binarymod.init.ItemInit;
-import net.minecraft.client.GameSettings;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.util.Hand;
@@ -19,7 +16,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
-import org.apache.logging.log4j.LogManager;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -28,8 +24,6 @@ import static com.quantumsoul.binarymod.util.WorldUtils.isOnGround;
 
 public class FlyerEntity extends Entity
 {
-    public boolean forwardDown = false, backDown = false;
-
     public FlyerEntity(World worldIn)
     {
         this(EntityInit.FLYER.get(), worldIn);

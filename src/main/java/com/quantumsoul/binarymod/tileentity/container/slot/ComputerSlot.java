@@ -2,7 +2,6 @@ package com.quantumsoul.binarymod.tileentity.container.slot;
 
 import com.quantumsoul.binarymod.init.ItemInit;
 import com.quantumsoul.binarymod.item.SDCardItem;
-import com.quantumsoul.binarymod.tileentity.container.ComputerContainer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;

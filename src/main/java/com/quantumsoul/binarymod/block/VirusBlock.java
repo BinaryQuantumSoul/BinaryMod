@@ -25,7 +25,7 @@ public class VirusBlock extends Block
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
     {
         if(entityIn instanceof PlayerEntity)
-            if(((PlayerEntity)entityIn).getHeldItemMainhand().getItem() != ItemInit.ANTIVIRUS_TOOL.get())
+            if(((PlayerEntity)entityIn).getHeldItemMainhand().getItem() != ItemInit.ANTIVIRUS.get())
                 spread(worldIn, pos);
     }
 
@@ -33,7 +33,7 @@ public class VirusBlock extends Block
     public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player)
     {
         super.onBlockHarvested(worldIn, pos, state, player);
-        if(player.getHeldItemMainhand().getItem() != ItemInit.ANTIVIRUS_TOOL.get())
+        if(player.getHeldItemMainhand().getItem() != ItemInit.ANTIVIRUS.get())
             spread(worldIn, pos);
     }
 
@@ -43,7 +43,7 @@ public class VirusBlock extends Block
         if(worldIn.isRemote())
             return ActionResultType.PASS;
 
-        if(player.getHeldItemMainhand().getItem() == ItemInit.ANTIVIRUS_TOOL.get())
+        if(player.getHeldItemMainhand().getItem() == ItemInit.ANTIVIRUS.get())
         {
             player.getHeldItemMainhand().damageItem(1, player, (p) -> {
                 p.sendBreakAnimation(handIn);

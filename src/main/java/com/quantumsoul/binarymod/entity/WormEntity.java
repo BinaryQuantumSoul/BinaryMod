@@ -15,7 +15,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTables;
-import org.apache.logging.log4j.LogManager;
 
 import static com.quantumsoul.binarymod.util.WorldUtils.onBinDimLivingFall;
 

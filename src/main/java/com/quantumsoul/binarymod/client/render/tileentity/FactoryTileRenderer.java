@@ -2,17 +2,13 @@ package com.quantumsoul.binarymod.client.render.tileentity;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.quantumsoul.binarymod.block.MachineBlock;
-import com.quantumsoul.binarymod.block.UpgradableBlock;
 import com.quantumsoul.binarymod.tileentity.FactoryTileEntity;
-import com.quantumsoul.binarymod.tileentity.UpgradableTileEntity;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.resources.I18n;
-
-import static com.quantumsoul.binarymod.util.BitcoinUtils.getBitcoinString;
 
 public class FactoryTileRenderer extends TileEntityRenderer<FactoryTileEntity>
 {

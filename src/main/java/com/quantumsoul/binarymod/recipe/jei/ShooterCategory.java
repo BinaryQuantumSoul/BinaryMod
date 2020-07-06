@@ -2,7 +2,6 @@ package com.quantumsoul.binarymod.recipe.jei;
 
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.init.BlockInit;
-import com.quantumsoul.binarymod.init.ItemInit;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;

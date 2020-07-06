@@ -1,7 +1,6 @@
 package com.quantumsoul.binarymod;
 
 import com.quantumsoul.binarymod.init.*;
-import com.quantumsoul.binarymod.init.NetworkInit;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.common.Mod;

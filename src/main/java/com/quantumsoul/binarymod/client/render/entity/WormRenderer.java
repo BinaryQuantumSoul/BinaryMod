@@ -1,8 +1,8 @@
 package com.quantumsoul.binarymod.client.render.entity;
 
 import com.quantumsoul.binarymod.BinaryMod;
-import com.quantumsoul.binarymod.entity.WormEntity;
 import com.quantumsoul.binarymod.client.render.entity.model.WormModel;
+import com.quantumsoul.binarymod.entity.WormEntity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;

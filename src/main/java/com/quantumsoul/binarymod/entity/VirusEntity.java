@@ -4,7 +4,6 @@ import com.quantumsoul.binarymod.init.EntityInit;
 import com.quantumsoul.binarymod.init.SoundInit;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.SlimeEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;

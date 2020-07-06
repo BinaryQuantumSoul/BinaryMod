@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "binarymod:item/antivirus_tool"
+    "layer0": "binarymod:item/antivirus"
   }
 }

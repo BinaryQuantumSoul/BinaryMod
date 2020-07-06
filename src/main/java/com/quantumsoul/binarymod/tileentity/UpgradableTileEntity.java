@@ -1,6 +1,7 @@
 package com.quantumsoul.binarymod.tileentity;
 
 import com.quantumsoul.binarymod.block.UpgradableBlock;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.tileentity.TileEntityType;
@@ -53,6 +54,12 @@ public class UpgradableTileEntity extends MachineTileEntity implements IUpgradab
     }
 
     protected void upgradeResets(){}
+
+    @Override
+    public String getFormattedLevel()
+    {
+        return I18n.format("tooltip.binarymod.level", level + 1, maxLevel + 1);
+    }
 
     //=================================================== DATA ===================================================
     @Override

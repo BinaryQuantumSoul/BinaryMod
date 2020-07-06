@@ -3,8 +3,6 @@ package com.quantumsoul.binarymod.tileentity.container.slot;
 import com.quantumsoul.binarymod.item.SDCardItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.IntNBT;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 

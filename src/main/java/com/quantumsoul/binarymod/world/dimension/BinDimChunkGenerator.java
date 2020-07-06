@@ -1,7 +1,6 @@
 package com.quantumsoul.binarymod.world.dimension;
 
 import com.quantumsoul.binarymod.init.BlockInit;
-import net.minecraft.entity.EntityClassification;
 import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
@@ -16,7 +15,6 @@ import net.minecraft.world.gen.OctavesNoiseGenerator;
 import net.minecraft.world.gen.WorldGenRegion;
 import net.minecraft.world.spawner.WorldEntitySpawner;
 
-import java.util.List;
 import java.util.Random;
 
 //I DON'T UNDERSTAND ANYTHING ABOUT GENERATION

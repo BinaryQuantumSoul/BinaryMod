@@ -46,7 +46,7 @@
   "item.binarymod.file_safe" : "File",
   "item.binarymod.file_infect" : "Infected File",
 
-  "item.binarymod.antivirus_tool" : "Antivirus",
+  "item.binarymod.antivirus" : "Antivirus",
 
   "item.binarymod.sd_card_small": "Standard SD",
   "item.binarymod.sd_card_medium": "High SD",
@@ -127,7 +127,7 @@
   "machine.binarymod.block_programmer_1": "Programming..",
 
   "info.binarymod.upgrade": "Click on a machine to upgrade it",
-  "info.binarymod.antivirus_tool": "Click on infected block to cure\nHold to prevent contagion",
+  "info.binarymod.antivirus": "Click on infected block to cure\nHold to prevent contagion",
 
   "jei.binarymod.healer": "%d hearts",
   "jei.binarymod.shooter": "every %.2fs",
