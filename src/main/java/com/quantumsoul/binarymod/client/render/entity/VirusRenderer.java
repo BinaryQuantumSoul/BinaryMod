@@ -24,7 +24,7 @@ public class VirusRenderer extends MobRenderer<VirusEntity, VirusModel>
     @Override
     public void render(VirusEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn)
     {
-        this.shadowSize = 0.5F * (float) entityIn.getSlimeSize();
+        this.shadowSize = 0.325F * (float) entityIn.getSlimeSize();
         super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
     }
 
