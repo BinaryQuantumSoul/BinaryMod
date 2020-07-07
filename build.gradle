@@ -68,6 +68,7 @@ minecraft {
 repositories {
     maven { url = "https://dvs1.progwml6.com/files/maven/" }
     maven { url = "https://modmaven.k-4u.nl" }
+    maven { url = "https://maven.tehnut.info"}
 }
 
 dependencies {
@@ -75,6 +76,9 @@ dependencies {
 
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+
+    compileOnly fg.deobf("mcp.mobius.waila:Hwyla:${hwyla_version}_${mc_version}:api")
+    runtimeOnly fg.deobf("mcp.mobius.waila:Hwyla:${hwyla_version}_${mc_version}")
 }
 
 jar {

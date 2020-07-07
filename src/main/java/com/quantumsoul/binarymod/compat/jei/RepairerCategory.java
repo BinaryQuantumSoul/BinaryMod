@@ -1,8 +1,7 @@
-package com.quantumsoul.binarymod.recipe.jei;
+package com.quantumsoul.binarymod.compat.jei;
 
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.init.ItemInit;
-import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
@@ -16,18 +15,18 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.quantumsoul.binarymod.util.BitcoinUtils.BTC_STACKS;
+import static com.quantumsoul.binarymod.util.MachineUtils.L_REPAIRER;
 
-public class BitcoinCategory extends UpgradableCategory
+public class RepairerCategory extends UpgradableCategory
 {
-    public static final ResourceLocation UID = new ResourceLocation(BinaryMod.MOD_ID, "bitcoin_miner");
+    public static final ResourceLocation UID = new ResourceLocation(BinaryMod.MOD_ID, "repairer");
 
     private final IDrawable icon;
 
-    public BitcoinCategory(IGuiHelper guiHelper)
+    public RepairerCategory(IGuiHelper guiHelper)
     {
         super(guiHelper);
-        icon = guiHelper.createDrawableIngredient(new ItemStack(ItemInit.BITCOIN.get()));
+        icon = guiHelper.createDrawableIngredient(new ItemStack(ItemInit.REPAIR.get()));
     }
 
     @Nonnull
@@ -41,7 +40,7 @@ public class BitcoinCategory extends UpgradableCategory
     @Override
     public String getTitle()
     {
-        return I18n.format("block.binarymod.bitcoin_miner");
+        return I18n.format("block.binarymod.repairer");
     }
 
     @Nonnull
@@ -53,9 +52,7 @@ public class BitcoinCategory extends UpgradableCategory
 
     @Override
     public void setIngredients(@Nonnull Byte recipe, @Nonnull IIngredients ingredients)
-    {
-        ingredients.setOutputs(VanillaTypes.ITEM, BTC_STACKS);
-    }
+    {}
 
     @Override
     protected List<Pair<String, ItemStack>> getContents()
@@ -63,7 +60,7 @@ public class BitcoinCategory extends UpgradableCategory
         List<Pair<String, ItemStack>> contents = new ArrayList<>();
 
         for (int i = 0; i < 4; i++)
-            contents.add(new ImmutablePair<>(I18n.format("jei.binarymod.bitcoin", 0.5D * Math.pow(7, i)), new ItemStack(ItemInit.BITCOIN.get())));
+            contents.add(new ImmutablePair<>(L_REPAIRER.getInfo(i), null));
 
         return contents;
     }

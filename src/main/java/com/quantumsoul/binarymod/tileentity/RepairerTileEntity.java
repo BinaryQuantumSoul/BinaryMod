@@ -7,17 +7,19 @@ import net.minecraft.item.*;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static com.quantumsoul.binarymod.util.MachineUtils.L_REPAIRER;
+
 public class RepairerTileEntity extends FactoryTileEntity
 {
     public RepairerTileEntity()
     {
-        super(TileEntityInit.REPAIRER.get(), 4);
+        super(TileEntityInit.REPAIRER.get(), L_REPAIRER);
     }
 
     @Override
     void doAction(PlayerEntity player, int level)
     {
-        int amount = (int) (64 * Math.pow(4, level));
+        int amount = (int) L_REPAIRER.get(level);
 
         for(int i = 0; i < player.inventory.getSizeInventory(); i++)
         {

@@ -6,18 +6,23 @@ import com.quantumsoul.binarymod.init.TileEntityInit;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.nbt.NBTUtil;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMachine
+import static com.quantumsoul.binarymod.util.MachineUtils.L_SHOOTER;
+
+public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMachine, IExecutableMachine, ITickableTileEntity
 {
     private final EntityPredicate target_predicate = new EntityPredicate().setCustomPredicate(e -> aimYawPitch(e)[1] >= -0.628F && (!(e instanceof PlayerEntity) || shouldShoot((PlayerEntity) e)));
 
@@ -27,21 +32,19 @@ public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMac
 
     public ShooterTileEntity()
     {
-        super(TileEntityInit.SHOOTER.get(), 4);
+        super(TileEntityInit.SHOOTER.get(), L_SHOOTER);
     }
 
     //=================================================== PROCESS ===================================================
     @Override
     public void tick()
     {
-        super.tick();
-
         if (!world.isRemote && on)
         {
             --timer;
             if (timer <= 0)
             {
-                AxisAlignedBB aabb = new AxisAlignedBB(pos.add(-15D, -15D, -15D), pos.add(15D, 15D, 15D));
+                AxisAlignedBB aabb = new AxisAlignedBB(pos.add(-14D, -14D, -14D), pos.add(14D, 14D, 14D));
                 LivingEntity target = world.getClosestEntityWithinAABB(LivingEntity.class, target_predicate, null, pos.getX(), pos.getY(), pos.getZ(),aabb);
                 
                 if (target != null)
@@ -66,16 +69,33 @@ public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMac
     }
 
     @Override
-    public void onOff()
+    public boolean execute(ServerPlayerEntity player)
     {
-        on = !on;
-        world.setBlockState(pos, getBlockState().with(BoolBlock.DONE, on), 2);
+        if (!on && player.isCrouching())
+        {
+            list(player);
+            return true;
+        }
+        else if (canUse(player))
+        {
+            on = !on;
+            world.setBlockState(pos, getBlockState().with(BoolBlock.DONE, on), 2);
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public ITextComponent getStateMessage()
+    {
+        return new TranslationTextComponent(on ? "machine.binarymod.on_off_on" : "machine.binarymod.on_off_off");
     }
 
     @Override
     protected void upgradeResets()
     {
-        timer = (int) (40D * Math.pow(2, -level));
+        timer = (int) L_SHOOTER.get(level);
     }
 
     public void list(PlayerEntity player)
@@ -99,18 +119,13 @@ public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMac
         return !players.contains(player.getUniqueID());
     }
 
-    public boolean isOff()
-    {
-        return !on;
-    }
-
     protected double[] aimYawPitch(LivingEntity target)
     {
         double dist = Math.sqrt(target.getDistanceSq(pos.getX(), pos.getY(), pos.getZ()));
         Vec3d motion = target.getMotion();
 
         double dx = target.getPosX() + motion.getX() * dist - pos.getX() - 0.5F;
-        double dy = target.getPosY() - pos.getY() - 1.0F;
+        double dy = target.getPosY() + 0.25F - pos.getY() - 1.0F;
         double dz = target.getPosZ() + motion.getZ() * dist - pos.getZ() - 0.5F;
         double dxz = Math.sqrt(dx * dx + dz * dz);
 

@@ -1,7 +1,9 @@
 package com.quantumsoul.binarymod.block;
 
 import com.quantumsoul.binarymod.init.ItemInit;
-import com.quantumsoul.binarymod.tileentity.*;
+import com.quantumsoul.binarymod.tileentity.IExecutableMachine;
+import com.quantumsoul.binarymod.tileentity.IDroppableMachine;
+import com.quantumsoul.binarymod.tileentity.IUpgradableMachine;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
@@ -15,7 +17,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
@@ -61,15 +62,16 @@ public class MachineBlock extends Block
 
             if (tileEntity instanceof IUpgradableMachine)
             {
+                IUpgradableMachine upgradableMachine = (IUpgradableMachine) tileEntity;
                 ItemStack holdItem = player.getHeldItem(hand);
                 if (holdItem.getItem() == ItemInit.UPGRADE.get())
                 {
-                    if (((IUpgradableMachine) tileEntity).upgrade())
+                    if (upgradableMachine.upgrade())
                     {
                         if (!player.abilities.isCreativeMode)
                             holdItem.shrink(1);
 
-                        player.sendMessage(new StringTextComponent(((IUpgradableMachine) tileEntity).getFormattedLevel()));
+                        player.sendMessage(upgradableMachine.getLevelMessage());
 
                         return ActionResultType.CONSUME;
                     }
@@ -80,24 +82,9 @@ public class MachineBlock extends Block
 
             if (tileEntity instanceof IExecutableMachine)
             {
-                if (!((IExecutableMachine) tileEntity).execute(player))
+                if (!((IExecutableMachine) tileEntity).execute((ServerPlayerEntity) player))
                     return ActionResultType.FAIL;
             }
-            else if (tileEntity instanceof IOnOffMachine)
-            {
-                if (tileEntity instanceof ShooterTileEntity)
-                {
-                    ShooterTileEntity shooterTileEntity = (ShooterTileEntity) tileEntity;
-                    if (shooterTileEntity.isOff() && player.isCrouching())
-                        shooterTileEntity.list(player);
-                    else if (shooterTileEntity.canUse(player))
-                        shooterTileEntity.onOff();
-                }
-                else
-                    ((IOnOffMachine) tileEntity).onOff();
-            }
-            else if (tileEntity instanceof IProgrammerMachine)
-                ((IProgrammerMachine) tileEntity).openGui((ServerPlayerEntity) player);
         }
 
         return ActionResultType.SUCCESS;
@@ -111,10 +98,8 @@ public class MachineBlock extends Block
             if (!world.isRemote)
             {
                 final TileEntity tileEntity = world.getTileEntity(pos);
-                if(tileEntity instanceof IExecutableMachine)
-                    ((IExecutableMachine) tileEntity).drop(world, pos);
-                else if (tileEntity instanceof IProgrammerMachine)
-                    ((IProgrammerMachine) tileEntity).dropAllContents(world, pos);
+                if(tileEntity instanceof IDroppableMachine)
+                    ((IDroppableMachine) tileEntity).drop(world, pos);
             }
             super.onReplaced(state, world, pos, newState, isMoving);
         }

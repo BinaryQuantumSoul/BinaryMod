@@ -3,18 +3,19 @@ package com.quantumsoul.binarymod.tileentity;
 import com.quantumsoul.binarymod.init.NetworkInit;
 import com.quantumsoul.binarymod.init.TileEntityInit;
 import com.quantumsoul.binarymod.network.packet.SBtcResetValuePacket;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.PacketDistributor;
 
 import static com.quantumsoul.binarymod.util.BitcoinUtils.getBitcoinStacks;
+import static com.quantumsoul.binarymod.util.MachineUtils.L_BITCOIN;
 import static com.quantumsoul.binarymod.util.WorldUtils.dropStacks;
 
-public class BitcoinTileEntity extends UpgradableTileEntity implements IExecutableMachine
+public class BitcoinTileEntity extends UpgradableTileEntity implements IExecutableMachine, IDroppableMachine, ITickableTileEntity
 {
     private static final double MINUTE = 1200D;
 
@@ -22,20 +23,18 @@ public class BitcoinTileEntity extends UpgradableTileEntity implements IExecutab
 
     public BitcoinTileEntity()
     {
-        super(TileEntityInit.BITCOIN_MINER.get(), 4);
+        super(TileEntityInit.BITCOIN_MINER.get(), L_BITCOIN);
     }
 
     //=================================================== PROCESS ===================================================
     @Override
     public void tick()
     {
-        super.tick();
-
-        value += 0.5D * Math.pow(7, level) / MINUTE;
+        value += L_BITCOIN.get(level) / MINUTE;
     }
 
     @Override
-    public boolean execute(PlayerEntity player)
+    public boolean execute(ServerPlayerEntity player)
     {
         if (value >= 1.0D)
         {
@@ -43,7 +42,7 @@ public class BitcoinTileEntity extends UpgradableTileEntity implements IExecutab
                 player.addItemStackToInventory(stack);
 
             value = value % 1.0D;
-            NetworkInit.CHANNEL.send(PacketDistributor.PLAYER.with(() -> (ServerPlayerEntity) player), new SBtcResetValuePacket(pos, (float)value));
+            NetworkInit.CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new SBtcResetValuePacket(pos, (float)value));
 
             return true;
         }

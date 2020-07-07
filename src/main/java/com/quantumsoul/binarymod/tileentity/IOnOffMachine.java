@@ -1,8 +1,8 @@
 package com.quantumsoul.binarymod.tileentity;
 
-import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.util.text.ITextComponent;
 
-public interface IOnOffMachine extends ITickableTileEntity
+public interface IOnOffMachine
 {
-    void onOff();
+    ITextComponent getStateMessage();
 }

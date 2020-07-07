@@ -9,11 +9,13 @@ import net.minecraft.item.Items;
 import java.util.Collections;
 import java.util.List;
 
+import static com.quantumsoul.binarymod.util.MachineUtils.L_FEEDER;
+
 public class FeederTileEntity extends FactoryTileEntity
 {
     public FeederTileEntity()
     {
-        super(TileEntityInit.FEEDER.get(), 2);
+        super(TileEntityInit.FEEDER.get(), L_FEEDER);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.quantumsoul.binarymod.recipe.jei;
+package com.quantumsoul.binarymod.compat.jei;
 
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.init.ItemInit;
@@ -14,6 +14,8 @@ import org.apache.commons.lang3.tuple.Pair;
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.quantumsoul.binarymod.util.MachineUtils.L_HEALER;
 
 public class HealerCategory extends UpgradableCategory
 {
@@ -58,7 +60,7 @@ public class HealerCategory extends UpgradableCategory
         List<Pair<String, ItemStack>> contents = new ArrayList<>();
 
         for (int i = 0; i < 4; i++)
-            contents.add(new ImmutablePair<>(I18n.format("jei.binarymod.healer", (int) (1.25D * Math.pow(2, i))), null));
+            contents.add(new ImmutablePair<>(L_HEALER.getInfo(i), null));
 
         return contents;
     }

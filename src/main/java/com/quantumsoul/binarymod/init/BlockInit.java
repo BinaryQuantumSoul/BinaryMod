@@ -17,6 +17,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
+import static com.quantumsoul.binarymod.util.MachineUtils.*;
+
 @Mod.EventBusSubscriber(modid = BinaryMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BlockInit
 {
@@ -54,11 +56,11 @@ public class BlockInit
     public static final RegistryObject<Block> VIRUS_DEAD_BLOCK = BLOCKS.register("virus_dead_block", () -> new Block(DEAD));
 
     public static final RegistryObject<Block> COMPUTER = MACHINES.register("computer", () -> new MachineBlock(MACHINE, ComputerTileEntity::new));
-    public static final RegistryObject<Block> FEEDER = MACHINES.register("feeder", () -> BoolBlock.create(MACHINE, FeederTileEntity::new, 2));
-    public static final RegistryObject<Block> HEALER = MACHINES.register("healer", () -> BoolBlock.create(MACHINE, HealerTileEntity::new, 4));
-    public static final RegistryObject<Block> REPAIRER = MACHINES.register("repairer", () -> BoolBlock.create(MACHINE, RepairerTileEntity::new, 4));
-    public static final RegistryObject<Block> SHOOTER = MACHINES.register("shooter", () -> ShooterBlock.create(MACHINE, ShooterTileEntity::new, 4));
-    public static final RegistryObject<Block> BITCOIN_MINER = MACHINES.register("bitcoin_miner", () -> UpgradableBlock.create(MACHINE, BitcoinTileEntity::new, 4));
+    public static final RegistryObject<Block> FEEDER = MACHINES.register("feeder", () -> BoolBlock.create(MACHINE, FeederTileEntity::new, L_FEEDER));
+    public static final RegistryObject<Block> HEALER = MACHINES.register("healer", () -> BoolBlock.create(MACHINE, HealerTileEntity::new, L_HEALER));
+    public static final RegistryObject<Block> REPAIRER = MACHINES.register("repairer", () -> BoolBlock.create(MACHINE, RepairerTileEntity::new, L_REPAIRER));
+    public static final RegistryObject<Block> SHOOTER = MACHINES.register("shooter", () -> ShooterBlock.create(MACHINE, ShooterTileEntity::new, L_SHOOTER));
+    public static final RegistryObject<Block> BITCOIN_MINER = MACHINES.register("bitcoin_miner", () -> UpgradableBlock.create(MACHINE, BitcoinTileEntity::new, L_BITCOIN));
     public static final RegistryObject<Block> BLOCK_PROGRAMMER = MACHINES.register("block_programmer", () -> new HalfMachineBlock(MACHINE, BlockProgTileEntity::new));
 
     public static final RegistryObject<Block> MYSTERY_BOX = BLOCKS.register("mystery_box", () -> new MysteryBlock(MALWARE));

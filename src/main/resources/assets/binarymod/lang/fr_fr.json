@@ -85,7 +85,6 @@
   "tooltip.binarymod.pill_blue2" : "après tu pourra faire de beaux rêves",
   "tooltip.binarymod.pill_blue3" : "et penser ce que tu veux",
 
-  "tooltip.binarymod.level": "Niveau: %d/%d",
   "tooltip.binarymod.sd": "Stockage: %d%%",
   "tooltip.binarymod.sd_empty": "Vide",
   "tooltip.binarymod.bitcoin": "%dB",
@@ -117,6 +116,9 @@
   "gui.binarymod.blockprog_program": "Programmer",
   "gui.binarymod.block_programmer": "Programmeur de Bloc",
 
+  "machine.binarymod.level": "Niveau: %d/%d",
+  "machine.binarymod.on_off_on": "État: Allumé",
+  "machine.binarymod.on_off_off": "État: Éteint",
   "machine.binarymod.click": "Cliquer pour",
   "machine.binarymod.feeder": "récolter",
   "machine.binarymod.healer": "régénérer",
@@ -129,7 +131,7 @@
   "info.binarymod.upgrade": "Cliquer sur une machine pour l'améliorer",
   "info.binarymod.antivirus": "Cliquer sur un bloc infecté pour le soigner\nTenir pour empêcher la propagation",
 
-  "jei.binarymod.healer": "%d coeurs",
+  "jei.binarymod.healer": "%d demi-coeurs",
   "jei.binarymod.shooter": "toutes les %.2fs",
   "jei.binarymod.repairer": "%d dégâts",
   "jei.binarymod.bitcoin": "%.1f btc/min"

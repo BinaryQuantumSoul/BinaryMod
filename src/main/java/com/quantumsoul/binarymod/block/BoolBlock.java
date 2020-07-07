@@ -1,5 +1,6 @@
 package com.quantumsoul.binarymod.block;
 
+import com.quantumsoul.binarymod.util.MachineUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.state.BooleanProperty;
@@ -12,7 +13,7 @@ public class BoolBlock extends UpgradableBlock
 {
     public static final BooleanProperty DONE = BooleanProperty.create("done");
 
-    public static BoolBlock create(Properties builder, Supplier<TileEntity> tile, int levels)
+    public static BoolBlock create(Properties builder, Supplier<TileEntity> tile, MachineUtils.LevelInfo levels)
     {
         CONSTLEVELS = levels;
         return new BoolBlock(builder, tile);

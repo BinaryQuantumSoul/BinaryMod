@@ -1,4 +1,4 @@
-package com.quantumsoul.binarymod.recipe.jei;
+package com.quantumsoul.binarymod.compat.jei;
 
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.init.BlockInit;
@@ -13,6 +13,8 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.quantumsoul.binarymod.util.MachineUtils.L_SHOOTER;
 
 public class ShooterCategory extends UpgradableCategory
 {
@@ -32,7 +34,7 @@ public class ShooterCategory extends UpgradableCategory
         List<Pair<String, ItemStack>> contents = new ArrayList<>();
 
         for (int i = 0; i < 4; i++)
-            contents.add(new ImmutablePair<>(I18n.format("jei.binarymod.shooter", (int) (2D * Math.pow(2, -i))), null));
+            contents.add(new ImmutablePair<>(L_SHOOTER.getInfo(i), null));
 
         return contents;
     }

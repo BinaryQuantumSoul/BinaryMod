@@ -1,4 +1,4 @@
-package com.quantumsoul.binarymod.recipe.jei;
+package com.quantumsoul.binarymod.compat.jei;
 
 import com.quantumsoul.binarymod.BinaryMod;
 import mezz.jei.api.gui.IRecipeLayout;
@@ -9,13 +9,14 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import org.apache.commons.lang3.tuple.Pair;
 
 import javax.annotation.Nonnull;
 import java.util.List;
+
+import static com.quantumsoul.binarymod.util.MachineUtils.getFormattedLevel;
 
 public abstract class UpgradableCategory implements IRecipeCategory<Byte>
 {
@@ -48,7 +49,7 @@ public abstract class UpgradableCategory implements IRecipeCategory<Byte>
     public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull Byte recipe, @Nonnull IIngredients ingredients)
     {
         FontRenderer font =  Minecraft.getInstance().fontRenderer;
-        int dist = 8 + font.getStringWidth(I18n.format("tooltip.binarymod.level", 0, 0));
+        int dist = 8 + font.getStringWidth(getFormattedLevel(0, 0));
 
         for(int i = 0; i < content.size(); i++)
         {
@@ -70,7 +71,7 @@ public abstract class UpgradableCategory implements IRecipeCategory<Byte>
         for(int i = 0; i < content.size(); i++)
         {
             String string = content.get(i).getKey();
-            Minecraft.getInstance().fontRenderer.drawString(I18n.format("tooltip.binarymod.level", i + 1, content.size()) + (string != null ? " -> " + string : ""), 7, 6 + 20 * i, 0x3F3F3F);
+            Minecraft.getInstance().fontRenderer.drawString(getFormattedLevel(i, content.size() - 1) + (string != null ? " -> " + string : ""), 7, 6 + 20 * i, 0x3F3F3F);
         }
     }
 }

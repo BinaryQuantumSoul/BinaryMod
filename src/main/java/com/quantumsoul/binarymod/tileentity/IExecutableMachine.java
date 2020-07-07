@@ -1,12 +1,8 @@
 package com.quantumsoul.binarymod.tileentity;
 
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.entity.player.ServerPlayerEntity;
 
-public interface IExecutableMachine extends ITickableTileEntity
+public interface IExecutableMachine
 {
-    boolean execute(PlayerEntity player);
-    void drop(World worldIn, BlockPos pos);
+    boolean execute(ServerPlayerEntity player);
 }

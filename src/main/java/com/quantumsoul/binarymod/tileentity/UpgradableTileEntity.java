@@ -1,36 +1,22 @@
 package com.quantumsoul.binarymod.tileentity;
 
-import com.quantumsoul.binarymod.block.UpgradableBlock;
-import net.minecraft.client.resources.I18n;
+import com.quantumsoul.binarymod.util.MachineUtils;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.state.IntegerProperty;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.text.ITextComponent;
 
 public class UpgradableTileEntity extends MachineTileEntity implements IUpgradableMachine
 {
-    public final int maxLevel;
+    public final MachineUtils.LevelInfo levelInfo;
     public int level = 0;
 
-    public IntegerProperty LEVEL;
-    private boolean init = false;
-
-    public UpgradableTileEntity(TileEntityType<?> tileEntityTypeIn, int levels)
+    public UpgradableTileEntity(TileEntityType<?> tileEntityTypeIn, MachineUtils.LevelInfo levels)
     {
         super(tileEntityTypeIn);
-        maxLevel = levels - 1;
+        levelInfo = levels;
     }
 
     //=================================================== PROCESS ===================================================
-    @Override
-    public void tick()
-    {
-        if (!init)
-        {
-            LEVEL = ((UpgradableBlock) world.getBlockState(pos).getBlock()).LEVEL;
-            init = true;
-        }
-    }
-
     @Override
     public void setLevel(int lev)
     {
@@ -40,10 +26,10 @@ public class UpgradableTileEntity extends MachineTileEntity implements IUpgradab
     @Override
     public boolean upgrade()
     {
-        if (level < maxLevel)
+        if (level < levelInfo.getMax())
         {
             level++;
-            world.setBlockState(pos, getBlockState().with(LEVEL, level), 2);
+            world.setBlockState(pos, getBlockState().with(levelInfo.level, level), 2);
             upgradeResets();
             markDirty();
 
@@ -56,9 +42,15 @@ public class UpgradableTileEntity extends MachineTileEntity implements IUpgradab
     protected void upgradeResets(){}
 
     @Override
-    public String getFormattedLevel()
+    public ITextComponent getLevelMessage()
     {
-        return I18n.format("tooltip.binarymod.level", level + 1, maxLevel + 1);
+        return levelInfo.formatLevel(level);
+    }
+
+    @Override
+    public ITextComponent getInfoMessage()
+    {
+        return levelInfo.formatInfo(level);
     }
 
     //=================================================== DATA ===================================================

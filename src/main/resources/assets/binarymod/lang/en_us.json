@@ -85,7 +85,6 @@
   "tooltip.binarymod.pill_blue2" : "you wake in your bed and you believe",
   "tooltip.binarymod.pill_blue3" : "whatever you want to believe",
 
-  "tooltip.binarymod.level": "Level: %d/%d",
   "tooltip.binarymod.sd": "Storage: %d%%",
   "tooltip.binarymod.sd_empty": "Empty",
   "tooltip.binarymod.bitcoin": "%dB",
@@ -117,6 +116,9 @@
   "gui.binarymod.blockprog_program": "Program",
   "gui.binarymod.block_programmer": "Block Programmer",
 
+  "machine.binarymod.level": "Level: %d/%d",
+  "machine.binarymod.on_off_on": "State: On",
+  "machine.binarymod.on_off_off": "State: Off",
   "machine.binarymod.click": "Click to",
   "machine.binarymod.feeder": "collect",
   "machine.binarymod.healer": "heal",
@@ -129,7 +131,7 @@
   "info.binarymod.upgrade": "Click on a machine to upgrade it",
   "info.binarymod.antivirus": "Click on infected block to cure\nHold to prevent contagion",
 
-  "jei.binarymod.healer": "%d hearts",
+  "jei.binarymod.healer": "%d half hearts",
   "jei.binarymod.shooter": "every %.2fs",
   "jei.binarymod.repairer": "%d damages",
   "jei.binarymod.bitcoin": "%.1f btc/min"

@@ -1,10 +1,11 @@
 package com.quantumsoul.binarymod.tileentity;
 
-import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.util.text.ITextComponent;
 
-public interface IUpgradableMachine extends ITickableTileEntity
+public interface IUpgradableMachine
 {
     boolean upgrade();
     void setLevel(int level);
-    String getFormattedLevel();
+    ITextComponent getLevelMessage();
+    ITextComponent getInfoMessage();
 }

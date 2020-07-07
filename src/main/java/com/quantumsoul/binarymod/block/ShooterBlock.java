@@ -1,5 +1,6 @@
 package com.quantumsoul.binarymod.block;
 
+import com.quantumsoul.binarymod.util.MachineUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.tileentity.TileEntity;
@@ -14,7 +15,7 @@ public class ShooterBlock extends BoolBlock
 {
     VoxelShape shape = Block.makeCuboidShape(6D, 0D, 6D, 10D, 14D, 10D);
 
-    public static ShooterBlock create(Properties builder, Supplier<TileEntity> tile, int levels)
+    public static ShooterBlock create(Properties builder, Supplier<TileEntity> tile, MachineUtils.LevelInfo levels)
     {
         CONSTLEVELS = levels;
         return new ShooterBlock(builder, tile);

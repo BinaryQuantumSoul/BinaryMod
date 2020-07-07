@@ -1,6 +1,7 @@
 package com.quantumsoul.binarymod.tileentity;
 
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
@@ -15,7 +16,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import static com.quantumsoul.binarymod.util.WorldUtils.dropInventoryItems;
 
-public abstract class ProgrammerTileEntity extends MachineTileEntity implements IProgrammerMachine
+public abstract class ProgrammerTileEntity extends MachineTileEntity implements IExecutableMachine, IDroppableMachine, INamedContainerProvider
 {
     private final int numberOfSlots;
 
@@ -34,14 +35,16 @@ public abstract class ProgrammerTileEntity extends MachineTileEntity implements 
 
     //=================================================== PROCESS ===================================================
     @Override
-    public void openGui(ServerPlayerEntity player)
+    public boolean execute(ServerPlayerEntity player)
     {
         if (!world.isRemote)
             NetworkHooks.openGui(player, this, this.pos);
+
+        return true;
     }
 
     @Override
-    public void dropAllContents(World world, BlockPos blockPos)
+    public void drop(World world, BlockPos blockPos)
     {
         dropInventoryItems(world, blockPos, this.contents);
     }

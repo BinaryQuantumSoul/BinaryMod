@@ -1,9 +1,12 @@
 package com.quantumsoul.binarymod.tileentity;
 
 import com.quantumsoul.binarymod.block.BoolBlock;
+import com.quantumsoul.binarymod.util.MachineUtils;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -13,14 +16,14 @@ import java.util.List;
 
 import static com.quantumsoul.binarymod.util.WorldUtils.dropStacks;
 
-public abstract class FactoryTileEntity extends UpgradableTileEntity implements IExecutableMachine
+public abstract class FactoryTileEntity extends UpgradableTileEntity implements IExecutableMachine, IDroppableMachine, ITickableTileEntity
 {
-    private static final int DOING_TIME = 600;
+    private static final int DOING_TIME = 1200;
 
     private int timer = 0;
     private boolean done = false;
 
-    public FactoryTileEntity(TileEntityType<?> tileEntityTypeIn, int levels)
+    public FactoryTileEntity(TileEntityType<?> tileEntityTypeIn, MachineUtils.LevelInfo levels)
     {
         super(tileEntityTypeIn, levels);
     }
@@ -29,8 +32,6 @@ public abstract class FactoryTileEntity extends UpgradableTileEntity implements 
     @Override
     public void tick()
     {
-        super.tick();
-
         if (!world.isRemote && !done)
         {
             timer++;
@@ -45,7 +46,7 @@ public abstract class FactoryTileEntity extends UpgradableTileEntity implements 
     }
 
     @Override
-    public boolean execute(PlayerEntity player)
+    public boolean execute(ServerPlayerEntity player)
     {
         if (done)
         {

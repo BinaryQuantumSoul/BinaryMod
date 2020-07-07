@@ -85,7 +85,6 @@
   "tooltip.binarymod.pill_blue2" : "vi vekiĝas en la via lito kaj vi kredas",
   "tooltip.binarymod.pill_blue3" : "kion vi volas kredi",
 
-  "tooltip.binarymod.level": "Nivelo: %d/%d",
   "tooltip.binarymod.sd": "Stokado Uzado: %d%%",
   "tooltip.binarymod.sd_empty": "Malplena",
   "tooltip.binarymod.bitcoin": "%dB",
@@ -117,6 +116,9 @@
   "gui.binarymod.blockprog_program": "Programi",
   "gui.binarymod.block_programmer": "Blokprogramisto",
 
+  "machine.binarymod.level": "Nivelo: %d/%d",
+  "machine.binarymod.on_off_on": "Stato: Ŝaltata",
+  "machine.binarymod.on_off_off": "Stato: Malŝaltata",
   "machine.binarymod.click": "Klaki por",
   "machine.binarymod.feeder": "rekolti",
   "machine.binarymod.healer": "kuraci",
@@ -127,10 +129,10 @@
   "machine.binarymod.block_programmer_1": "Programanta..",
 
   "info.binarymod.upgrade": "Klaki maŝinon por plibonigi ĝin",
-  "info.binarymod.antivirus": "Klaki malsanan blokon por sani ĝin\nTeni por preventi kontaĝo",
+  "info.binarymod.antivirus": "Klaki malsanan blokon por sani ĝin\nTeni por preventi kontaĝon",
 
-  "jei.binarymod.healer": "%d koroj",
+  "jei.binarymod.healer": "%d duonan korojn",
   "jei.binarymod.shooter": "ĉiu %.2fs",
-  "jei.binarymod.repairer": "%d damaĝoj",
+  "jei.binarymod.repairer": "%d damaĝojn",
   "jei.binarymod.bitcoin": "%.1f btm/min"
 }

@@ -7,17 +7,19 @@ import net.minecraft.item.ItemStack;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static com.quantumsoul.binarymod.util.MachineUtils.L_HEALER;
+
 public class HealerTileEntity extends FactoryTileEntity
 {
     public HealerTileEntity()
     {
-        super(TileEntityInit.HEALER.get(), 4);
+        super(TileEntityInit.HEALER.get(), L_HEALER);
     }
 
     @Override
     void doAction(PlayerEntity player, int level)
     {
-        player.heal((float) (2.5F * Math.pow(2, level)));
+        player.heal(L_HEALER.get(level));
     }
 
     @Nullable

@@ -156,6 +156,6 @@ public class ComputerContainer extends ProgrammerContainer
 
     public void openGui(ServerPlayerEntity player)
     {
-        tileEntity.openGui(player);
+        tileEntity.execute(player);
     }
 }
