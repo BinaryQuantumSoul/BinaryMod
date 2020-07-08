@@ -1,5 +1,6 @@
 package com.quantumsoul.binarymod.init;
 
+import com.quantumsoul.binarymod.compat.config.OreConfig;
 import com.quantumsoul.binarymod.entity.VoidSoulEntity;
 import com.quantumsoul.binarymod.util.WorldUtils;
 import net.minecraft.entity.EntityClassification;
@@ -23,7 +24,7 @@ public class GenerationInit
     public static void initOres()
     {
         for(Biome b : ForgeRegistries.BIOMES)
-            b.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BINARY_ORE.get().getDefaultState(), 8)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(2, 0, 0, 48))));
+            b.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BINARY_ORE.get().getDefaultState(), 8)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(OreConfig.binaryOreCountRange.get(), 0, 0, 48))));
     }
 
     public static void initSpawns()

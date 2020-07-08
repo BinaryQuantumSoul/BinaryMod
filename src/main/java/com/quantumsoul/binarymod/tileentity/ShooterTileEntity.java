@@ -1,6 +1,7 @@
 package com.quantumsoul.binarymod.tileentity;
 
 import com.quantumsoul.binarymod.block.BoolBlock;
+import com.quantumsoul.binarymod.compat.config.ChatConfig;
 import com.quantumsoul.binarymod.entity.BulletEntity;
 import com.quantumsoul.binarymod.init.TileEntityInit;
 import net.minecraft.entity.EntityPredicate;
@@ -106,7 +107,8 @@ public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMac
         if (!removed)
             players.add(id);
 
-        player.sendMessage(new TranslationTextComponent(removed ? "machine.binarymod.shooter_0": "machine.binarymod.shooter_1", player.getDisplayName()));
+        if (ChatConfig.sendShooterPlayerMessage.get())
+            player.sendMessage(new TranslationTextComponent(removed ? "machine.binarymod.shooter_0": "machine.binarymod.shooter_1", player.getDisplayName()));
     }
 
     public boolean canUse(PlayerEntity player)

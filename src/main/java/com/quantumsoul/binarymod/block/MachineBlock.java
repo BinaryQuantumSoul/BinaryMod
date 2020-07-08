@@ -1,5 +1,6 @@
 package com.quantumsoul.binarymod.block;
 
+import com.quantumsoul.binarymod.compat.config.ChatConfig;
 import com.quantumsoul.binarymod.init.ItemInit;
 import com.quantumsoul.binarymod.tileentity.IExecutableMachine;
 import com.quantumsoul.binarymod.tileentity.IDroppableMachine;
@@ -71,7 +72,8 @@ public class MachineBlock extends Block
                         if (!player.abilities.isCreativeMode)
                             holdItem.shrink(1);
 
-                        player.sendMessage(upgradableMachine.getLevelMessage());
+                        if (ChatConfig.sendMachineUpgradeMessage.get())
+                            player.sendMessage(upgradableMachine.getLevelMessage());
 
                         return ActionResultType.CONSUME;
                     }

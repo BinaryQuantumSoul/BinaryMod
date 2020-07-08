@@ -1,5 +1,6 @@
 package com.quantumsoul.binarymod.block;
 
+import com.quantumsoul.binarymod.compat.config.OreConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
@@ -21,7 +22,7 @@ public class BinaryOreBlock extends Block
         if (worldIn.isRemote())
             return;
 
-        if (worldIn.getRandom().nextInt(10) == 0)
+        if (worldIn.getRandom().nextInt(100) < OreConfig.binaryOreWhiteRabbit.get())
         {
             RabbitEntity rabbit = EntityType.RABBIT.create(worldIn.getWorld());
             rabbit.setRabbitType(1);

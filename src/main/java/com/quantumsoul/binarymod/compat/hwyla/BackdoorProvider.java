@@ -13,20 +13,15 @@ public class BackdoorProvider implements IComponentProvider
     @Override
     public ItemStack getStack(IDataAccessor accessor, IPluginConfig config)
     {
-        if (accessor.getBlock() == BlockInit.BACKDOOR.get())
+        BlockPos.Mutable mutable = new BlockPos.Mutable(accessor.getPosition());
+        Block block;
+        do
         {
-            BlockPos.Mutable mutable = new BlockPos.Mutable(accessor.getPosition());
-            Block block;
-            do
-            {
-                mutable.setPos(mutable.getX(), mutable.getY() - 1.0D, mutable.getZ());
-                block = accessor.getWorld().getBlockState(mutable).getBlock();
-            }
-            while (block == BlockInit.BACKDOOR.get());
-
-            return new ItemStack(block);
+            mutable.setPos(mutable.getX(), mutable.getY() - 1.0D, mutable.getZ());
+            block = accessor.getWorld().getBlockState(mutable).getBlock();
         }
+        while (block == BlockInit.BACKDOOR.get());
 
-        return ItemStack.EMPTY;
+        return new ItemStack(block);
     }
 }

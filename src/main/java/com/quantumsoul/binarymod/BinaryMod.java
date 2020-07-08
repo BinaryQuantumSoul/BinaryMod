@@ -1,9 +1,12 @@
 package com.quantumsoul.binarymod;
 
+import com.quantumsoul.binarymod.compat.config.BinaryModConfig;
 import com.quantumsoul.binarymod.init.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DeferredWorkQueue;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -18,6 +21,8 @@ public class BinaryMod
     public BinaryMod()
     {
         final IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        BinaryModConfig.initConfigs(ModLoadingContext.get());
 
         eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::clientSetup);

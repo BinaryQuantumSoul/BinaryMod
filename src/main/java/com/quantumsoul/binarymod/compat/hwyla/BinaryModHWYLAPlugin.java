@@ -1,6 +1,7 @@
 package com.quantumsoul.binarymod.compat.hwyla;
 
 import com.quantumsoul.binarymod.BinaryMod;
+import com.quantumsoul.binarymod.block.BackdoorBlock;
 import com.quantumsoul.binarymod.block.MachineBlock;
 import com.quantumsoul.binarymod.entity.FlyerEntity;
 import com.quantumsoul.binarymod.tileentity.MachineTileEntity;
@@ -25,6 +26,6 @@ public class BinaryModHWYLAPlugin implements IWailaPlugin
         registrar.registerComponentProvider(new FlyerProvider(), TooltipPosition.HEAD, FlyerEntity.class);
         registrar.registerEntityStackProvider(new FlyerProvider(), FlyerEntity.class);
 
-        registrar.registerStackProvider(new BackdoorProvider(), Block.class);
+        registrar.registerStackProvider(new BackdoorProvider(), BackdoorBlock.class);
     }
 }
