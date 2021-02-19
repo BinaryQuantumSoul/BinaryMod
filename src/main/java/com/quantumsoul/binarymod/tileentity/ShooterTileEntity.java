@@ -4,6 +4,7 @@ import com.quantumsoul.binarymod.block.BoolBlock;
 import com.quantumsoul.binarymod.compat.config.ChatConfig;
 import com.quantumsoul.binarymod.entity.BulletEntity;
 import com.quantumsoul.binarymod.init.TileEntityInit;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -13,7 +14,7 @@ import net.minecraft.nbt.ListNBT;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
@@ -108,7 +109,7 @@ public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMac
             players.add(id);
 
         if (ChatConfig.sendShooterPlayerMessage.get())
-            player.sendMessage(new TranslationTextComponent(removed ? "machine.binarymod.shooter_0": "machine.binarymod.shooter_1", player.getDisplayName()));
+            player.sendMessage(new TranslationTextComponent(removed ? "machine.binarymod.shooter_0": "machine.binarymod.shooter_1", player.getDisplayName()), player.getUniqueID());
     }
 
     public boolean canUse(PlayerEntity player)
@@ -124,7 +125,7 @@ public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMac
     protected double[] aimYawPitch(LivingEntity target)
     {
         double dist = Math.sqrt(target.getDistanceSq(pos.getX(), pos.getY(), pos.getZ()));
-        Vec3d motion = target.getMotion();
+        Vector3d motion = target.getMotion();
 
         double dx = target.getPosX() + motion.getX() * dist - pos.getX() - 0.5F;
         double dy = target.getPosY() + 0.25F - pos.getY() - 1.0F;
@@ -148,7 +149,7 @@ public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMac
 
         ListNBT list = new ListNBT();
         for (UUID uuid : players)
-            list.add(NBTUtil.writeUniqueId(uuid));
+            list.add(NBTUtil.func_240626_a_(uuid));
 
         compound.put("players", list);
 
@@ -156,9 +157,9 @@ public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMac
     }
 
     @Override
-    public void read(CompoundNBT compound)
+    public void read(BlockState state, CompoundNBT compound)
     {
-        super.read(compound);
+        super.read(state, compound);
 
         on = compound.getBoolean("on");
         timer = compound.getInt("timer");

@@ -26,6 +26,7 @@ import java.util.Random;
 public class TrojanBlock extends Block
 {
     protected static final VoxelShape shape = Block.makeCuboidShape(1D, 0D, 7D, 13D, 13D, 10D);
+    private static final int TICKRATE = 5;
 
     public TrojanBlock(Properties properties)
     {
@@ -47,19 +48,13 @@ public class TrojanBlock extends Block
             e.setMotion(x, y, z);
         }
 
-        worldIn.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(worldIn));
-    }
-
-    @Override
-    public int tickRate(IWorldReader worldIn)
-    {
-        return 5;
+        worldIn.getPendingBlockTicks().scheduleTick(pos, this, TICKRATE);
     }
 
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack)
     {
-        worldIn.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(worldIn));
+        worldIn.getPendingBlockTicks().scheduleTick(pos, this, TICKRATE);
     }
 
     @Override

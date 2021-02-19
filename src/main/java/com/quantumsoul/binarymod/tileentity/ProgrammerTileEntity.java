@@ -1,5 +1,6 @@
 package com.quantumsoul.binarymod.tileentity;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.nbt.CompoundNBT;
@@ -82,9 +83,9 @@ public abstract class ProgrammerTileEntity extends MachineTileEntity implements 
     }
 
     @Override
-    public void read(CompoundNBT compound)
+    public void read(BlockState state, CompoundNBT compound)
     {
-        super.read(compound);
+        super.read(state, compound);
 
         contents.deserializeNBT(compound.getCompound("contents"));
         if (contents.getSlots() != numberOfSlots)

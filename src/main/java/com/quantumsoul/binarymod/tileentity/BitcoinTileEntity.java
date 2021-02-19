@@ -3,6 +3,7 @@ package com.quantumsoul.binarymod.tileentity;
 import com.quantumsoul.binarymod.init.NetworkInit;
 import com.quantumsoul.binarymod.init.TileEntityInit;
 import com.quantumsoul.binarymod.network.packet.SBtcResetValuePacket;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -79,9 +80,9 @@ public class BitcoinTileEntity extends UpgradableTileEntity implements IExecutab
     }
 
     @Override
-    public void read(CompoundNBT compound)
+    public void read(BlockState state, CompoundNBT compound)
     {
-        super.read(compound);
+        super.read(state, compound);
 
         value = compound.getDouble("value");
     }

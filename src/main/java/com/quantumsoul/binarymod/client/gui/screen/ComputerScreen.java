@@ -1,5 +1,6 @@
 package com.quantumsoul.binarymod.client.gui.screen;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.client.gui.screen.widgets.ScrollBar;
@@ -20,6 +21,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -93,58 +95,58 @@ public class ComputerScreen extends ContainerScreen<ComputerContainer>
                 break;
 
             default:
-                addButton(new TextButton(guiLeft + 120, guiTop + 39, 36, I18n.format("gui.binarymod.computer_load"), p ->
+                addButton(new TextButton(guiLeft + 120, guiTop + 39, 36, new TranslationTextComponent("gui.binarymod.computer_load"), p ->
                         NetworkInit.CHANNEL.sendToServer(new CComputerPacket(container.getPos(), true))));
                 break;
         }
     }
 
     @Override
-    public void render(int mouseX, int mouseY, float partialTicks)
+    public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks)
     {
-        this.renderBackground();
-        super.render(mouseX, mouseY, partialTicks);
-        this.notFrozenToolTip(mouseX, mouseY);
+        this.renderBackground(matrixStack);
+        super.render(matrixStack, mouseX, mouseY, partialTicks);
+        this.notFrozenToolTip(matrixStack, mouseX, mouseY);
     }
 
-    protected void notFrozenToolTip(int x, int y)
+    protected void notFrozenToolTip(MatrixStack matrixStack, int x, int y)
     {
         if (minecraft.player.inventory.getItemStack().isEmpty() && hoveredSlot != null && hoveredSlot.getHasStack() && !(hoveredSlot.getStack().getItem() instanceof SDCardItem && !hoveredSlot.canTakeStack(playerInventory.player)))
-            this.renderTooltip(hoveredSlot.getStack(), x, y);
+            this.renderTooltip(matrixStack, hoveredSlot.getStack(), x, y);
     }
 
     @Override
-    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
+    protected void drawGuiContainerBackgroundLayer(MatrixStack matrixStack, float partialTicks, int mouseX, int mouseY)
     {
         RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.minecraft.getTextureManager().bindTexture(texture);
 
         if (state == ComputerTileEntity.ComputerState.SD)
         {
-            this.blit(guiLeft, guiTop, 0, 0, this.xSize, 58);
+            this.blit(matrixStack, guiLeft, guiTop, 0, 0, this.xSize, 58);
             int k = 17 * container.getSDOrder();
-            this.blit(guiLeft, guiTop + 58, 0, 109 - k, this.xSize, 94 + k);
+            this.blit(matrixStack, guiLeft, guiTop + 58, 0, 109 - k, this.xSize, 94 + k);
         } else
-            this.blit(guiLeft, guiTop, 0, 0, this.xSize, this.ySize);
+            this.blit(matrixStack, guiLeft, guiTop, 0, 0, this.xSize, this.ySize);
     }
 
     @Override
-    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
+    protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int mouseX, int mouseY)
     {
-        font.drawString(newTitle, (xSize - font.getStringWidth(newTitle)) / 2.0F, 5, 0x164C00);
+        font.drawString(matrixStack, newTitle, (xSize - font.getStringWidth(newTitle)) / 2.0F, 5, 0x164C00);
         if (state != ComputerTileEntity.ComputerState.DARK_NET)
-            font.drawString(playerInventory.getName().getFormattedText(), 45, ySize - 90, 0xFCC900);
+            font.drawString(matrixStack, playerInventory.getName().getString(), 45, ySize - 90, 0xFCC900);
         else
-            drawRecipes(index);
+            drawRecipes(matrixStack, index);
 
         for (Widget b : buttons)
             if (b.isHovered())
-                b.renderToolTip(47, 20);
+                b.renderToolTip(matrixStack, 47, 20);
     }
 
-    private void drawRecipes(int index)
+    private void drawRecipes(MatrixStack matrixStack, int index)
     {
-        font.drawString(moneyString, 122, 44, 0x4CFF00);
+        font.drawString(matrixStack, moneyString, 122, 44, 0x4CFF00);
 
         for (int i = 0; i < 3; i++)
         {
@@ -155,7 +157,7 @@ public class ComputerScreen extends ContainerScreen<ComputerContainer>
             container.putStackInSlot(i + 1, recipe.getRecipeOutput());
 
             double price = recipe.getPrice();
-            font.drawString(getBitcoinString(price), 75, y + 5, money >= price ? 0x4CFF00 : 0xFCC900);
+            font.drawString(matrixStack, getBitcoinString(price), 75, y + 5, money >= price ? 0x4CFF00 : 0xFCC900);
             itemRenderer.renderItemAndEffectIntoGUI(getBitcoinStack(price), 110, y);
         }
     }
@@ -163,8 +165,9 @@ public class ComputerScreen extends ContainerScreen<ComputerContainer>
     @Override
     public boolean mouseDragged(double mouseX, double mouseY, int id, double newMouseX, double newMouseY)
     {
+        //todo check
         if (state == ComputerTileEntity.ComputerState.DARK_NET)
-            return (this.getFocused() != null && this.isDragging() && id == 0) && this.getFocused().mouseDragged(mouseX, mouseY, id, newMouseX, newMouseY);
+            return (this.getListener() != null && this.isDragging() && id == 0) && this.getListener().mouseDragged(mouseX, mouseY, id, newMouseX, newMouseY);
 
         return super.mouseDragged(mouseX, mouseY, id, newMouseX, newMouseY);
     }

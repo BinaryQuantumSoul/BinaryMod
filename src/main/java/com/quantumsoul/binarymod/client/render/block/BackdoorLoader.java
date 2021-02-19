@@ -14,7 +14,7 @@ import net.minecraft.resources.IResourceManager;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.ILightReader;
+import net.minecraft.world.IBlockDisplayReader;
 import net.minecraftforge.client.model.IModelConfiguration;
 import net.minecraftforge.client.model.IModelLoader;
 import net.minecraftforge.client.model.data.IDynamicBakedModel;
@@ -44,13 +44,13 @@ public class BackdoorLoader implements IModelLoader<BackdoorLoader.BackdoorGeome
     public static class BackdoorGeometry implements IModelGeometry<BackdoorGeometry>
     {
         @Override
-        public IBakedModel bake(IModelConfiguration owner, ModelBakery bakery, Function<Material, TextureAtlasSprite> spriteGetter, IModelTransform modelTransform, ItemOverrideList overrides, ResourceLocation modelLocation)
+        public IBakedModel bake(IModelConfiguration owner, ModelBakery bakery, Function<RenderMaterial, TextureAtlasSprite> spriteGetter, IModelTransform modelTransform, ItemOverrideList overrides, ResourceLocation modelLocation)
         {
             return new BackdoorModel(spriteGetter.apply(owner.resolveTexture("particle")));
         }
 
         @Override
-        public Collection<Material> getTextures(IModelConfiguration owner, Function<ResourceLocation, IUnbakedModel> modelGetter, Set<Pair<String, String>> missingTextureErrors)
+        public Collection<RenderMaterial> getTextures(IModelConfiguration owner, Function<ResourceLocation, IUnbakedModel> modelGetter, Set<Pair<String, String>> missingTextureErrors)
         {
             return Collections.singleton(owner.resolveTexture("particle"));
         }
@@ -69,9 +69,9 @@ public class BackdoorLoader implements IModelLoader<BackdoorLoader.BackdoorGeome
 
             @Nonnull
             @Override
-            public IModelData getModelData(@Nonnull ILightReader world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull IModelData tileData)
+            public IModelData getModelData(@Nonnull IBlockDisplayReader world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull IModelData tileData)
             {
-                BlockPos.Mutable mutable = new BlockPos.Mutable(pos);
+                BlockPos.Mutable mutable = new BlockPos.Mutable();
                 BlockState nextState;
                 do
                 {
@@ -107,7 +107,7 @@ public class BackdoorLoader implements IModelLoader<BackdoorLoader.BackdoorGeome
             }
 
             @Override
-            public boolean func_230044_c_()
+            public boolean isSideLit()
             {
                 return false;
             }

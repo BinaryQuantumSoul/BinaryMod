@@ -5,10 +5,10 @@ import com.quantumsoul.binarymod.block.MachineBlock;
 import com.quantumsoul.binarymod.tileentity.FactoryTileEntity;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.util.math.vector.Vector3f;
 
 public class FactoryTileRenderer extends TileEntityRenderer<FactoryTileEntity>
 {

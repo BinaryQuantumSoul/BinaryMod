@@ -6,7 +6,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -35,16 +34,15 @@ public class BinaryMod
         ContainerInit.CONTAINERS.register(eventBus);
         TileEntityInit.TILE_ENTITIES.register(eventBus);
         EntityInit.ENTITIES.register(eventBus);
-        BiomeInit.BIOMES.register(eventBus);
-        DimensionInit.MOD_DIMENSIONS.register(eventBus);
+        GenerationInit.SURFACE_BUILDERS.register(eventBus);
+        GenerationInit.BIOMES.register(eventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         RecipeInit.initIngredients();
         NetworkInit.initPackets();
-        DeferredWorkQueue.runLater(GenerationInit::initOres);
-        DeferredWorkQueue.runLater(GenerationInit::initSpawns);
+        DeferredWorkQueue.runLater(EntityInit::initSpawns);
     }
 
     private void clientSetup(final FMLClientSetupEvent event)

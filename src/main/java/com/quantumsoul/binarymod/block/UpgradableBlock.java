@@ -15,7 +15,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraft.world.storage.loot.LootContext;
 
 import javax.annotation.Nullable;
 import java.util.Arrays;
@@ -46,18 +45,6 @@ public class UpgradableBlock extends MachineBlock
     {
         super.fillStateContainer(builder);
         builder.add(CONSTLEVELS.level);
-    }
-
-    @Override
-    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder)
-    {
-        CompoundNBT compound = new CompoundNBT();
-        compound.putInt("level", state.get(levelInfo.level));
-
-        ItemStack stack = new ItemStack(this);
-        stack.setTagInfo("levelInfo", compound);
-
-        return Arrays.asList(stack);
     }
 
     @Override

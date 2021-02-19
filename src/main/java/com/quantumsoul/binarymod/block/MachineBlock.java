@@ -22,6 +22,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import java.util.UUID;
 import java.util.function.Supplier;
 
 public class MachineBlock extends Block
@@ -73,7 +74,7 @@ public class MachineBlock extends Block
                             holdItem.shrink(1);
 
                         if (ChatConfig.sendMachineUpgradeMessage.get())
-                            player.sendMessage(upgradableMachine.getLevelMessage());
+                            player.sendMessage(upgradableMachine.getLevelMessage(), player.getUniqueID());
 
                         return ActionResultType.CONSUME;
                     }

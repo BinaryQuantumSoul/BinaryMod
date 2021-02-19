@@ -4,12 +4,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.loot.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraft.world.storage.loot.*;
 
 import java.util.List;
 import java.util.Set;
@@ -38,10 +39,10 @@ public class MysteryBlock extends Block
         else
         {
             LootContext.Builder builder = new LootContext.Builder((ServerWorld) worldIn);
-            builder.withParameter(LootParameters.POSITION, pos);
+            builder.withParameter(LootParameters.field_237457_g_, new Vector3d(pos.getX(), pos.getY(), pos.getZ()).add(.5, .5, .5));
             builder.withLuck(player.getLuck()).withParameter(LootParameters.THIS_ENTITY, player);
 
-            Set<ResourceLocation> tables = LootTables.func_215796_a();
+            Set<ResourceLocation> tables = LootTables.getReadOnlyLootTables();
             LootTable table1 = worldIn.getServer().getLootTableManager().getLootTableFromLocation(tables.stream().skip(worldIn.rand.nextInt(tables.size() - 1)).findFirst().get());
             LootTable table2 = worldIn.getServer().getLootTableManager().getLootTableFromLocation(tables.stream().skip(worldIn.rand.nextInt(tables.size() - 1)).findFirst().get());
             List<ItemStack> loot1 = table1.generate(builder.build(LootParameterSets.CHEST));

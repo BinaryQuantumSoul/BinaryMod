@@ -3,6 +3,7 @@ package com.quantumsoul.binarymod.init;
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.block.*;
 import com.quantumsoul.binarymod.tileentity.*;
+import com.quantumsoul.binarymod.util.WorldUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -22,15 +23,15 @@ import static com.quantumsoul.binarymod.util.MachineUtils.*;
 @Mod.EventBusSubscriber(modid = BinaryMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BlockInit
 {
-    public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, BinaryMod.MOD_ID);
-    public static final DeferredRegister<Block> MACHINES = new DeferredRegister<>(ForgeRegistries.BLOCKS, BinaryMod.MOD_ID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, BinaryMod.MOD_ID);
+    public static final DeferredRegister<Block> MACHINES = DeferredRegister.create(ForgeRegistries.BLOCKS, BinaryMod.MOD_ID);
 
     private static final Block.Properties BASE = Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F).harvestLevel(2).harvestTool(ToolType.PICKAXE);
     private static final Block.Properties NOT_RESISTANT = Block.Properties.create(Material.EARTH).hardnessAndResistance(0F).sound(SoundType.SNOW);
-    private static final Block.Properties FULL_RESISTANT = Block.Properties.create(Material.ROCK).hardnessAndResistance(-1F, 360000F).noDrops();
+    private static final Block.Properties FULL_RESISTANT = Block.Properties.create(Material.ROCK).hardnessAndResistance(-1F, 360000F).noDrops().setAllowsSpawn(WorldUtils::neverSpawn);
     private static final Block.Properties ALIVE = Block.Properties.create(Material.WOOD).hardnessAndResistance(4F).sound(SoundType.NETHER_WART);
     private static final Block.Properties DEAD = Block.Properties.create(Material.WOOD).hardnessAndResistance(1.5F).sound(SoundType.NETHER_WART);
-    private static final Block.Properties MACHINE = Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F).sound(SoundType.METAL).lightValue(7);
+    private static final Block.Properties MACHINE = Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F).sound(SoundType.METAL).setLightLevel((blockState) -> 7);
     private static final Block.Properties MALWARE = Block.Properties.create(Material.EARTH).hardnessAndResistance(0.75F).sound(SoundType.WOOD);
     private static final Block.Properties NOT_SOLID = Block.Properties.create(Material.EARTH).hardnessAndResistance(0.75F).sound(SoundType.WOOD).notSolid();
 

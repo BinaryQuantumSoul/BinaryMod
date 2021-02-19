@@ -1,5 +1,6 @@
 package com.quantumsoul.binarymod.compat.jei;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.init.ItemInit;
 import com.quantumsoul.binarymod.recipe.DarkWebRecipe;
@@ -85,8 +86,8 @@ public class DarkWebCategory implements IRecipeCategory<DarkWebRecipe>
     }
 
     @Override
-    public void draw(@Nonnull DarkWebRecipe recipe, double mouseX, double mouseY)
+    public void draw(@Nonnull DarkWebRecipe recipe, MatrixStack matrixStack, double mouseX, double mouseY)
     {
-        Minecraft.getInstance().fontRenderer.drawString(getBitcoinString(recipe.getPrice()).substring(0, 4), 39, 9, 0x4CFF00);
+        Minecraft.getInstance().fontRenderer.drawString(matrixStack, getBitcoinString(recipe.getPrice()).substring(0, 4), 39, 9, 0x4CFF00);
     }
 }

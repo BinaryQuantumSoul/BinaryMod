@@ -6,7 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
@@ -27,8 +27,8 @@ public class VirusBugBlock extends VirusBlock
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
     {
         super.onEntityWalk(worldIn, pos, entityIn);
-        Vec3d motion = entityIn.getMotion();
-        entityIn.setMotion(new Vec3d(motion.getX(), 1, motion.getZ()));
+        Vector3d motion = entityIn.getMotion();
+        entityIn.setMotion(new Vector3d(motion.getX(), 1, motion.getZ()));
     }
 
     @Override
@@ -48,7 +48,7 @@ public class VirusBugBlock extends VirusBlock
             return;
 
         LivingEntity entity = (LivingEntity) entityIn;
-        Vec3d mo = entity.getMotion();
+        Vector3d mo = entity.getMotion();
         boolean fall = false;
 
         double y = 0D;

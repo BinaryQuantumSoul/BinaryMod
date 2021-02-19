@@ -1,5 +1,6 @@
 package com.quantumsoul.binarymod.compat.jei;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import com.quantumsoul.binarymod.BinaryMod;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -66,12 +67,12 @@ public abstract class UpgradableCategory implements IRecipeCategory<Byte>
     }
 
     @Override
-    public void draw(Byte recipe, double mouseX, double mouseY)
+    public void draw(Byte recipe, MatrixStack matrixStack, double mouseX, double mouseY)
     {
         for(int i = 0; i < content.size(); i++)
         {
             String string = content.get(i).getKey();
-            Minecraft.getInstance().fontRenderer.drawString(getFormattedLevel(i, content.size() - 1) + (string != null ? " -> " + string : ""), 7, 6 + 20 * i, 0x3F3F3F);
+            Minecraft.getInstance().fontRenderer.drawString(matrixStack, getFormattedLevel(i, content.size() - 1) + (string != null ? " -> " + string : ""), 7, 6 + 20 * i, 0x3F3F3F);
         }
     }
 }

@@ -1,18 +1,18 @@
 package com.quantumsoul.binarymod.item;
 
 import com.quantumsoul.binarymod.init.DimensionInit;
-import com.quantumsoul.binarymod.world.dimension.BinaryDimension;
+import com.quantumsoul.binarymod.util.WorldUtils;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.RegistryKey;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionType;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -43,16 +43,16 @@ public class PillItem extends Item
     @Override
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving)
     {
-        DimensionType dim = entityLiving.dimension;
-        if (this.mPill == Pill.RED && dim != DimensionInit.DIM_BINARY_TYPE)
+        RegistryKey<World> dim = entityLiving.world.getDimensionKey();
+        if (this.mPill == Pill.RED && dim != DimensionInit.BINARY_DIMENSION)
         {
             if (entityLiving instanceof ServerPlayerEntity)
-                BinaryDimension.teleport((ServerPlayerEntity) entityLiving);
+                WorldUtils.teleportToBinDim((ServerPlayerEntity) entityLiving);
         }
-        else if (this.mPill == Pill.BLUE && dim == DimensionInit.DIM_BINARY_TYPE)
+        else if (this.mPill == Pill.BLUE && dim == DimensionInit.BINARY_DIMENSION)
         {
             if (entityLiving instanceof ServerPlayerEntity)
-                BinaryDimension.teleportBack((ServerPlayerEntity) entityLiving);
+                WorldUtils.teleportFromBinDim((ServerPlayerEntity) entityLiving);
         }
         else
             return stack;

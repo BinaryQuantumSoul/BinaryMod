@@ -1,5 +1,6 @@
 package com.quantumsoul.binarymod.client.gui;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.compat.config.GUIConfig;
 import net.minecraft.client.Minecraft;
@@ -42,12 +43,13 @@ public class BitcoinOverlay
         }
 
         Minecraft minecraft = Minecraft.getInstance();
+        MatrixStack matrixStack = event.getMatrixStack();
 
         double count = evaluateInventory(minecraft.player.inventory);
         if (count > 0.0D)
         {
-            minecraft.fontRenderer.drawString(getBitcoinString(count), x + j, y + k, 0xFFFFFF);
-            GuiUtils.drawContinuousTexturedBox(TEXTURE, x + j - 15, y + k - 3, 0, 19, 14, 14, 256, 256, 0, 0.0F);
+            minecraft.fontRenderer.drawString(matrixStack, getBitcoinString(count), x + j, y + k, 0xFFFFFF);
+            GuiUtils.drawContinuousTexturedBox(matrixStack, TEXTURE, x + j - 15, y + k - 3, 0, 19, 14, 14, 256, 256, 0, 0.0F);
         }
     }
 }

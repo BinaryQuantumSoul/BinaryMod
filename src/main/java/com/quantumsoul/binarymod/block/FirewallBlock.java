@@ -40,10 +40,4 @@ public class FirewallBlock extends Block
             player.addItemStackToInventory(new ItemStack(ItemInit.FIREBRICK.get()));
         }
     }
-
-    @Override
-    public boolean canEntitySpawn(BlockState state, IBlockReader worldIn, BlockPos pos, EntityType<?> type)
-    {
-        return false;
-    }
 }

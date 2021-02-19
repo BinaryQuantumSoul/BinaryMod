@@ -9,7 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class TileEntityInit
 {
-    public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = new DeferredRegister<>(ForgeRegistries.TILE_ENTITIES, BinaryMod.MOD_ID);
+    public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, BinaryMod.MOD_ID);
 
     public static final RegistryObject<TileEntityType<ComputerTileEntity>> COMPUTER = TILE_ENTITIES.register("computer", () -> TileEntityType.Builder.create(ComputerTileEntity::new, BlockInit.COMPUTER.get()).build(null));
     public static final RegistryObject<TileEntityType<FeederTileEntity>> FEEDER = TILE_ENTITIES.register("feeder", () -> TileEntityType.Builder.create(FeederTileEntity::new, BlockInit.FEEDER.get()).build(null));

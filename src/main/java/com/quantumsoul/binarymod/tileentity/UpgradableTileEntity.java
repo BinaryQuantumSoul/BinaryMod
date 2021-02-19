@@ -1,6 +1,7 @@
 package com.quantumsoul.binarymod.tileentity;
 
 import com.quantumsoul.binarymod.util.MachineUtils;
+import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.text.ITextComponent;
@@ -65,9 +66,9 @@ public class UpgradableTileEntity extends MachineTileEntity implements IUpgradab
     }
 
     @Override
-    public void read(CompoundNBT compound)
+    public void read(BlockState state, CompoundNBT compound)
     {
-        super.read(compound);
+        super.read(state, compound);
 
         level = compound.getInt("level");
     }

@@ -12,7 +12,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ItemInit
 {
-    public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, BinaryMod.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, BinaryMod.MOD_ID);
 
     public static final Item.Properties BASE = new Item.Properties().group(ItemGroupInit.BINDIM_TAB);
     public static final Item.Properties NO_STACK = new Item.Properties().group(ItemGroupInit.BINDIM_TAB).maxStackSize(1);

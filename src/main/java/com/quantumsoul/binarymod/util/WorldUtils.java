@@ -2,6 +2,7 @@ package com.quantumsoul.binarymod.util;
 
 import com.quantumsoul.binarymod.block.HexBlock;
 import com.quantumsoul.binarymod.init.BlockInit;
+import com.quantumsoul.binarymod.init.DimensionInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -12,17 +13,18 @@ import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.RegistryKey;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionType;
+import net.minecraft.world.*;
+import net.minecraft.world.gen.feature.WorldDecoratingHelper;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.items.IItemHandler;
 
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Supplier;
@@ -30,18 +32,18 @@ import java.util.function.Supplier;
 public class WorldUtils
 {
     //TELEPORTING
-    public static BlockPos teleportPlayer(ServerPlayerEntity player, DimensionType destinationType, BlockPos destinationPos)
+    public static BlockPos teleportPlayer(ServerPlayerEntity player, RegistryKey<World> destination, BlockPos destinationPos)
     {
-        if (destinationType == null)
-            throw new IllegalArgumentException("Destination dimension type is null !");
+        if (destination == null)
+            throw new IllegalArgumentException("Destination dimension key is null !");
 
         //LOAD WORLD
-        ServerWorld nextWorld = player.getServer().getWorld(destinationType);
+        ServerWorld nextWorld = player.getServer().getWorld(destination);
         nextWorld.getChunk(destinationPos);
 
         int x = destinationPos.getX();
         int z = destinationPos.getZ();
-        int maxHeight = nextWorld.getMaxHeight();
+        int maxHeight = nextWorld.getHeight();
 
         //FIND SPAWN
         BlockPos.Mutable pos = new BlockPos.Mutable();
@@ -65,7 +67,7 @@ public class WorldUtils
             y = maxHeight / 2;
 
             pos.setPos(x, y, z);
-            BlockState biomeTopBlock = nextWorld.getBiome(pos).getSurfaceBuilderConfig().getTop();
+            BlockState biomeTopBlock = nextWorld.getBiome(pos).getGenerationSettings().getSurfaceBuilderConfig().getTop();
             for (int i = x - 1; i <= x + 1; i++)
             {
                 for (int j = z - 1; j <= z + 1; j++)
@@ -83,11 +85,22 @@ public class WorldUtils
         return new BlockPos(x, y, z);
     }
 
+    public static void teleportToBinDim(ServerPlayerEntity player)
+    {
+        BlockPos spawnPos = teleportPlayer(player, DimensionInit.BINARY_DIMENSION, player.getPosition());
+        //todo player.setSpawnPoint(spawnPos, true, true, DimensionInit.DIM_BINARY_TYPE);
+    }
+
+    public static void teleportFromBinDim(ServerPlayerEntity player)
+    {
+        teleportPlayer(player, World.OVERWORLD, player.getPosition());
+    }
+
     //GROUND CALCULATING
     private static int getGroundLevelFrom(IWorld worldIn, int x, int z, int yStart, boolean isAir)
     {
         int level = yStart;
-        int yStop = worldIn.getMaxHeight();
+        int yStop = worldIn.getHeight();
         if (x >= -30000000 && z >= -30000000 && x < 30000000 && z < 30000000)
         {
             if (worldIn.chunkExists(x >> 4, z >> 4))
@@ -149,6 +162,20 @@ public class WorldUtils
         return !s.isAir(entity.world, pos) && playerBox.offset(0, -0.01, 0).intersects(shape.getBoundingBox().offset(pos));
     }
 
+    //WORLD DECORATING HELPER
+    private static final Field field_242889_a = ObfuscationReflectionHelper.findField(WorldDecoratingHelper.class, "field_242889_a");
+    public static IWorld getWorldFromWorldDecoratingHelper(WorldDecoratingHelper wdh)
+    {
+        try
+        {
+            return ((ISeedReader)field_242889_a.get(wdh)).getWorld();
+        } catch (IllegalAccessException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     //MOBS
     public static boolean canBinDimAnimalSpawn(EntityType<? extends MobEntity> entity, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random)
     {
@@ -165,6 +192,11 @@ public class WorldUtils
     public static boolean onBinDimLivingFall(IWorld worldIn, BlockPos pos, Supplier<Boolean> def)
     {
         return worldIn.getBlockState(pos.down()) == BlockInit.ON_BINARY_BLOCK.get().getDefaultState() ? def.get() : false;
+    }
+
+    public static boolean neverSpawn(BlockState blockState, IBlockReader iBlockReader, BlockPos blockPos, EntityType<?> entityType)
+    {
+        return false;
     }
 
     //BLOCK CHECKING
@@ -192,7 +224,7 @@ public class WorldUtils
 
     public static void dropStacks(World worldIn, double x, double y, double z, List<ItemStack> stacks)
     {
-        for(ItemStack stack : stacks)
+        for (ItemStack stack : stacks)
             spawnItemStack(worldIn, x, y, z, stack);
     }
 

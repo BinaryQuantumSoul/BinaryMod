@@ -1,5 +1,6 @@
 package com.quantumsoul.binarymod.client.gui.screen.widgets;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.quantumsoul.binarymod.BinaryMod;
 import net.minecraft.client.Minecraft;
@@ -7,6 +8,7 @@ import net.minecraft.client.gui.widget.Widget;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -24,7 +26,7 @@ public class ScrollBar extends Widget
 
     public ScrollBar(int xIn, int yIn, int heightIn, int maxValue, Consumer<Integer> apply)
     {
-        super(xIn, yIn, 11, heightIn, "gui.binarymod.scrollbar");
+        super(xIn, yIn, 11, heightIn, new TranslationTextComponent("gui.binarymod.scrollbar"));
 
         this.maxValue = maxValue;
         this.apply = apply;
@@ -33,12 +35,12 @@ public class ScrollBar extends Widget
     }
 
     @Override
-    public void render(int mouseX, int mouseY, float partialTicks)
+    public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks)
     {
         Minecraft.getInstance().getTextureManager().bindTexture(TEXTURE);
         RenderSystem.color4f(1.0F, 1.0F, 1.0F, this.alpha);
 
-        this.blit(x, (int) (pos - width / 2), 0, 105, width, width);
+        this.blit(matrixStack, x, (int) (pos - width / 2), 0, 105, width, width);
     }
 
     @Override
@@ -89,11 +91,5 @@ public class ScrollBar extends Widget
     {
         changePosition(pos - sign / maxValue * (height - width));
         return true;
-    }
-
-    @Override
-    protected String getNarrationMessage()
-    {
-        return I18n.format("gui.binarymod.scrollbar");
     }
 }

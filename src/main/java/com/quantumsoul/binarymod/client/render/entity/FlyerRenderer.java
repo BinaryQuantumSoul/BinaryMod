@@ -6,11 +6,11 @@ import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.client.render.entity.model.FlyerModel;
 import com.quantumsoul.binarymod.entity.FlyerEntity;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.vector.Vector3f;
 
 public class FlyerRenderer extends EntityRenderer<FlyerEntity>
 {

@@ -13,7 +13,7 @@ public class BackdoorProvider implements IComponentProvider
     @Override
     public ItemStack getStack(IDataAccessor accessor, IPluginConfig config)
     {
-        BlockPos.Mutable mutable = new BlockPos.Mutable(accessor.getPosition());
+        BlockPos.Mutable mutable = new BlockPos.Mutable();
         Block block;
         do
         {

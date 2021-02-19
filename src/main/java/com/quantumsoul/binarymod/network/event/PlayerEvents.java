@@ -30,7 +30,7 @@ public class PlayerEvents
     @SubscribeEvent
     public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event)
     {
-        if (event.getPlayer().dimension == DimensionInit.DIM_BINARY_TYPE)
+        if (event.getPlayer().getEntityWorld().getDimensionKey() == DimensionInit.BINARY_DIMENSION)
             event.getPlayer().addItemStackToInventory(new ItemStack(ItemInit.BLUE_PILL.get()));
     }
 

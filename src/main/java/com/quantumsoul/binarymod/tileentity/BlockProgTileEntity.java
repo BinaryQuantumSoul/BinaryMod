@@ -2,6 +2,7 @@ package com.quantumsoul.binarymod.tileentity;
 
 import com.quantumsoul.binarymod.init.TileEntityInit;
 import com.quantumsoul.binarymod.tileentity.container.BlockProgContainer;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -111,9 +112,9 @@ public class BlockProgTileEntity extends ProgrammerTileEntity implements ITickab
     }
 
     @Override
-    public void read(CompoundNBT compound)
+    public void read(BlockState state, CompoundNBT compound)
     {
-        super.read(compound);
+        super.read(state, compound);
 
         timer = compound.getInt("timer");
         doing = compound.getBoolean("doing");

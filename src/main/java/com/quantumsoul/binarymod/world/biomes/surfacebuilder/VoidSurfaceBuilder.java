@@ -1,6 +1,6 @@
 package com.quantumsoul.binarymod.world.biomes.surfacebuilder;
 
-import com.mojang.datafixers.Dynamic;
+import com.mojang.serialization.Codec;
 import com.quantumsoul.binarymod.init.BlockInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -11,15 +11,14 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
 import java.util.Random;
-import java.util.function.Function;
 
 public class VoidSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
 {
     private final static BlockState VOID = BlockInit.VOID_BLOCK.get().getDefaultState();
 
-    public VoidSurfaceBuilder(Function<Dynamic<?>, ? extends SurfaceBuilderConfig> config)
+    public VoidSurfaceBuilder(Codec<SurfaceBuilderConfig> configCodec)
     {
-        super(config);
+        super(configCodec);
     }
 
     @Override

@@ -10,17 +10,16 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
 import java.util.List;
-
-import static com.quantumsoul.binarymod.util.WorldUtils.isOnGround;
 
 public class FlyerEntity extends Entity
 {
@@ -34,19 +33,7 @@ public class FlyerEntity extends Entity
         preventEntitySpawning = true;
     }
 
-    @Override
-    @Nullable
-    public AxisAlignedBB getCollisionBox(Entity entityIn)
-    {
-        return entityIn.canBePushed() ? entityIn.getBoundingBox() : null;
-    }
-
-    @Override
-    @Nullable
-    public AxisAlignedBB getCollisionBoundingBox()
-    {
-        return getBoundingBox();
-    }
+    //todo check collision box
 
     @Override
     public boolean canBePushed()
@@ -67,12 +54,12 @@ public class FlyerEntity extends Entity
     }
 
     @Override
-    public boolean processInitialInteract(PlayerEntity player, Hand hand)
+    public ActionResultType processInitialInteract(PlayerEntity player, Hand hand)
     {
         if (player.isCrouching())
-            return false;
+            return ActionResultType.PASS;
         else
-            return !world.isRemote && player.startRiding(this);
+            return !world.isRemote && player.startRiding(this) ? ActionResultType.SUCCESS : ActionResultType.PASS;
     }
 
     @Override
@@ -114,12 +101,12 @@ public class FlyerEntity extends Entity
                 move(MoverType.SELF, getMotion());
             }
 
-            if (isOnGround(this))
+            if (isOnGround())
                 rotationPitch = 0F;
         }
         else
         {
-            setMotion(Vec3d.ZERO);
+            setMotion(Vector3d.ZERO);
             move(MoverType.SELF, getMotion());
         }
     }

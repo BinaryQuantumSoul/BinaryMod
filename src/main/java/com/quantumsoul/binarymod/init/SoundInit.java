@@ -9,7 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class SoundInit
 {
-    public static final DeferredRegister<SoundEvent> SOUNDS = new DeferredRegister<>(ForgeRegistries.SOUND_EVENTS, BinaryMod.MOD_ID);
+    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, BinaryMod.MOD_ID);
 
     public static final RegistryObject<SoundEvent> ONE_ZERO_AMBIENT = addSound("entity.one_zero.ambient");
     public static final RegistryObject<SoundEvent> ONE_ZERO_HURT = addSound("entity.one_zero.hurt");

@@ -2,6 +2,7 @@ package com.quantumsoul.binarymod.tileentity;
 
 import com.quantumsoul.binarymod.block.BoolBlock;
 import com.quantumsoul.binarymod.util.MachineUtils;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -101,9 +102,9 @@ public abstract class FactoryTileEntity extends UpgradableTileEntity implements 
     }
 
     @Override
-    public void read(CompoundNBT compound)
+    public void read(BlockState state, CompoundNBT compound)
     {
-        super.read(compound);
+        super.read(state, compound);
 
         timer = compound.getInt("timer");
         done = compound.getBoolean("done");

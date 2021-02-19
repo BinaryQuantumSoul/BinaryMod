@@ -35,6 +35,6 @@ public class MachineTileEntity extends TileEntity
     @Override
     public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket packet)
     {
-        read(packet.getNbtCompound());
+        read(getBlockState(), packet.getNbtCompound());
     }
 }

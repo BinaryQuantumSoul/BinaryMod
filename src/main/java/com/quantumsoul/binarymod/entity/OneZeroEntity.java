@@ -4,7 +4,10 @@ import com.quantumsoul.binarymod.init.EntityInit;
 import com.quantumsoul.binarymod.init.ItemInit;
 import com.quantumsoul.binarymod.init.SoundInit;
 import com.quantumsoul.binarymod.util.WorldUtils;
-import net.minecraft.entity.*;
+import net.minecraft.entity.AgeableEntity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ILivingEntityData;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -14,10 +17,8 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
+import net.minecraft.world.*;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import javax.annotation.Nullable;
@@ -57,23 +58,15 @@ public class OneZeroEntity extends AnimalEntity
     }
 
     @Override
-    protected void registerAttributes()
-    {
-        super.registerAttributes();
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
-    }
-
-    @Override
     public boolean isBreedingItem(ItemStack stack)
     {
         return BREED.test(stack);
     }
 
     @Override
-    public AgeableEntity createChild(AgeableEntity ageable)
+    public AgeableEntity func_241840_a(ServerWorld world, AgeableEntity ageable)
     {
-        return this.rand.nextBoolean() ? EntityInit.ONE.get().create(this.world) : EntityInit.ZERO.get().create(this.world);
+        return this.rand.nextBoolean() ? EntityInit.ONE.get().create(world) : EntityInit.ZERO.get().create(world);
     }
 
     @Override
@@ -98,7 +91,7 @@ public class OneZeroEntity extends AnimalEntity
     }
 
     @Override
-    public ILivingEntityData onInitialSpawn(IWorld world, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag)
+    public ILivingEntityData onInitialSpawn(IServerWorld world, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag)
     {
         if(!randomized && !isChild())
         {

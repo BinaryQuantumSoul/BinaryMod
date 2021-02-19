@@ -4,6 +4,7 @@ import com.quantumsoul.binarymod.init.ItemInit;
 import com.quantumsoul.binarymod.init.TileEntityInit;
 import com.quantumsoul.binarymod.item.SDCardItem;
 import com.quantumsoul.binarymod.tileentity.container.ComputerContainer;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -89,10 +90,10 @@ public class ComputerTileEntity extends ProgrammerTileEntity
     }
 
     @Override
-    public void read(CompoundNBT compound)
+    public void read(BlockState state, CompoundNBT compound)
     {
-        super.read(compound);
+        super.read(state, compound);
 
-        state = ComputerState.values()[compound.getInt("state")];
+        this.state = ComputerState.values()[compound.getInt("state")];
     }
 }

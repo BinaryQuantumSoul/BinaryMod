@@ -1,6 +1,6 @@
 package com.quantumsoul.binarymod.world.biomes.surfacebuilder;
 
-import com.mojang.datafixers.Dynamic;
+import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.math.BlockPos;
@@ -10,8 +10,8 @@ import net.minecraft.world.gen.OctavesNoiseGenerator;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
+import java.util.Arrays;
 import java.util.Random;
-import java.util.function.Function;
 
 //I DON'T UNDERSTAND THIS
 public class BinarySurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
@@ -19,9 +19,9 @@ public class BinarySurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
     protected OctavesNoiseGenerator noiseGenerator;
     private long mSeed;
 
-    public BinarySurfaceBuilder(Function<Dynamic<?>, ? extends SurfaceBuilderConfig> p_i51305_1_)
+    public BinarySurfaceBuilder(Codec<SurfaceBuilderConfig> configCodec)
     {
-        super(p_i51305_1_);
+        super(configCodec);
     }
 
     @Override
@@ -104,7 +104,7 @@ public class BinarySurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
     {
         if (this.mSeed != seed || this.noiseGenerator == null)
         {
-            this.noiseGenerator = new OctavesNoiseGenerator(new SharedSeedRandom(seed), 3, 0);
+            this.noiseGenerator = new OctavesNoiseGenerator(new SharedSeedRandom(seed), Arrays.asList(3, 0)); //todo check
         }
 
         this.mSeed = seed;

@@ -1,6 +1,6 @@
 package com.quantumsoul.binarymod.world.biomes.surfacebuilder;
 
-import com.mojang.datafixers.Dynamic;
+import com.mojang.serialization.Codec;
 import com.quantumsoul.binarymod.init.BlockInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
@@ -10,7 +10,6 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
 import java.util.Random;
-import java.util.function.Function;
 
 public class HexSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
 {
@@ -28,9 +27,9 @@ public class HexSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
             BlockInit.HEX_YELLOW.get().getDefaultState(),
             BlockInit.HEX_RED.get().getDefaultState()};
 
-    public HexSurfaceBuilder(Function<Dynamic<?>, ? extends SurfaceBuilderConfig> config)
+    public HexSurfaceBuilder(Codec<SurfaceBuilderConfig> configCodec)
     {
-        super(config);
+        super(configCodec);
     }
 
     public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)

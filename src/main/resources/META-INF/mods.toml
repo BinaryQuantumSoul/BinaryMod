@@ -1,6 +1,7 @@
 modLoader="javafml"
-loaderVersion="[31,)"
+loaderVersion="[36,)"
 issueTrackerURL="https://github.com/BinaryQuantumSoul/BinaryMod/issues"
+license="GNU Affero General Public License"
 
 [[mods]]
 modId="binarymod"
@@ -18,13 +19,13 @@ Explore the matrix, fight bugs and viruses, go to the dark web and craft machine
 [[dependencies.binarydimension]]
     modId="forge"
     mandatory=true
-    versionRange="[31,)"
+    versionRange="[36,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.binarydimension]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15.2]"
+    versionRange="[1.16.5]"
     ordering="NONE"
     side="BOTH"
