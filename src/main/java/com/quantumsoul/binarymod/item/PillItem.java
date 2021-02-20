@@ -1,6 +1,6 @@
 package com.quantumsoul.binarymod.item;
 
-import com.quantumsoul.binarymod.init.DimensionInit;
+import com.quantumsoul.binarymod.init.GenerationInit;
 import com.quantumsoul.binarymod.util.WorldUtils;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -44,12 +44,12 @@ public class PillItem extends Item
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving)
     {
         RegistryKey<World> dim = entityLiving.world.getDimensionKey();
-        if (this.mPill == Pill.RED && dim != DimensionInit.BINARY_DIMENSION)
+        if (this.mPill == Pill.RED && dim != GenerationInit.BINARY_DIMENSION)
         {
             if (entityLiving instanceof ServerPlayerEntity)
                 WorldUtils.teleportToBinDim((ServerPlayerEntity) entityLiving);
         }
-        else if (this.mPill == Pill.BLUE && dim == DimensionInit.BINARY_DIMENSION)
+        else if (this.mPill == Pill.BLUE && dim == GenerationInit.BINARY_DIMENSION)
         {
             if (entityLiving instanceof ServerPlayerEntity)
                 WorldUtils.teleportFromBinDim((ServerPlayerEntity) entityLiving);

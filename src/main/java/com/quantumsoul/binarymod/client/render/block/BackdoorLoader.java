@@ -72,6 +72,7 @@ public class BackdoorLoader implements IModelLoader<BackdoorLoader.BackdoorGeome
             public IModelData getModelData(@Nonnull IBlockDisplayReader world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull IModelData tileData)
             {
                 BlockPos.Mutable mutable = new BlockPos.Mutable();
+                mutable.setPos(pos);
                 BlockState nextState;
                 do
                 {

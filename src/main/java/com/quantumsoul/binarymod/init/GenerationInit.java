@@ -9,6 +9,10 @@ import com.quantumsoul.binarymod.world.biomes.surfacebuilder.BinarySurfaceBuilde
 import com.quantumsoul.binarymod.world.biomes.surfacebuilder.HexSurfaceBuilder;
 import com.quantumsoul.binarymod.world.biomes.surfacebuilder.VoidSurfaceBuilder;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
+import net.minecraft.util.RegistryKey;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.gen.GenerationStage;
@@ -31,6 +35,9 @@ import static com.quantumsoul.binarymod.init.BlockInit.BINARY_ORE;
 @Mod.EventBusSubscriber(modid = BinaryMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GenerationInit
 {
+    //DIMENSION
+    public static final RegistryKey<World> BINARY_DIMENSION = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, new ResourceLocation(BinaryMod.MOD_ID, "binary_dimension"));
+
     //SURFACE_BUILDERS
     public static final DeferredRegister<SurfaceBuilder<?>> SURFACE_BUILDERS = DeferredRegister.create(ForgeRegistries.SURFACE_BUILDERS, BinaryMod.MOD_ID);
 
@@ -46,20 +53,10 @@ public class GenerationInit
     public static final RegistryObject<Biome> VOID_BIOME = BIOMES.register("void_biome", Biomes::makeVoidBiome);
     public static final RegistryObject<Biome> WIRE_BIOME = BIOMES.register("wire_biome", Biomes::makeWireBiome);
 
+    //ORES
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void biomeLoading(final BiomeLoadingEvent event)
     {
-        BiomeGenerationSettings.Builder gen = event.getGeneration();
-
-        //MINECRAFT
-        gen.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, BINARY_ORE.get().getDefaultState(), 8)).range(48).square().func_242731_b(OreConfig.binaryOreCountRange.get()));
-
-        //BINARYMOD
-        if(event.getName() == BINARY_BIOME.getId() || event.getName() == WIRE_BIOME.getId())
-            gen.withSurfaceBuilder(GenerationInit.BINARY_SURFACE_BUILDER.get().func_242929_a(new SurfaceBuilderConfig(BlockInit.BINARY_BLOCK.get().getDefaultState(), BlockInit.ON_BINARY_BLOCK.get().getDefaultState(), null)));
-        else if (event.getName() == HEX_BIOME.getId())
-            gen.withSurfaceBuilder(GenerationInit.HEX_SURFACE_BUILDER.get().func_242929_a(new SurfaceBuilderConfig(BlockInit.HEX_BLUE.get().getDefaultState(), BlockInit.HEX_GREEN.get().getDefaultState(), null)));
-        else if (event.getName() == VOID_BIOME.getId())
-            gen.withSurfaceBuilder(GenerationInit.VOID_SURFACE_BUILDER.get().func_242929_a(new SurfaceBuilderConfig(BlockInit.VOID_BLOCK.get().getDefaultState(), BlockInit.VOID_BLOCK.get().getDefaultState(), null)));
+        event.getGeneration().withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, BINARY_ORE.get().getDefaultState(), 8)).range(48).square().func_242731_b(OreConfig.binaryOreCountRange.get()));
     }
 }

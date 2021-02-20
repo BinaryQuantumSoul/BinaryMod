@@ -2,7 +2,7 @@ package com.quantumsoul.binarymod.network.event;
 
 import com.quantumsoul.binarymod.BinaryMod;
 import com.quantumsoul.binarymod.entity.FlyerEntity;
-import com.quantumsoul.binarymod.init.DimensionInit;
+import com.quantumsoul.binarymod.init.GenerationInit;
 import com.quantumsoul.binarymod.init.ItemInit;
 import net.minecraft.client.GameSettings;
 import net.minecraft.client.Minecraft;
@@ -30,7 +30,7 @@ public class PlayerEvents
     @SubscribeEvent
     public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event)
     {
-        if (event.getPlayer().getEntityWorld().getDimensionKey() == DimensionInit.BINARY_DIMENSION)
+        if (event.getPlayer().getEntityWorld().getDimensionKey() == GenerationInit.BINARY_DIMENSION)
             event.getPlayer().addItemStackToInventory(new ItemStack(ItemInit.BLUE_PILL.get()));
     }
 

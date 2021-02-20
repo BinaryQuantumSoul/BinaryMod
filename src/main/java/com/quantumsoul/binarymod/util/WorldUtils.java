@@ -2,7 +2,7 @@ package com.quantumsoul.binarymod.util;
 
 import com.quantumsoul.binarymod.block.HexBlock;
 import com.quantumsoul.binarymod.init.BlockInit;
-import com.quantumsoul.binarymod.init.DimensionInit;
+import com.quantumsoul.binarymod.init.GenerationInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -21,18 +21,22 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.*;
 import net.minecraft.world.gen.feature.WorldDecoratingHelper;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.util.ITeleporter;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.items.IItemHandler;
 
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class WorldUtils
 {
+    static int y = 0;
+
     //TELEPORTING
-    public static BlockPos teleportPlayer(ServerPlayerEntity player, RegistryKey<World> destination, BlockPos destinationPos)
+    public static BlockPos teleportToDimension(ServerPlayerEntity player, RegistryKey<World> destination, BlockPos destinationPos)
     {
         if (destination == null)
             throw new IllegalArgumentException("Destination dimension key is null !");
@@ -41,6 +45,7 @@ public class WorldUtils
         ServerWorld nextWorld = player.getServer().getWorld(destination);
         nextWorld.getChunk(destinationPos);
 
+        y = 0;
         int x = destinationPos.getX();
         int z = destinationPos.getZ();
         int maxHeight = nextWorld.getHeight();
@@ -48,7 +53,6 @@ public class WorldUtils
         //FIND SPAWN
         BlockPos.Mutable pos = new BlockPos.Mutable();
         boolean flag = false;
-        int y = 0;
 
         for (int h = maxHeight; h >= 0; h--)
         {
@@ -81,19 +85,29 @@ public class WorldUtils
             }
         }
 
-        player.teleport(nextWorld, x, y, z, player.rotationYaw, player.rotationPitch);
-        return new BlockPos(x, y, z);
+        player.changeDimension(nextWorld, new ITeleporter()
+        {
+            @Override
+            public Entity placeEntity(Entity entity, ServerWorld currentWorld, ServerWorld destWorld, float yaw, Function<Boolean, Entity> repositionEntity)
+            {
+                repositionEntity.apply(false);
+                entity.setPositionAndUpdate(x, y, z);
+                return entity;
+            }
+        });
+
+        return player.getPosition();
     }
 
     public static void teleportToBinDim(ServerPlayerEntity player)
     {
-        BlockPos spawnPos = teleportPlayer(player, DimensionInit.BINARY_DIMENSION, player.getPosition());
-        //todo player.setSpawnPoint(spawnPos, true, true, DimensionInit.DIM_BINARY_TYPE);
+        BlockPos spawnPos = teleportToDimension(player, GenerationInit.BINARY_DIMENSION, player.getPosition());
+        //todo player.setSpawnPoint(spawnPos, true, true, GenerationInit.BINARY_DIMENSION);
     }
 
     public static void teleportFromBinDim(ServerPlayerEntity player)
     {
-        teleportPlayer(player, World.OVERWORLD, player.getPosition());
+        teleportToDimension(player, World.OVERWORLD, player.getPosition());
     }
 
     //GROUND CALCULATING

@@ -102,6 +102,7 @@ public class ShooterTileEntity extends UpgradableTileEntity implements IOnOffMac
 
     public void list(PlayerEntity player)
     {
+        //todo fix
         UUID id = player.getUniqueID();
 
         boolean removed = players.remove(id);

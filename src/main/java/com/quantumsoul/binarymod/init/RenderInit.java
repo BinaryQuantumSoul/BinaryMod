@@ -7,13 +7,19 @@ import com.quantumsoul.binarymod.client.render.tileentity.BitcoinTileRenderer;
 import com.quantumsoul.binarymod.client.render.tileentity.BlockProgTileRenderer;
 import com.quantumsoul.binarymod.client.render.tileentity.FactoryTileRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.Mod;
 
+@Mod.EventBusSubscriber(modid = BinaryMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class RenderInit
 {
-    public static void initBlockRenders()
+    @SubscribeEvent
+    public static void initBlockRenders(final ModelRegistryEvent event)
     {
         ModelLoaderRegistry.registerLoader(new ResourceLocation(BinaryMod.MOD_ID + ":backdoor_loader"), new BackdoorLoader());
     }

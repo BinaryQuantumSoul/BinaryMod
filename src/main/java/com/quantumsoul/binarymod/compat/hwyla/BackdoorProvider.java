@@ -14,6 +14,7 @@ public class BackdoorProvider implements IComponentProvider
     public ItemStack getStack(IDataAccessor accessor, IPluginConfig config)
     {
         BlockPos.Mutable mutable = new BlockPos.Mutable();
+        mutable.setPos(accessor.getPosition());
         Block block;
         do
         {
